@@ -2,9 +2,43 @@
 
 Lokalt dokumentverktyg för att söka i kursmaterial. Appen bygger ett sökindex av dokumentmapparna, startar en lokal server och visar dokumenten i en snabb webbaserad läsvy.
 
+## Requirements
+
+För att köra programmet behövs:
+
+- Windows 10 eller 11 om du använder `start.bat`
+- Python 3 installerat
+- `python` eller `python3` måste fungera i `PATH`, eller så måste Python finnas på `%USERPROFILE%\miniconda3\python.exe`
+- Python-paketet `pypdf`
+- En modern webbläsare
+
+Valfritt, bara för OCR av skannade PDF:er och bilder:
+
+- Tesseract OCR
+- Poppler, inklusive `pdftoppm`
+- Python-paketen `pytesseract`, `pdf2image`, `Pillow`
+
+## Installation
+
+Installera minsta nödvändiga Python-paket:
+
+```bash
+python -m pip install pypdf
+```
+
+Om du vill ha OCR-stöd också:
+
+```bash
+python -m pip install pytesseract pdf2image Pillow
+```
+
+Du behöver även installera Tesseract och Poppler separat och se till att deras kommandon finns i `PATH`.
+
 ## Snabbstart
 
-Kör från projektroten:
+Kör från projektroten.
+
+I Windows:
 
 ```bat
 start.bat
@@ -50,7 +84,7 @@ Reglerteknik/
 - Refresh-knapp i sökraden för att uppdatera index utan att starta om appen.
 - Stöd för sökbara filtyper: `pdf`, `html`, `txt`, `md`, `markdown`, `png`, `jpg`, `jpeg`, `webp`, `gif`, `bmp`, `tif`, `tiff`.
 - PDF-text extraheras med `pypdf`.
-- HTML/TXT/MD indexeras direkt som text.
+- HTML, TXT och MD indexeras direkt som text.
 - Kursrad som filtrerar mellan kursmappar.
 - Kategorirad som visar bara kategorier som finns i aktuella sökresultat.
 - Sökning i titel, kurs, kategori, sökväg och dokumenttext.
@@ -74,7 +108,7 @@ För OCR av skannade PDF:er och bilder behövs:
 
 - Tesseract OCR
 - Poppler, inklusive `pdftoppm`
-- Pythonpaket: `pytesseract`, `pdf2image`, `Pillow`
+- Python-paketen `pytesseract`, `pdf2image`, `Pillow`
 
 ## Lägga till dokument
 
