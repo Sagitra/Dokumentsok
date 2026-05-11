@@ -6,6 +6,12 @@ Lokalt dokumentverktyg för att söka i kursmaterial. Appen bygger ett sökindex
 
 Kör från projektroten:
 
+```bat
+start.bat
+```
+
+Om du kör via Bash i stället:
+
 ```bash
 bash start.sh
 ```
@@ -23,7 +29,8 @@ Stoppa servern med `Ctrl+C` i terminalen.
 ```text
 app/       Webbappen och search-index.json
 EIEF10/    Kursmapp med dokument sorterade per kategori
-start.sh   Startscript
+start.bat  Startscript för Windows
+start.sh   Startscript för Bash
 ```
 
 Kursmappar ligger på toppnivån. Just nu finns `EIEF10`, men fler kurser kan läggas till senare på samma nivå.
@@ -72,7 +79,7 @@ För OCR av skannade PDF:er och bilder behövs:
 ## Lägga till dokument
 
 1. Lägg dokumentet i rätt kursmapp och kategori.
-2. Kör `bash start.sh`, eller klicka refresh-knappen i appen.
+2. Kör `start.bat` i Windows eller `bash start.sh` i Bash, eller klicka refresh-knappen i appen.
 3. Dokumentet blir sökbart när `search-index.json` har byggts om.
 
 Exempel:
@@ -106,10 +113,11 @@ Tentor
 - `app/search-index.json` är genererat och innehåller sökindexet.
 - `app/build_search_index.py` skannar dokument och bygger indexet.
 - `app/search_server.py` serverar appen och hanterar refresh-knappen via `/api/rebuild`.
-- `start.sh` är den enda filen som normalt behöver köras manuellt.
+- `start.bat` är enklaste sättet att starta appen i Windows.
+- `start.sh` finns kvar för Bash-miljöer.
 
 ## Tips
 
-- Dubbelklicka inte `app/index.html`; kör alltid via `bash start.sh` så `fetch()` och refresh-knappen fungerar.
-- Om nya dokument inte syns, klicka refresh-knappen eller starta om med `bash start.sh`.
+- Dubbelklicka inte `app/index.html`; kör alltid via `start.bat` i Windows eller `bash start.sh` i Bash så `fetch()` och refresh-knappen fungerar.
+- Om nya dokument inte syns, klicka refresh-knappen eller starta om med `start.bat` eller `bash start.sh`.
 - Om OCR-varningen visas är det normalt så länge du bara behöver textbaserade PDF:er.
