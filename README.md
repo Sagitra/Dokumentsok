@@ -17,6 +17,7 @@ Valfritt, bara för OCR av skannade PDF:er och bilder:
 - Tesseract OCR
 - Poppler, inklusive `pdftoppm`
 - Python-paketen `pytesseract`, `pdf2image`, `Pillow`
+- `tesseract` och `pdftoppm` måste kunna hittas i `PATH`
 
 ## Installation
 
@@ -33,6 +34,18 @@ python -m pip install pytesseract pdf2image Pillow
 ```
 
 Du behöver även installera Tesseract och Poppler separat och se till att deras kommandon finns i `PATH`.
+
+I Windows betyder det att dessa kommandon ska fungera:
+
+```bat
+where tesseract
+where pdftoppm
+```
+
+Vanliga installationsmappar som `start.bat` redan försöker använda om de finns:
+
+- `C:\Program Files\Tesseract-OCR`
+- `C:\Program Files\poppler\Library\bin`
 
 ## Snabbstart
 
@@ -109,6 +122,7 @@ För OCR av skannade PDF:er och bilder behövs:
 - Tesseract OCR
 - Poppler, inklusive `pdftoppm`
 - Python-paketen `pytesseract`, `pdf2image`, `Pillow`
+- `tesseract` och `pdftoppm` måste kunna hittas i `PATH`
 
 ## Lägga till dokument
 
@@ -155,3 +169,4 @@ Tentor
 - Dubbelklicka inte `app/index.html`; kör alltid via `start.bat` i Windows eller `bash start.sh` i Bash så `fetch()` och refresh-knappen fungerar.
 - Om nya dokument inte syns, klicka refresh-knappen eller starta om med `start.bat` eller `bash start.sh`.
 - Om OCR-varningen visas är det normalt så länge du bara behöver textbaserade PDF:er.
+- Om OCR inte fungerar, kontrollera att `where tesseract` och `where pdftoppm` hittar rätt filer.
