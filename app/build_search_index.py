@@ -259,6 +259,18 @@ def compact_text(value: str | None) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
+def has_meaningful_pdf_text(text: str) -> bool:
+    compact = compact_text(text)
+    if len(compact) < TEXT_THRESHOLD:
+        return False
+
+    meaningful_chars = sum(1 for char in compact if char.isalnum())
+    if meaningful_chars < max(8, len(compact) // 4):
+        return False
+
+    return True
+
+
 def read_text_file(path: Path) -> str:
     for encoding in ("utf-8-sig", "utf-8", "cp1252", "latin-1"):
         try:
@@ -401,7 +413,7 @@ def extract_pdf_pages(path: Path, ocr: OcrState, dpi: int) -> tuple[list[dict[st
             text = ""
             source = f"pypdf-error: {exc.__class__.__name__}"
 
-        if len(text) < TEXT_THRESHOLD and ocr.available:
+        if not has_meaningful_pdf_text(text) and ocr.available:
             try:
                 ocr_text = ocr_page(path, index, ocr, dpi)
                 if ocr_text:
