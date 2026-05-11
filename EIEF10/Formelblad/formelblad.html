@@ -1,0 +1,770 @@
+﻿<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formelblad EMD - 2 sidor</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        tags: 'none'
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <style>
+    @page { size: A4 landscape; margin: 6mm; }
+    :root {
+      --font-family: Arial, Helvetica, sans-serif;
+      --font-body: 8px;
+      --font-note: 11px;
+      --font-title: 12px;
+      --font-page-meta: 8px;
+      --font-block-title: 8.5px;
+      --font-formula: 16px;
+      --font-formula-wide: 14px;
+      --font-formula-ultra: 21px;
+      --line-body: 1.1;
+      --line-formula: 1.02;
+      --math-scale: 60%;
+      --math-scale-wide: 70%;
+      --math-scale-ultra: 60%;
+      --ink:#111827; --muted:#4b5563; --line:#cfd6df; --paper:#fff; --screen:#e8edf3; --grund:#1d4ed8; --lm:#047857; --vektor:#7c3aed; --sm:#be185d; --am:#c2410c; --reglering:#0891b2; --strom:#a16207;
+    }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--screen); color:var(--ink); font-family:var(--font-family); font-size:var(--font-body); line-height:var(--line-body); }
+    .screen-note { max-width:297mm; margin:10px auto 0; color:var(--muted); font-size:var(--font-note); }
+    .page { width:297mm; height:210mm; margin:10px auto; padding:6mm; background:var(--paper); box-shadow:0 8px 30px rgba(15,23,42,.18); overflow:hidden; page-break-after:always; break-after:page; }
+    .page-2 { page-break-after:auto; break-after:auto; }
+    .page-title { display:flex; justify-content:space-between; align-items:baseline; height:6mm; margin:0 0 2mm; border-bottom:.35mm solid #111827; color:#111827; }
+    h1 { margin:0; font-size:var(--font-title); line-height:1; letter-spacing:0; }
+    .page-title span { color:var(--muted); font-size:var(--font-page-meta); font-weight:700; }
+    .sheet-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:2.6mm; height:calc(100% - 8mm); min-height:0; }
+    .col { min-width:0; display:flex; flex-direction:column; gap:1.4mm; overflow:hidden; }
+    .block { --accent:var(--grund); min-width:0; border:.25mm solid var(--line); border-left:1.1mm solid var(--accent); border-radius:1.3mm; overflow:hidden; background:#fff; break-inside:avoid; }
+    .block.grund { --accent:var(--grund); } .block.lm { --accent:var(--lm); } .block.vektor { --accent:var(--vektor); } .block.sm { --accent:var(--sm); } .block.am { --accent:var(--am); } .block.reglering { --accent:var(--reglering); } .block.strom { --accent:var(--strom); }
+    h3 { margin:0; padding:.8mm 1mm .65mm; background:#f8fafc; border-bottom:.25mm solid var(--line); color:#111827; font-size:var(--font-block-title); line-height:1; letter-spacing:0; }
+    h3::before { content:""; display:inline-block; width:2.2mm; height:2.2mm; margin-right:1mm; border-radius:50%; background:var(--accent); vertical-align:-.25mm; }
+    hr { margin:0; border:0; border-top:.4mm solid black; }
+    .formula { min-width:0; padding:0; border-top:.2mm solid #edf0f4; font-size:var(--font-formula); line-height:var(--line-formula); overflow:hidden; }
+    .formula:first-of-type { border-top:0; }
+    .formula.wide { font-size:var(--font-formula-wide); }
+    .formula.ultra { font-size:var(--font-formula-ultra); }
+    .math-block { min-width:0; max-width:100%; overflow:hidden; padding:0; margin:0; }
+    mjx-container[jax="SVG"][display="true"] { display:block; max-width:100%; overflow:hidden; margin:0 !important; padding:0 !important; line-height:1 !important; font-size:var(--math-scale) !important; }
+    .wide mjx-container[jax="SVG"][display="true"] { font-size:var(--math-scale-wide) !important; }
+    .ultra mjx-container[jax="SVG"][display="true"] { font-size:var(--math-scale-ultra) !important; }
+    mjx-container svg { max-width:100% !important; margin:1.5mm .8mm 1mm !important; }
+    @media (max-width:1100px) { .screen-note { margin-left:10px; margin-right:10px; } }
+    @media print {
+      :root {
+        --font-title: 10px;
+        --font-page-meta: 7px;
+        --font-block-title: 7.8px;
+        --font-formula: 12px;
+        --font-formula-wide: 14px;
+        --font-formula-ultra: 20px;
+      }
+      html, body { width:285mm; height:auto; margin:0; background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .screen-note { display:none; }
+      .page { width:285mm; height:198mm; margin:0; padding:0; box-shadow:none; overflow:hidden; }
+      .page-title { height:5.4mm; margin-bottom:1.6mm; }
+      h1 { font-size:var(--font-title); } .page-title span { font-size:var(--font-page-meta); }
+      .sheet-grid { height:calc(100% - 7mm); gap:2.2mm; }
+      .col { gap:1.1mm; }
+      h3 { font-size:var(--font-block-title); padding:.65mm .8mm .55mm; }
+      .formula { font-size:var(--font-formula); padding:0; }
+      .formula.wide { font-size:var(--font-formula-wide); } .formula.ultra { font-size:var(--font-formula-ultra); }
+    }
+  </style>
+</head>
+<body>
+  <p class="screen-note">Print: A4 liggande, 100% skala, marginaler enligt sidan. MathJax laddas via CDN.</p>
+  <section class="page page-1">
+    <!--<header class="page-title"><h1>Formelblad EMD</h1><span>Sida 1 / 2</span></header>--!>
+    <div class="sheet-grid">
+<div class="col">
+<section class="block lm"> <h3>Likstromsmaskin</h3> <div class="formula"><div class="math-block">$$
+e_a = U_a-i_aR_a
+\quad [\mathrm V]
+$$</div></div>
+<div class="formula wide"><div class="math-block">$$
+\omega
+=\frac{e_a}{\Psi_m}
+\quad [\mathrm{rad/s}]
+\quad
+\left(
+\frac{\omega\cdot{60}}{2\pi}
+\quad [\mathrm{rpm}]
+\right)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T_{\mathrm{el}}
+=T_{\mathrm{brutto}}
+=\text{vridmoment}
+=\Psi_m i_a
+\quad [\mathrm{Nm}]
+$$</div></div>
+<div class="formula wide"><div class="math-block">$$
+T_{\mathrm{axel}}
+=T_{\mathrm{mek}}
+=
+\frac{P_{\mathrm{axel}}}{{2\pi n}/{60}}
+=
+\frac{P_{\mathrm{axel}}}{\omega}
+\quad [\mathrm{Nm}]
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+P_a=R_a i_a^2
+\Rightarrow
+i_a=\sqrt{\frac{P_a}{R_a}}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\text{Vridmoment generellt: }
+T=\Psi_m i_a
+\Rightarrow
+i_a=\frac{T}{\Psi_m}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+L_a\frac{di_a}{dt}
+=U_a-e_a-R_ai_a
+\approx
+L_a\frac{\Delta i}{\Delta t}
+=U-e_a
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\text{Spänningstidsytan för puls:}\quad
+\Delta t\,(U-e_a)=L_a\Delta i
+$$</div></div>
+<hr>
+<div class="formula"><div class="math-block">$$
+T_{\mathrm{friktion}}
+=T_{\mathrm{brutto}}-T_{\mathrm{netto}}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+P_{\mathrm{friktion}}
+=\omega_{\mathrm{el}}\,T_{\mathrm{friktion}}
+$$</div></div> </section>
+<section class="block lm"> <h3>LM dynamisk karakteristik</h3> <div class="formula"><div class="math-block">$$
+\tau_a={L_a}/{R_a}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T_{\mathrm{last}}=0\,\mathrm{Nm}
+\quad
+\text{(eller stat. tillst&#229;nd)}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+i_a=\frac{T_{\mathrm{last}}}{\Psi_m}=0\,\mathrm A
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\tau_{\mathrm{mek}}
+=
+\frac{J \cdot R_a}{\Psi_m^2}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T_L
+=-\frac{\Psi_m^2}{R_a}\omega
++\frac{\Psi_m}{R_a}u_a
+=-a\omega+b u_a
+$$</div></div> </section>
+</div>
+<div class="col">
+<section class="block vektor"> <h3>Vektorer</h3> <div class="formula"><div class="math-block">$$
+\bar i_s
+=
+\sqrt{\frac{2}{3}}
+\left(
+i_u+i_v e^{j\frac{2\pi}{3}}+i_w e^{j\frac{4\pi}{3}}
+\right)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar u_s
+=
+\sqrt{\frac{2}{3}}
+\left(
+u_u+u_v e^{j\frac{2\pi}{3}}+u_w e^{j\frac{4\pi}{3}}
+\right)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar\Psi_s
+=
+\sqrt{\frac{2}{3}}
+\left(
+\Psi_u+\Psi_v e^{j\frac{2\pi}{3}}+\Psi_w e^{j\frac{4\pi}{3}}
+\right)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\frac{d\bar\Psi_s}{dt}
+=\bar u_s-R_s\bar i_s
+\approx \bar u_s
+\quad \text{(om }R_s\text{ f&#246;rsummas)}
+$$</div></div>
+<h3>Effektinvarians</h3> <div class="formula wide ultra"><div class="math-block">$$
+\bar S
+=S_\alpha+jS_\beta
+=
+\sqrt{\frac{2}{3}}
+\left[
+S_a+S_b e^{j\frac{2\pi}{3}}
++S_c e^{j\frac{4\pi}{3}}
+\right]
+=
+\sqrt{\frac{3}{2}}S_a
++j\frac{1}{\sqrt{2}}(S_b+S_c)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\begin{cases}
+S_\alpha=\sqrt{\frac{3}{2}}\,S_a\
+S_\beta=\frac{1}{\sqrt{2}}(S_b+S_c)
+\end{cases}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\begin{cases}
+S_a=\sqrt{\frac{2}{3}}\,S_\alpha\
+S_b=-\frac{1}{\sqrt{6}}S_\alpha+\frac{1}{\sqrt{2}}S_\beta\
+S_c=-\frac{1}{\sqrt{6}}S_\alpha-\frac{1}{\sqrt{2}}S_\beta
+\end{cases}
+$$</div></div>
+<hr>
+<div class="formula"><div class="math-block">$$
+P_{in}=3U_{\mathrm{in}}I_{\mathrm{in}}\cos(\varphi)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\varphi=\arg(U_{in})-\arg(I_{in})
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+1=\cos^2(\varphi)+\sin^2(\varphi)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+P_{\mathrm{in}}=\sqrt{3}\,U_h I_n \cos(\varphi)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+P_{\mathrm{ut}}=T_{\mathrm{ut}}\cdot\omega_{\mathrm{ut}}
+$$</div></div>
+<hr>
+<div class="formula"><div class="math-block">$$
+\bar u_s(t)
+=
+\sqrt{\frac{3}{2}}\hat u_f e^{j\omega t}
+=U_h e^{j\omega t}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar i_s(t)
+=
+\sqrt{\frac{3}{2}}\hat i_f e^{j(\omega t-\varphi)}
+=\sqrt{3}\,I\,e^{j(\omega t-\varphi)}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar e
+=
+j\omega\bar\Psi_m
+=
+\omega\bar\Psi_m e^{j(\theta_s+\pi/2)}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar\Psi_s(t)
+=
+\frac{U_h}{\omega}e^{j(\omega t-\pi/2)}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\Psi_s(t)
+=
+\frac{U_h}{\omega}e^{j(\omega t-\pi/2)}
++j\frac{R_s}{\omega}\sqrt{3}\,i\,e^{j(\omega t-\pi/2)}
+$$</div></div> </section>
+</div>
+<div class="col">
+<section class="block grund"><h3>Asynkronmaksin</h3><div class="formula"><div class="math-block">$$
+P=\bar U\bar I
+=u_a i_a+u_b i_b+u_c i_c
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T
+=\frac{P}{\omega}
+=
+\frac{\sqrt{3}\,U_n I\cos\varphi}{\omega}
+=
+\bar\Psi_s\times\bar i_s
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\text{Synkrona varvtal:}\quad
+n_s=\frac{120f}{p}
+\quad (p=\text{poler})
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\text{Eftersläppning:}\quad
+s=\frac{n_s-n}{n_s}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\text{Rotorfrekvens:}\quad
+f_2=s f_1
+$$</div></div>
+<hr>
+<h3>AM Dynamiska ekv:</h3><div class="formula"><div class="math-block">$$
+\frac{d\bar\Psi_s}{dt}
+=\bar u- R_s\bar i_s
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\frac{d\bar\Psi_r}{dt}
+=j\omega\varphi_r-R_r\bar i_r
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar\Psi_s
+=L_s\bar i_s+L_m\bar i_m
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T
+=\bar\Psi_s\times\bar i_s
+=\bar\Psi_s\sqrt{3}\,I\cos\varphi
+$$</div></div>
+</section>
+<section class="block am"> <h3>AM Ekvivalentkrets</h3> <div class="formula wide ultra"><div class="math-block">$$
+\bar i_s
+=
+\frac{\bar u_s}
+{
+R_s+j\omega_1L_{s\lambda}
++
+\frac{
+\left({R_r}/{s}+j\omega_1L_{r\lambda}\right)
+j\omega_1L_m
+}{
+{R_r}/{s}+j\omega_1L_{r\lambda}+j\omega_1L_m
+}
+}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar i_r
+=
+\frac{\bar u_s}{R_s+R_r/s+j\omega{L_k}}
+$$</div></div>
+
+<div class="formula"><div class="math-block">$$
+\bar i_m\approx |I_0|e^{-j90^0}\quad(I_0\text{ korts.})
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar i_m=\bar i_s-\bar i_r
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+I_0=\frac{230}{\sqrt{3}\,2\pi f L_m}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\text{Om endast } L_k \text{ givet:}
+\qquad
+L_s=L_r=\frac{L_k}{2}
+$$</div></div></section>
+<section class="block am"> <h3> forts. Ekvivalentkrets? </h3> <div class="formula"><div class="math-block">$$
+\bar i_r \approx
+\frac{\bar u_s}
+{R_s+{R_r}/{s}+j\omega L_k}
+\qquad
+\left(\bar u_s = \frac{U_n}{\sqrt{3}}\right)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar i_s = \bar i_r+\bar i_m
+\quad \text{linjestr&#246;m?}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+P_{12}=3\frac{R_r}{s_n}\,\bar i_r^2
+\quad [\mathrm W]
+$$</div></div> </section>
+
+</div>
+<div class="col">
+<section class="block am"><h3>AM förluster</h3><div class="formula"><div class="math-block">$$
+P_{12}
+=
+\frac{P_2(\text{axel})}{1-s}
+\approx
+\frac{P_{\mathrm{ut}}}{1-s}
+\quad\left(\text{Om magnetisering och friktion f&#246;rsummas}\right)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+P_{12}
+=
+3\frac{R_r}{s}i_n^2
+\Rightarrow
+R_r=
+\frac{P_{12}}{3i_n^2}\,s
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+P_{12,\mathrm{start}}
+=
+R_r
+\frac{U_n^2}
+{(R_s+R_r)^2+X_k^2}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+Z_{\mathrm{start}}^2
+=
+(R_s+R_r)^2+X_k^2
+=
+R_r\frac{U_n^2}{P_{12,\mathrm{start}}}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+R_s+R_r
+=
+Z_{\mathrm{start}}\cos\varphi
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+X_k
+=
+Z_{\mathrm{start}}\sin\varphi
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+L_k=\frac{X_k}{2\pi f}
+$$</div></div>
+<div class="math-block">$
+\text{(Best&#228;m parametrar utan korts.)}
+$</div>
+<div class="formula"><div class="math-block">$$
+(\text{linjarisera}) \quad
+T=\frac{\Delta T}{\Delta\omega}+m
+$$</div></div>
+</section>
+</div>
+    </div>
+  </section>
+  <section class="page page-2">
+    <!--<header class="page-title"><h1>Formelblad EMD</h1><span>Sida 2 / 2</span></header>--!>
+    <div class="sheet-grid">
+<div class="col">
+<section class="block grund"> <h3>$T \propto \omega^2 \quad \text{(2 driftfall)}$</h3> <div class="formula"><div class="math-block">$$
+T = k \omega^2 \Rightarrow k = \frac{T}{\omega^2}
+$$</div></div>
+<hr>
+<div class="formula"><div class="math-block">$$
+T \approx k s;
+\qquad
+T_{ii}=\frac{T_i}{4}
+\Rightarrow
+s_{ii}=\frac{s_i}{4}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T = k n^2
+$$</div></div></section>
+<section class="block am"> <h3>Kortslutningsprov</h3> <div class="formula"><div class="math-block">$$
+R_k = \frac{P_k}{3 I_k^2}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+Z_k = \sqrt{R_k^2+\omega_1 L_k^2}
+    = \frac{U_k}{\sqrt{3} I_k}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+L_k = \frac{\sqrt{Z_k^2-R_k^2}}{\omega_1}
+\qquad
+(\omega_1 = 2\pi f)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+R_s = \frac{R_{\text{m&#228;tt}}}{2}
+    = R_k - R_r
+$$</div></div>
+</section>
+
+<section class="block am"> <h3>Tomgång och $\Gamma$-modellen</h3> <div class="formula"><div class="math-block">$$
+P_{\mathrm{Fe}}
+= P_0 - 3R_s I_0^2
+= 3\frac{{U_0^2}/{\sqrt{3}}}{R_m}
+= \frac{U_0^2}{R_m}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+R_m = \frac{U_0^2}{P_{\mathrm{Fe}}}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\omega_1 L_m \approx Z_0
+= \frac{U_0/\sqrt{3}}{I_0}
+= \frac{U_0}{3I_0}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+L_m = \frac{Z_0}{\omega_1}
+\qquad
+(\omega_1=2\pi f)
+\Rightarrow
+L_s = L_m+L_{s\lambda}
+$$</div></div>
+<hr>
+<div class="formula"><div class="math-block">$$
+R_m
+=\frac{\left({U_0}/{\sqrt{3}}\right)^2}{P_0/3}
+=\frac{U_0^2}{P_0}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+Q_0
+=\sqrt{S_0^2-P_0^2}
+=\sqrt{(3U_0 I_0)^2-P_0^2}
+\quad [\mathrm{VAr}]
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+X_m=\omega_0 L_m
+=\frac{\left({U_0}/{\sqrt{3}}\right)^2}{Q_0/3}
+=\frac{U_0^2}{Q_0}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+R_r = R_k-R_s
+$$</div></div> </section>
+</div>
+<div class="col">
+<section class="block am"> <h3>Klippmoment</h3> <div class="formula"><div class="math-block">$$
+T_{\mathrm{klipp}}
+=
+\frac{U_h^2}
+{\omega_s\,2\left(R_s+\sqrt{R_s^2+X_k^2}\right)}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\text{Vid  } T_k
+=\frac{R_r}{s_k}
+=\sqrt{R_s^2+X_k^2}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+X_k=\sqrt{Z_k^2-R_k^2}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+i_k=
+\frac{U_{\mathrm{fas}}}{\sqrt{\left(R_s+{R_r}/{s_k}\right)^2+X_k^2}}
+$$</div></div>
+</section>
+<section class="block sm"> <h3>2 sätt att eliminera stationera hastighetsinferens</h3><div class="formula"><div class="math-block">$$
+\text{1. PI-reg}
+\qquad
+\text{2. framkoppla lastmoment}
+$$</div></div></section>
+<section class="block reglering"> <h3>Varvtalsreglering</h3> <div class="formula"><div class="math-block">$$
+\varepsilon_{\mathrm{fet}}
+\left(=\frac{T_L}{k}\right)
+= \omega^\ast-\omega
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T_i \to \infty \Rightarrow s \to 0
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T_L=\frac{P}{\omega}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\omega(s)
+=\left((\omega^\ast(s)-\omega(s))k-T_L\right)\frac{1}{Js} \Rightarrow
+$$
+$$
+\Rightarrow
+\omega(s)=\omega^\ast(s)-\frac{T_L}{k}
+\Rightarrow
+\omega^\ast-\omega=\frac{T_L}{k}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+J\frac{d\omega}{dt}=T_d-T_L
+\Rightarrow
+\Delta t
+=J\frac{\Delta\omega}{T_d-T_L}
+$$
+$$
+=J\frac{\,(\text{&#228;ndring}/ \text{nuvarande})\omega {2\pi}/{60}}{T_d-T_L} \quad [s]
+$$</div></div>
+<hr>
+<div class="formula"><div class="math-block">$$
+G(s)
+=\frac{i(s)}{i^\ast(s)}
+=\frac{T(s)}{T^\ast(s)}
+=\frac{1}{sT_s+1}
+$$</div></div>
+<div class="formula wide"><div class="math-block">$$
+\text{Polerna:}
+\quad
+s=\frac{1}{2T_s}
+\quad
+\text{om}
+\quad
+K_{\omega}=\frac{J}{4T_s}
+$$</div></div>
+<hr>
+<div class="formula"><div class="math-block">$$
+\frac{T_i s+1}{T_i s}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\frac{1}{T_{TC} s+1}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\frac{1}{s}
+$$</div></div></section>
+
+</div>
+<div class="col">
+<section class="block strom"> <h3>Strömreglering</h3> <div class="formula"><div class="math-block">$$
+\text{Regulatorparametrar (utsignal I-reg)}\Rightarrow
+$$
+$$
+u^\ast(k)
+=
+\frac{L_a}{T_s}\left(i^\ast(k)-i(k)\right)
++\frac{R_s}{2}\left(i^\ast(k)+i(k)\right)
+$$
+$$
++\psi_m \omega(k)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+u^\ast(k)
+\approx
+k\left(i^\ast(k)-i(k)\right)+\psi_m\omega(k)
+$$
+$$
+\{\psi_m\omega(k) \Rightarrow k \quad \text{konstant}\}
+$$</div></div>
+<hr>
+<div class="formula"><div class="math-block">$$
+u = Ri + L\frac{di}{dt}+e
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar u(k,k+1)=u^\ast(k)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+i(k+1)=i^\ast(k)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar e(k,k+1)=e(k)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+i(k)=\sum_{n=0}^{n=k-1}\left(i^\ast(n)-i(n)\right)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+u^\ast(k)
+=
+\left(\frac{L}{T_s}+\frac{R}{2}\right)\cdot
+\left(i^\ast(k)-i(k)\right)
+$$$$
++R\cdot\,i(k)+e(k)
+$$
+$$
+\{\psi_m\omega(k) \Rightarrow k \quad \text{konstant}\}
+$$
+$$
+\{\psi_m\omega(k) \Rightarrow k \quad \text{konstant}\}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\Delta t
+=
+\frac{L_a}{U_{dc}-\Psi_m\omega}\,\Delta i
+$$</div></div>
+<div class="formula wide"><div class="math-block">$$
+\Delta i
+=
+\frac{U_{dc}-\Psi_m\omega}{L_a}\,D\,T_{\mathrm{sw}}
+=
+\frac{U_{dc}-e_a}{L_a}
+\frac{e_a}{U_{dc}}
+T_{\mathrm{sw}}
+\quad \Rightarrow \text{matte...}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\text{derivera om man f&#229;r en sp&#228;nning } \approx \text{ex.} \frac{1}{2}U_{dc}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+n_{\mathrm{mek}}=\frac{2\cdot n_{\mathrm{el}}}{p}
+,\quad
+\omega_{\mathrm{el}}
+=\frac{\omega_{\mathrm{mek}}\cdot {p}}{2}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T_{\mathrm{el}}=\frac{2}{p}T_{\mathrm{mek}}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+I_{sy}=\frac{T_{\mathrm{el}}}{\Psi_m}
+$$</div></div> </section>
+
+<section class="block grund"> <h3>Elektromekanik</h3> <div class="formula"><div class="math-block">$$
+T=\Psi_m i_{sy}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+|\Psi|=\sqrt{3}\,\text{v&#228;rde}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+T_{\mathrm{el}}=|\bar\Psi|\,|I|
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+P_{\mathrm{in}}\ \text{i SMLM}:
+\qquad
+P_{\mathrm{in}}=U i_a+i_f^2R_f
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\text{F&#246;rutser i en SM: }
+P_{\mathrm{mag}}=U_{fn}i_{fn}
+$$</div></div>
+ </section>
+</div>
+<div class="col">
+<section class="block sm"> <h3>Synkronmaskin</h3> <div class="formula"><div class="math-block">$$
+I_{\mathrm{fas,eff}}
+\Rightarrow
+|I|=\sqrt{3}\,I_{\mathrm{fas}}
+$$</div></div>
+<div class="formula wide"><div class="math-block">$$
+|\Psi_m|
+=
+\sqrt{3}\,\frac{\Psi_{m,\mathrm{fas}}}{\sqrt{2}}
+,\quad
+I_s=\sqrt{3}\,I_{\max}
+,\quad
+T_{\max}=\Psi_{mx}\,i_{sy}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+U_{h,\mathrm{eff}}
+\Rightarrow
+\frac{U_{dc}}{\sqrt{2}}
+\quad \text{(symmetrerande)}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+n_{\max}\ \text{om}\ i_{sx}=i_{sy}=0
+$$</div></div>
+<div class="formula wide"><div class="math-block">$$
+\bar u_s^{xy}
+=
+R_s\bar i_s^{xy}
++L_s\frac{d\bar i_s^{xy}}{dt}
++j\omega_{\mathrm{el}}L_s\bar{i}_s^{xy}
++j\omega_{el}\bar\psi_m^{xy}
+\quad
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+i_{sx}=i_{sy}=0
+\Rightarrow
+\bar U_s^{xy}=j\omega\bar\Psi_m^{xy}
+\Rightarrow
+|\bar U_s^{xy}|=|\omega\bar\Psi_m^{xy}| \Rightarrow
+$$</div></div>
+<div class="formula wide"><div class="math-block">$$
+\Rightarrow \omega_{\mathrm{el}}
+=
+\frac{|\bar U_s^{xy}|}{|\bar\Psi_m^{xy}|}
+\Rightarrow
+\omega_{\mathrm{mek}}
+=
+\frac{\omega_{\mathrm{el}}}{p/2}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar{U}_{sx}
+=R_s i_{sx}-\omega L_m i_{sy}-\omega\Psi_{my}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\bar{U}_{sy}
+=R_s i_{sy}+\omega L_m i_{sx}+\omega\Psi_{mx}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+i^{\alpha\beta}
+=\sqrt{3}\,I\,e^{j\omega t}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+i_s=i_{sx}+j i_{sy}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+V_{dc}
+=\frac{V_{DC}-(-V_{DC})}{2}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+U_{ut}=\frac{V_{DC}}{\sqrt{2}}
+$$</div></div> </section>
+</div>
+    </div>
+  </section>
+</body>
+</html>
