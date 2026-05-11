@@ -9,6 +9,12 @@ set "MINICONDA=%USERPROFILE%\miniconda3"
 if exist "%MINICONDA%\python.exe" (
     set "PATH=%MINICONDA%;%MINICONDA%\Scripts;%MINICONDA%\Library\bin;%PATH%"
 )
+if exist "%ProgramFiles%\Tesseract-OCR\tesseract.exe" (
+    set "PATH=%ProgramFiles%\Tesseract-OCR;%PATH%"
+)
+if exist "%ProgramFiles%\poppler\Library\bin\pdftoppm.exe" (
+    set "PATH=%ProgramFiles%\poppler\Library\bin;%PATH%"
+)
 
 set "PYTHON="
 where python >nul 2>nul && set "PYTHON=python"
