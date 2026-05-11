@@ -5,13 +5,18 @@ set "ROOT=%~dp0"
 if "%ROOT:~-1%"=="\" set "ROOT=%ROOT:~0,-1%"
 cd /d "%ROOT%"
 
+set "MINICONDA=%USERPROFILE%\miniconda3"
+if exist "%MINICONDA%\python.exe" (
+    set "PATH=%MINICONDA%;%MINICONDA%\Scripts;%MINICONDA%\Library\bin;%PATH%"
+)
+
 set "PYTHON="
 where python >nul 2>nul && set "PYTHON=python"
 if not defined PYTHON (
     where python3 >nul 2>nul && set "PYTHON=python3"
 )
-if not defined PYTHON if exist "%USERPROFILE%\miniconda3\python.exe" (
-    set "PYTHON=%USERPROFILE%\miniconda3\python.exe"
+if not defined PYTHON if exist "%MINICONDA%\python.exe" (
+    set "PYTHON=%MINICONDA%\python.exe"
 )
 
 if not defined PYTHON (
