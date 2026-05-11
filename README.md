@@ -7,8 +7,8 @@ Lokalt dokumentverktyg för att söka i kursmaterial. Appen bygger ett sökindex
 För att köra programmet behövs:
 
 - Windows 10 eller 11 om du använder `start.bat`
-- Python 3 installerat
-- `python` eller `python3` måste fungera i `PATH`, eller så måste Python finnas på `%USERPROFILE%\miniconda3\python.exe`
+- Python 3 installerat. Ladda ner från [python.org/downloads/windows](https://www.python.org/downloads/windows/)
+- `python` eller `python3` måste fungera i `PATH`, eller så måste Python finnas på `%USERPROFILE%\miniconda3\python.exe`. Om du installerar från python.org, se till att Python läggs till i `PATH` under installationen.
 - Python-paketet `pypdf`
 - En modern webbläsare
 
