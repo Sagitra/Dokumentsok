@@ -32,7 +32,7 @@ IGNORE_DIRS = {
     "tools",
 }
 INDEX_FILE = "search-index.json"
-IGNORE_FILES = {"README.md"}
+IGNORE_FILES = {"README.md", "Screenshot.png"}
 TEXT_THRESHOLD = 24
 IMAGE_EXTENSIONS = {
     ".bmp",
@@ -91,11 +91,15 @@ class OcrState:
     reason: str = ""
     pytesseract: Any = None
     convert_from_path: Any = None
+    rapidocr: Any = None
+    fitz: Any = None
+    np: Any = None
     Image: Any = None
     image_available: bool = False
     image_reason: str = ""
     lang: str = "swe+eng"
     fallback_lang: str = "eng"
+    backend: str = ""
 
 
 class TextExtractingHtmlParser(HTMLParser):
@@ -312,19 +316,6 @@ def file_signature(path: Path) -> dict[str, int]:
 
 
 def init_ocr(lang: str) -> OcrState:
-    if not shutil.which("tesseract"):
-        return OcrState(
-            False,
-            "Tesseract saknas i PATH.",
-            image_available=False,
-            image_reason="Tesseract saknas i PATH.",
-        )
-    try:
-        import pytesseract  # type: ignore
-    except ImportError as exc:
-        reason = f"Python OCR-paket saknas: {exc.name}."
-        return OcrState(False, reason, image_available=False, image_reason=reason)
-
     try:
         from PIL import Image  # type: ignore
 
@@ -335,36 +326,85 @@ def init_ocr(lang: str) -> OcrState:
         image_available = False
         image_reason = f"Python bildpaket saknas: {exc.name}."
 
-    pdf_available = True
-    pdf_reason = ""
-    convert_from_path = None
-    if not shutil.which("pdftoppm"):
-        pdf_available = False
-        pdf_reason = "Poppler/pdftoppm saknas i PATH."
-    else:
+    if shutil.which("tesseract"):
         try:
-            from pdf2image import convert_from_path as pdf_to_images  # type: ignore
-
-            convert_from_path = pdf_to_images
+            import pytesseract  # type: ignore
         except ImportError as exc:
+            reason = f"Python OCR-paket saknas: {exc.name}."
+            return OcrState(False, reason, Image=Image, image_available=False, image_reason=reason)
+
+        pdf_available = True
+        pdf_reason = ""
+        convert_from_path = None
+        if not shutil.which("pdftoppm"):
             pdf_available = False
-            pdf_reason = f"Python OCR-paket saknas: {exc.name}."
+            pdf_reason = "Poppler/pdftoppm saknas i PATH."
+        else:
+            try:
+                from pdf2image import convert_from_path as pdf_to_images  # type: ignore
+
+                convert_from_path = pdf_to_images
+            except ImportError as exc:
+                pdf_available = False
+                pdf_reason = f"Python OCR-paket saknas: {exc.name}."
+
+        return OcrState(
+            pdf_available,
+            pdf_reason,
+            pytesseract=pytesseract,
+            convert_from_path=convert_from_path,
+            Image=Image,
+            image_available=image_available,
+            image_reason=image_reason,
+            lang=lang,
+            backend="tesseract",
+        )
+
+    try:
+        import fitz  # type: ignore
+        import numpy as np  # type: ignore
+        from rapidocr_onnxruntime import RapidOCR  # type: ignore
+    except ImportError as exc:
+        reason = "Tesseract saknas i PATH."
+        if exc.name:
+            reason = f"{reason} RapidOCR-fallback saknas ocksa: {exc.name}."
+        return OcrState(False, reason, Image=Image, image_available=False, image_reason=reason)
+
+    if not image_available:
+        reason = f"RapidOCR kraver Pillow for bildlasning. {image_reason}"
+        return OcrState(False, reason, Image=Image, image_available=False, image_reason=reason)
 
     return OcrState(
-        pdf_available,
-        pdf_reason,
-        pytesseract=pytesseract,
-        convert_from_path=convert_from_path,
+        True,
+        "RapidOCR-fallback aktiv.",
+        rapidocr=RapidOCR(),
+        fitz=fitz,
+        np=np,
         Image=Image,
-        image_available=image_available,
-        image_reason=image_reason,
+        image_available=True,
+        image_reason="RapidOCR-fallback aktiv.",
         lang=lang,
+        backend="rapidocr",
     )
 
 
 def ocr_page(path: Path, page_number: int, ocr: OcrState, dpi: int) -> str:
     if not ocr.available:
         return ""
+    if ocr.backend == "rapidocr":
+        with ocr.fitz.open(str(path)) as document:
+            page = document[page_number - 1]
+            pixmap = page.get_pixmap(dpi=dpi, alpha=False)
+            image = ocr.np.frombuffer(pixmap.samples, dtype=ocr.np.uint8).reshape(
+                pixmap.height,
+                pixmap.width,
+                pixmap.n,
+            )
+        result, _ = ocr.rapidocr(image)
+        if not result:
+            return ""
+        return compact_text(" ".join(item[1] for item in result if len(item) > 1))
+
     images = ocr.convert_from_path(
         str(path),
         dpi=dpi,
@@ -388,6 +428,14 @@ def ocr_page(path: Path, page_number: int, ocr: OcrState, dpi: int) -> str:
 def ocr_image(path: Path, ocr: OcrState) -> str:
     if not ocr.image_available:
         return ""
+    if ocr.backend == "rapidocr":
+        with ocr.Image.open(path) as image:
+            rgb_image = image.convert("RGB")
+            result, _ = ocr.rapidocr(ocr.np.array(rgb_image))
+        if not result:
+            return ""
+        return compact_text(" ".join(item[1] for item in result if len(item) > 1))
+
     with ocr.Image.open(path) as image:
         try:
             return compact_text(ocr.pytesseract.image_to_string(image, lang=ocr.lang))

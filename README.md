@@ -2,6 +2,10 @@
 
 Lokalt dokumentverktyg för att söka i kursmaterial. Appen bygger ett sökindex av dokumentmapparna, startar en lokal server och visar dokumenten i en snabb webbaserad läsvy.
 
+## Exempel på appen
+
+![Skärmdump av Dokumentsök](Screenshot.png)
+
 ## Requirements
 
 För att köra programmet behövs:
@@ -14,10 +18,10 @@ För att köra programmet behövs:
 
 Valfritt, bara för OCR av skannade PDF:er och bilder:
 
-- Tesseract OCR
-- Poppler, inklusive `pdftoppm`
-- Python-paketen `pytesseract`, `pdf2image`, `Pillow`
-- `tesseract` och `pdftoppm` måste kunna hittas i `PATH`
+- Antingen `Tesseract OCR` + `Poppler` med `pdftoppm`
+- Eller Python-paketen `rapidocr-onnxruntime` och `pymupdf`
+- Python-paketet `Pillow`
+- Om du använder Tesseract-vägen måste `tesseract` och `pdftoppm` kunna hittas i `PATH`
 
 ## Installation
 
@@ -33,7 +37,13 @@ Om du vill ha OCR-stöd också:
 python -m pip install pytesseract pdf2image Pillow
 ```
 
-Du behöver även installera Tesseract och Poppler separat och se till att deras kommandon finns i `PATH`.
+Om du vill använda OCR utan separat systeminstallation av Tesseract:
+
+```bash
+python -m pip install rapidocr-onnxruntime pymupdf Pillow
+```
+
+Om du vill använda Tesseract-vägen behöver du även installera Tesseract och Poppler separat och se till att deras kommandon finns i `PATH`.
 
 I Windows betyder det att dessa kommandon ska fungera:
 
@@ -119,10 +129,10 @@ Appen fungerar utan OCR för vanliga textbaserade PDF:er. Om OCR-verktyg saknas 
 
 För OCR av skannade PDF:er och bilder behövs:
 
-- Tesseract OCR
-- Poppler, inklusive `pdftoppm`
-- Python-paketen `pytesseract`, `pdf2image`, `Pillow`
-- `tesseract` och `pdftoppm` måste kunna hittas i `PATH`
+- Antingen `Tesseract OCR` + `Poppler` med `pdftoppm`
+- Eller Python-paketen `rapidocr-onnxruntime` och `pymupdf`
+- Python-paketet `Pillow`
+- Om du använder Tesseract-vägen måste `tesseract` och `pdftoppm` kunna hittas i `PATH`
 
 ## Lägga till dokument
 

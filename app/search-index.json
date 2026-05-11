@@ -311,188 +311,188 @@
     "EIEF10/Föreläsningar/F1-2_EMD introduktion_2025.pdf": [
       {
         "page": 1,
-        "text": "",
-        "source": "pypdf"
+        "text": "F1-2: Introduktion till elmaskiner och drivsystem EIEF10, ELMASKINER OCH DRIVSYSTEM, 2025 SAMUEL ESTENLUND SIGIL IEA: Industriell Elektroteknik och Autmation, Lunds Universitet Samuel Estenlund, samuel.estenlund@iea.lth.se",
+        "source": "ocr"
       },
       {
         "page": 2,
-        "text": "• • • • • •",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Industri Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Dagens forelasningar • Flik 3 i parmen . Vad ar ett elektriskt drivsystem? . Vad ar en elmaskin? Industriell Elektroteknik och Automation . Kvadranter och drift : Industriella processer . Traktion VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 3,
-        "text": "• • •",
-        "source": "pypdf"
+        "text": "Traktion Industri Elmaskiner Drift Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Elektriska drivsystem Finns tillgangliga for hela skalan av effekter : Tacker ett mycket brett spektrum av hastigheter och vridmoment : Kan anpassas till nastan godtyckliga driftvillkor Industriell Elektroteknik och Automation VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 4,
-        "text": "•",
-        "source": "pypdf"
+        "text": "Industri Elmaskiner Drift Traktion Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Elektriska drivsystem Hur manga exempel pa elektriska drivsystem kan vi komma pa pa fem minuter? Industriell Elektroteknik och Automation VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 5,
-        "text": "• • • •",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Industri Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Elektriska drivsystems fordelar : Elektriska drivsystem behover ingen varmkorning och kan koras med full last omedelbart : Elektriska motorer har laga forluster vid lag belastning och uppvisar mycket hog verkningsgrad. De kan dessutom utsattas for en overlast Industriell Elektroteknik och Automation under en kort tid : Elektriska drivsystem kan uppvisa hoga dynamiska prestanda vid kraftelektronisk styrning Elektriska drivsystem kan konstrueras for att arbeta i alla fyra kvadranterna i det plan som spanns upp av moment och hastighet VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 6,
-        "text": "",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Industri Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Vad ar ett elektriskt drivsystem? effekt Industriell Elektroteknik och Automation reglering kraftelektronik last motor Figur 1.6. Huvudkomponenterna i ett elektriskt drivsystem. VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 7,
-        "text": "• • • •",
-        "source": "pypdf"
+        "text": "Drift Industri Traktion Elektriska drivsystem Elmaskiner F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Elmaskiner Motor och generator Bestar av rotor och stator Magnetfloden Industriell Elektroteknik och Automation .Vridmoment VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 8,
-        "text": "• •",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Industri Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Elmaskinstyper : Likstromsmaskiner : Vaxelstromsmaskiner ll Elektroteknik och Automation Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 9,
-        "text": "• • •",
-        "source": "pypdf"
+        "text": "Drift Industri Traktion Elektriska drivsystem Elmaskiner F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Likstromsmaskiner Statorlindning : Eller permanentmagnet Rotorkommutator Industriell Elektroteknik och Automation VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 10,
-        "text": "• ϕ • •",
-        "source": "pypdf"
+        "text": "Drift Traltinn Elektriska drivsystem Elmaskiner Industri F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Vaxelstromsmaskiner Statorlindningar (3p) Synkronmaskiner Asynkronmaskiner Industriell Elektroteknik och Automation VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 11,
-        "text": "• ϕ • • •",
-        "source": "pypdf"
+        "text": "Drift Traktion Elektriska drivsystem Elmaskiner Industri F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Vaxelstromsmaskiner Statorlindningar (3p) Synkronmaskiner Rotorexcitering Asynkronmaskiner Industriell Elektroteknik och Automation VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 12,
-        "text": "• ϕ • • • •",
-        "source": "pypdf"
+        "text": "Drift Elektriska drivsystem Elmaskiner Industri F1-2: Introduktion till elmaskiner och drivsvstem (Flik 3) Vaxelstromsmaskiner Statorlindningar (3p) Synkronmaskiner Rotorexcitering Permanentmagnetiserade Industriell Elektroteknik och Automation Asynkronmaskiner VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 13,
-        "text": "• ϕ • • • • •",
-        "source": "pypdf"
+        "text": "Industri Drift Elektriska drivsystem Elmaskiner F1-2. Introduktion till elmaskiner och drivsvstem (Elik 3) Vaxelstromsmaskiner RENAULT Statorlindningar (3Φ) Synkronmaskiner · Rotorexcitering Permanentmagnetiserade Industriell Elektroteknik och Automation Elektriskt exciterade BOSCH Asynkronmaskiner VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 14,
-        "text": "• ϕ • • • • • •",
-        "source": "pypdf"
+        "text": "Industri Drift Traktion Elektriska drivsystem Elmaskiner F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Vaxelstromsmaskiner Statorlindningar (3p) Synkronmaskiner · Rotorexcitering Permanentmagnetiserade Industriell Elektroteknik och Automation Elektriskt exciterade Reluktans Asynkronmaskiner VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 15,
-        "text": "• ϕ • • • • • •",
-        "source": "pypdf"
+        "text": "Industri Drift Traktion Elektriska drivsystem Elmaskiner F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Vaxelstromsmaskiner Statorlindningar (3p) Synkronmaskiner Rotorexcitering Permanentmagnetiserade Industriell Elektroteknik och Automation Elektriskt exciterade Reluktans Asynkronmaskiner VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 16,
-        "text": "• ϕ • • • • • •",
-        "source": "pypdf"
+        "text": "Elektriska drivsystem Elmaskiner Drift Industri Vaxelstromsmaskiner Statorlindningar (3p) Synkronmaskiner Rotorexcitering Permanentmagnetiserade Industriell Elektroteknik och Automation Elektriskt exciterade Reluktans Asynkronmaskiner VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 17,
-        "text": "• ϕ • • • • • • •",
-        "source": "pypdf"
+        "text": "Industri Drift Traktion Elektriska drivsystem Elmaskiner F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Vaxelstromsmaskiner Statorlindningar (3Φ) Synkronmaskiner : Rotorexcitering Permanentmagnetiserade Industriell Elektroteknik och Automation Elektriskt exciterade Reluktans Asynkronmaskiner Induktionsmaskiner VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 18,
-        "text": "• ϕ • • • • • • • •",
-        "source": "pypdf"
+        "text": "Traktion Drift Industri Elektriska drivsystem Elmaskiner F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Vaxelstromsmaskiner Statorlindningar (3p) Synkronmaskiner · Rotorexcitering Permanentmagnetiserade Industriell Elektroteknik och Automation Elektriskt exciterade Reluktans Asynkronmaskiner . Induktionsmaskiner Switchade reluktansmaskiner AE VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 19,
-        "text": "•",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Industri Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Fyrkvadrantdrift . Vad innebar detta elektriskt och for apparaten? Vridmoment Industriell Elektroteknik och Automation drivande bromsande varvtal drivande bromsande VT Figur 1.8. Ett drivsystems olika kvadranter. Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 20,
-        "text": "• • • •",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Industri Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Kvadrant-definition 1-kvadrantomvandlare 1QC 1 varvtalsriktning Positivt moment : 2-kvadrantomvandlare 2QC 2 varvtalsriktningar Positivt moment 1 varvtalsriktning : 2-kvadrantomvandlare 2QC Pos+neg moment Industriell Elektroteknik och Automation 4QC : 4-kvadrantomvandlare 2 varvtalsriktningar Pos+neg moment Vridmoment 1QC 2QC 2QC 4QC 4QC eler Varvtal SIG 2QC VT 4QC 4QC Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 21,
-        "text": "",
-        "source": "pypdf"
+        "text": "Elmaskiner Industri Elektriska drivsystem Traktion Drift F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) 1QC, positiv spanning, positiv effekt Industriell Elektroteknik och Automation DcM VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 22,
-        "text": "",
-        "source": "pypdf"
+        "text": "Elmaskiner Industri Traktion Elektriska drivsystem Drift F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) 2QC, positiv spanning, positiv och negativ effekt Industriell Elektroteknik och Automation DcM VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 23,
-        "text": "",
-        "source": "pypdf"
+        "text": "Elmaskiner Industri Elektriska drivsystem Traktion Drift F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) 4QC, pos+neg spanning, pos+neg effekt Industriell Elektroteknik och Automation DcM VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 24,
-        "text": "",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Industri Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Exempel: Positionsreglering hast- pos- moment. ref ref ref positions- hastighets- moment- Industriell Elektroteknik och Automation regulator regulator regulator motor moment hastighet position Figur 1.7. Principen for ett positionsreglersystem. VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 25,
-        "text": "",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Industri Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Elektriska drivsystem Modernt Modulator 4-kvadr Strom- Spannings- DC-motor borvarde borvarde LS-omv Varvtals- Varvtals- borvarde Strom- regulator Industriell Elektroteknik och Automation regulator Varvtals- Strom- arvarde arvarde Figur 11.2. Principiellt utseende av drivsystemet for en likstromsmaskin. VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 26,
-        "text": "• • • • • • • • • •",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Elektriska drivsystem Industri F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Tunga industriella processer Valsverk Pappersmaskiner Tryckpressar Cementugnar Industriell Elektroteknik och Automation Omrorare till stalugnar • Hoga krav pa drivsystem Hoga moment Extremt hoga varvtalsvariationer Extremt hoga krav pa koordination av flera drivsystem Hoga effekter VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 27,
-        "text": "• •",
-        "source": "pypdf"
+        "text": "Drift Elmaskiner Traktion Elektriska drivsystem Industri F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Exempel: Kvarnsvedens pappersbruk 45 drifter med frekvensomvandlare : Varldsrekord i pappershastighet 2000 m/s Industriell Elektroteknik och Automation VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 28,
-        "text": "•",
-        "source": "pypdf"
+        "text": "Elmaskiner Traktion Drift Elektriska drivsystem Industri F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Exempel: Kvarnvedens pappersbruk Stora krav pa hastighetsreglering och koordination mellan de olika drivsystemen Industriell Elektroteknik och Automation Torkparti Upprullning Vatparti Formning Maldberedning Vira-avvattningPressning Torkning Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 29,
-        "text": "• • • • • • •",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Elektriska drivsystem Drift Industri F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Exempel: Rullmaskiner Plat eller folie fran valsverk • Papper fran pappersbruk • Rullas upp pa rullar Industriell Elektroteknik och Automation . Liten rulle, litet troghetsmoment Stor rulle stort troghetsmoment Tidsvariabel dynamik Drivsystemet maste anpassa sig VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 30,
-        "text": "• • • • • • •",
-        "source": "pypdf"
+        "text": "Elmaskiner Drift Traktion Elektriska drivsystem Industri F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Andra exempel pa industriella processer Robotar Servon : Verktygsmaskiner Industriell Elektroteknik och Automation Mycket hoga dynamiska prestanda Hog acceleration Effektiv bromsning Extremt hoga hastigheter VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 31,
-        "text": "",
-        "source": "pypdf"
+        "text": "Drift Elmaskiner Traktion Elektriska drivsystem Industri F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Exempel: Industrirobotar och humanoider Industriell Elektroteknik och Automation VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 32,
-        "text": "• • • • • • • •",
-        "source": "pypdf"
+        "text": "Traktion Elmaskiner Drift Elektriska drivsystem Industri F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Verkningsgrad i industriella p processer Pumpar och flaktar i processindustrin • En stor uppsattning drivsystem Kraver ingen sofistikerad styrning Kors pa konstanta varvtal Industriell Elektroteknik och Automation -I onodan? 1995 bedomdes att hundratals MW kunde sparas genom varvtalsreglerade drivsystem Drar mindre effekt nar inte fullt varvtal behovs • Effekten proportionell mot varvtal i kubik SIG VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 33,
-        "text": "• • • • •",
-        "source": "pypdf"
+        "text": "Elmaskiner Industri Drift Traktion Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Traktion Tag - gods, hoghastighet, pendel Elektrifierade sen lange Annan rals - Tunnelbanor, sparvagnar Bussar Industriell Elektroteknik och Automation Lastbilar - Langtradare, distribution i stad Personbilar VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 34,
-        "text": "• • • • • • • •",
-        "source": "pypdf"
+        "text": "Drift Industri Elmaskiner Traktion Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Tag, Har anvant elektriska drivsystem lange ～100 ar Ingen utveckling kvar? Exempel: Ta bort trappsteg i sparvagnar och tag Lattare pa- och avstigning Industriell Elektroteknik och Automation Rullstol, barnvagn, cyklar, resvaskor Finns inte plats for genomgaende axlar Enskilda motorer per hjul Noggrann synkronisering av hastighet pa alla hjul SIG VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 35,
-        "text": "• • • • • • • •",
-        "source": "pypdf"
+        "text": "Elmaskiner Industri Elektriska drivsystem Drift Traktion F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Bussar, bilar, tunga lastbilar BEV - Battery electric vehicle • PHEV - Plug-in hybrid EV (Laddhybrid) • HEV - Hybrid EV (Latthybrid) Industriell Elektroteknik och Automation • Drivsystemen optimerar varandras verkningsgrad Laddning . Snabbladdning Hemma, parkering Elvagar VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 36,
-        "text": "• • • •",
-        "source": "pypdf"
+        "text": "Elmaskiner Industri Drift Elektriska drivsystem Traktion F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Hissar, kranar, gruvspel • Upp eller ner • Latt eller tung last • Stora variationer i moment Industriell Elektroteknik och Automation • Ladda/generera el vid ned? VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 37,
-        "text": "• • • • • • •",
-        "source": "pypdf"
+        "text": "Elmaskiner Industri Drift Traktion Elektriska drivsystem F1-2: Introduktion till elmaskiner och drivsystem (Flik 3) Utveckling av elektriska drivsystem Elmaskinen ar ca 150 ar gammal • Slut pa utveckling? • Material, gamla och nya Industriell Elektroteknik och Automation . Tillverkningsmetoder · Exempel: Additiv tillverkning (\"3D-printning\") : Effektivare halvledare, exaktare sensorer och givare, snabbare orocessorer SIG VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       }
     ],
     "EIEF10/Föreläsningar/F10_Asynkronmaskinen sammanfattning.pdf": [
@@ -1123,13 +1123,13 @@
     "EIEF10/Föreläsningar/F3_Elektriska drivsystems mekanik_2025.pdf": [
       {
         "page": 1,
-        "text": "",
-        "source": "pypdf"
+        "text": "F3: Elektriska drivsystems mekanik (flik 4) EIEF10, ELMASKINER OCH DRIVSYSTEM, 2025 SAMUEL ESTENLUND SIGIL IEA: Industriell Elektroteknik och Autmation, Lunds Universitet Samuel Estenlund, samuel.estenlund@iea.lth.se",
+        "source": "ocr"
       },
       {
         "page": 2,
-        "text": "• • • •",
-        "source": "pypdf"
+        "text": "Vaxlar Effekt Grunder Arbetspunkter F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Dagens forelasning Grundlaggande mekanik . Vaxlar : Arbetspunkter 1l Elektroteknik och Automation Effekt och forluster Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 3,
@@ -1138,8 +1138,8 @@
       },
       {
         "page": 4,
-        "text": "• 𝐽 • •",
-        "source": "pypdf"
+        "text": "F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Troghetsmoment Betecknas J : Galler stela kroppar Il Elektroteknik och Automation Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 5,
@@ -1153,13 +1153,13 @@
       },
       {
         "page": 7,
-        "text": "",
-        "source": "pypdf"
+        "text": "F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Exempel: Energi i rulltrappa Translationsrorelse (Ill) - Exempel: Energin i en rulltrappa Translationsrorelse (IV) - Exempel: Energin i en rulltrappa Losning: Elektroteknik och Automation a) Dimensionera en lamplig motoreffekt. a) Effektbehov da rulltrappan gar uppat: P = F-v = 6000 :g:0.65·sin(30°) W = 19130 W. Eftersom motorn skall klara viss overbelastning valjer man t.ex narmast storre motor. (En titt i ABBs katalog ger en motor pa 20 kW). Nar trappan gar nedat maste samma effekt kunna tas emot med motorn i generatordrift. Frekvensomvandlaren kan b) Den totala lagesenergin for en batlast manniskor ar: W= 200000:g30 J = 58.9·106 J mot en extra avgift om 9o0o kronor, utrustas med en Totalt atervinningsbar energi, omraknat till kronor med det anordning for att atermata energi till elnatet vid generatordrift. gallande energipriset: 0.9.W= 53.0.106 Ws = 14.7 kWh <> 7.36 kr Aterbetalningstiden for atermatningsutrustningen: Industriell b) Med 90 % verkningsgrad, och ett energipris pa 0.50 SEK/kWh, 9000 306 dagar turer = 1223 turer hur lang tid tar det innan denna anordning ar aterbetald? <> 1 ar och 6 dagar 7.36 Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 8,
-        "text": "",
-        "source": "pypdf"
+        "text": "F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Troghetsmoment i svanghjul Exempel: Ett svanghjuls troghetsmoment Ett energilagringssystem med svanghjul ska ersatta det konventionella batteripaketet i en anlaggning for avbrottsfri Elektroteknik och Automation kraft. Svanghjulet ar utformat som en disk av fiberkomposit. vilket har en energi-massadensitet pa 12 Wh/kg, och ska lagra 500 Wh. Rotationshastigheten ar 12000 rpm. Berakna svanghjulets troghetsmoment och radie. Losning Troghetsmomentet fas ur ekvationen for svanghjulsenergin: 2W 2.500.3600 kgm² = 2.28 kgm Industriell (12000·(2元/60) VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 9,
@@ -1168,75 +1168,75 @@
       },
       {
         "page": 10,
-        "text": "",
-        "source": "pypdf"
+        "text": "10 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Exempel: Vaxlar Inverkan av vaxlar (IV) - Exempel 1: Vaxelsystem Inverkan av vaxlar (Il) - Exempel 1: Vaxelsystem Losning: Sjalva rullen med vinschen har ett effektivt troghetsmoment som ar: J3 + M3 r3 Systemets ekvivalenta troghetsmoment, sett fran motorn, kan Figur 6.3 illustrerar ett exempel med ett drivsystem for en Industriell Elektroteknik och Automation skrivas: upprullningsmekanism, som ar knuten via en vaxel till en motor. De ingaende komponenterna har troghetsmomenten J1 J2 och J3. Berakna det ekvivalenta troghetsmomentet sett fran axel 1. Newtons andra lag tillampad pa systemet blir saledes: Tid doi = Ta -T = Tal . M3gr3 Eftersom vaxel RV TL3 = f3r3 = M3gr3 → T= firi =fsi= fr3 VT RV Figur 6.3. Vinschsystem med vaxel. Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 11,
-        "text": "",
-        "source": "pypdf"
+        "text": "12 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 for olika motortyper Drivmoment TA Synkronmaskin TA Asynkronmaskin Okande frekvens kande frekvens och spanning Elektroteknik och Automation rotorvarvtal rotorvarvtal Figur 6.5. Synkronmaskinens momentkarakteristik Figur 6.6. Asynkronmaskinens momentkarakteristik vid drivning med konstant spanning och frekvens vid drivning med konstant spanning och frekvens TA Likstromsmaskin Industriell Okande spanning VT rotbrvarvtal Figur 6.7. Likstromsmaskinens momentkarakteristik Samuel Estenlund, samuel.estenlund@iea.lth.se vid drivning med konstant spanning. IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 12,
-        "text": "",
-        "source": "pypdf"
+        "text": "13 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Lasters mekanik Belastningsmoment Effekt- P = konst P~n n2 n3 samband TL ~ n Moment- TL = konst TL ~ 1/n TL ~ n2 samband Belastningsmoment lossrycknings. moment Elektroteknik och Automation Konstant med friktion Exempel Transport- System Hasplar Pumpar maskiner med viskos Svarvar Flaktar friktion Valsverk Slip- maskiner Turbnlent Industriell @ Bengt Simonsson ETG Varvtal Figur 6.8. Illustration av olika belastningsmoment. VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 13,
-        "text": "",
-        "source": "pypdf"
+        "text": "14 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Belastningsmoment Ofta en kombination av olika momentbehov konstant belastningsmoment gravitationskrafter Elektroteknik och Automation d.(o) vilofriktion - Coulombfriktion viskost belastningsmoment d, :0? turbulent belastningsmoment belastningsmoment t med konstant effekt Industriell T = T ±T +do(の)+d, ·+d,o?+ Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 14,
-        "text": "",
-        "source": "pypdf"
+        "text": "15 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Belastningsmoment - Exempel: Momentet for en upprullningsanordning Vid ett pappersbruk ar det vasentligt att reglera pappersmatningen sa, att pappret matas pa rullar med Elektroteknik och Automation konstant kraft och konstant hastighet, sa att pappret inte utsatts for ojamn belastning och dras sonder. Se figur 6.9. = konst Med en konstant matningshastighet v, en F = konst konstant dragkraft f och variabel radie R blir den nodvandiga matningseffekten. Industriell Figur 6.9. Upprullnings- anordning med konstant Med andra ord: matningshastighet v och konstant dragkraft f. T =ki/o SIG Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 15,
-        "text": "",
-        "source": "pypdf"
+        "text": "16 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Arbetspunkt (l) moment Elektroteknik och Automation drivande moment last Industriell Figur 6.10. Arbetspunkt for en asynkronmaskin med en flakt. VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 16,
-        "text": "",
-        "source": "pypdf"
+        "text": "17 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Arbetspunkt (Il) moment Elektroteknik och Automation last drivande moment Industriell Figur 6.11. Arbetspunkter for en asynkron-maskin med gravitationsmoment. VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 17,
-        "text": "",
-        "source": "pypdf"
+        "text": "18 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Termiska effekter For att konstruera elektriska drivsystem racker det inte med lampliga momentkurvor eller adekvat effekt. Termiska transienter fran oundvikliga varme- och friktionsforluster i motor och axlar ar Elektroteknik och Automation mycket betydelsefulla i drivsystem. Olika maskiner har olika isoleringsmaterial och tal darfor olika temperaturer. En maskin klassas saledes efter den varmetalighet den har. Exempelvis betyder isolationsklass B att den ovre granstemperaturen tillats vara 130 °C medan klass F tillater 155 °C. Detta kommer att avgora vilket driftsatt som ar mojligt for den aktuella maskinen, tex kontinuerlig drift, snabba starter och stopp e.d. De vanligaste varmekallorna i en elmaskin ar Industriell Kopparforluster Jarnforluster RVMQ Friktionsforluster Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 18,
-        "text": "",
-        "source": "pypdf"
+        "text": "19 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Mekanisk effekt (upplagrade energin i systemet) Betrakta momentekvationen dar troghetsmomentet J ar konstant. Om varje term multipliceras med o erhalles Elektroteknik och Automation Jo = OTa-OT= Pd - PL dt dar pa motsvarar drivande effekten och p, belastningseffekten. Effekten bestams allmant genom produkten av vinkelhastighet o och moment T: p=OT Vansterledet i differentialekvationen motsvarar andringen i den Industriell kinetiska energi som lagras i de roterande massorna. Genom att integrera med initialvillkoret erhaller vi energibalansen IJo² =J padt-j prdt =Wa(t)-Wi(t) dar vansterledet motsvarar den upplagrade kinetiska energin Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 19,
-        "text": "",
-        "source": "pypdf"
+        "text": "20 F3: Elektriska drivsystems mekanik (Flik 4) 1/22/2025 Mekanisk effekt - Exempel: Effektforluster vid strypning Manga pumpar och flaktar drivs idag utan varvtalsreglering. En flakt har ett belastningsmoment: d20 Det betyder att effektforbrukningen for motorn ar proportionell l Elektroteknik och Automation mot o3 En enkel och gammal metod som anvands for att minska luftflodet ar strypning med ventiler. Trots att metoden ar mycket energislosande ar den fortfarande mycket vanlig. Antag t.ex. att det verkliga luftbehovet ar 80% av fullast. Luftflodet ar ungefar proportionellt mot flaktens hastighet. Om Industriell varvtalet kan regleras till 80% av maxvardet motsvarar detta en effektreduktion till 0.803 ~ 0.51. med andra ord till halften. Tar man dessutom hansyn till att VT friktionsforlusterna minskar, sa blir energibesparingen stor. Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       }
     ],
     "EIEF10/Föreläsningar/F4_Elektromekanisk energiomvandling_2025.pdf": [
       {
         "page": 1,
-        "text": "",
-        "source": "pypdf"
+        "text": "energiomvandling F4: Elektromekanisk (flik 5-6) EIEF10, ELMASKINER OCH DRIVSYSTEM, 2025 SAMUELESTENLUND SIGIL IEA: Industriell Elektroteknik och Autmation, Lunds Universitet Samuel Estenlund, samuel.estenlund@iea.lth.se",
+        "source": "ocr"
       },
       {
         "page": 2,
-        "text": "• • • •",
-        "source": "pypdf"
+        "text": "Energiomvandling Konstruktion Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 forelasning Dagens : Elektro-magneto-mekanisk energiomvandling Elmaskiners konstruktion • Magnetisk kraftverkan och induktion l Elektroteknik och Automation . Likstromsmaskinen Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 3,
-        "text": "• • • • • • •",
-        "source": "pypdf"
+        "text": "Kraftverkan Energiomvandling Likstromsmaskinen Konstruktion F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Inledning . Vad ar energiomvandling? . Elektromekanisk omvandlare : Forbinder elektriskt och mekaniskt system Oftast roterande elmaskiner Elektroteknik och Automation Energitransporten kan ske i bada riktningarna Motor/Generator Dvs reversibel omvandling Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 4,
-        "text": "• • • • • • •",
-        "source": "pypdf"
+        "text": "Energiomvandling Likstromsmaskinen Konstruktion Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Varfor magnetism? Energiomvandling Elektrisk <-> Magnetisk <-> Mekanisk Elektrisk <-> Mekanisk Elmaskiner l Elektroteknik och Automation Reversibla Elektromagneter Ej reversibla Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 5,
@@ -1245,220 +1245,220 @@
       },
       {
         "page": 6,
-        "text": "• • • • • • • • • •",
-        "source": "pypdf"
+        "text": "Kraftverkan Energiomvandling Konstruktion Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Elektro-magneto-mekaniska energiomvandlare Elmaskiner bestar av stator och rotor . Tillford energisk energi Spanning * Strom Uttagen mekanisk energi Il Elektroteknik och Automation • Vridmoment * Varvtal Magnetisk energi mellan rotor och stator . Tre viktiga lagar · Ampéres kretslag Faradays induktionslag Industriell Lorentz kraftlag VT OLIN Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 7,
-        "text": "• • • • • • • •",
-        "source": "pypdf"
+        "text": "Energiomvandling Kraftverkan Likstromsmaskinen Konstruktion F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Roterande och t translatoriska maskiner Roterande · Fran brakdelar av watt till generatorer pa >1GW Translatoriska eller vibrerande maskiner . Elektromekaniska relaer Elektroteknik och Automation Hogtalare Mikrofon ·Vissa givare Med mer Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 8,
-        "text": "•",
-        "source": "pypdf"
+        "text": "Energiomvandling Konstruktion Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Cylindriska eller utpraglade poler Eng. Salient Il Elektroteknik och Automation Figur 7.2. Figur 7.3. Industriell VT Figur 7.5. Figur 7.4. Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 9,
-        "text": "",
-        "source": "pypdf"
+        "text": "Energiomvandling Kraftverkan Likstromsmaskinen Konstruktion F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Konstruktion Figur 7.6. Illustration av magnetflodena i en roterande maskin. l Elektroteknik och Automation Figur 7.7. Rotorns uppbyggnad med Industriell rotor laminerade skivor. VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 10,
-        "text": "",
-        "source": "pypdf"
+        "text": "10 Kraftverkan Energiomvandling Likstromsmaskinen Konstruktion F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Statorhus Statorhus Lager- Lager- Stator skold skold Axel Elektroteknik och Automation Rotor Industriell Eventuella slapringar Lindningsharva ellerkommutator VT Figur 7.8. Motorns uppbyggnad. Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 11,
-        "text": "",
-        "source": "pypdf"
+        "text": "11 Energiomvandling Konstruktion Likstromsmaskinen Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 (Min prototyp) Industriell Elektroteknik och Automation VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 12,
-        "text": "",
-        "source": "pypdf"
+        "text": "12 Energiomvandling Likstromsmaskinen Konstruktion Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Statorlindningar 1l Elektroteknik och Automation 00000000 Industriell ROTOR ROTOR VT Luftgap Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Iluusuel elekuotekllk utll Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 13,
-        "text": "",
-        "source": "pypdf"
+        "text": "13 Kraftverkan Konstruktion Likstromsmaskinen Energiomvandling F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Statorlindningar Il Elektroteknik och Automation ndustriell VT Figur 7.14. Spar for lindningar. Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 14,
-        "text": "",
-        "source": "pypdf"
+        "text": "14 Konstruktion Energiomvandling Likstromsmaskinen Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Energi i induktiv krets l Elektroteknik och Automation IA W= LI .i=二N.Φ.i=二Ni.B.A=二 Industriell IsAs fe Energin finns bunden μo (mestadels) i luftgapet VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 15,
-        "text": "",
-        "source": "pypdf"
+        "text": "15 Konstruktion Energiomvandling Likstromsmaskinen Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Lackfloden Ya=La·i Ys=Lmi Elektroteknik och Automation Industriell Omagnetiserad rotor VT Figur 7.20. Luftgapsflode (ys) och lackflode (ya). Samuel Estenlund, samuel.estenlund@iea.lth.se <troteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 16,
-        "text": "",
-        "source": "pypdf"
+        "text": "Konstruktion Energiomvandling Kraftverkan Likstromsmaskinen ling (Flik 5 och 6) 1/22/2025 Amperes lag ZI = Φ Hds NI = H.lt NI =二. Elektroteknik och Automation NI = I fe.Φ NI = UA Industriell F=R.Φ SIG NAE RVM VT Magnetomotorisk Flode kraft, mmk Reluktans Samuel Estenlund, PK",
+        "source": "ocr"
       },
       {
         "page": 17,
-        "text": "",
-        "source": "pypdf"
+        "text": "17 Konstruktion Likstromsmaskinen Energiomvandling Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Induktion Andring av flodet genom en slinga ger inducerad spanning Sammanlankat flode l Elektroteknik och Automation Konstant flode ger ingen inducerad spanning +e Snabbare forandring av Industriell flodet ger hogre spanning Fler varv ger hogre VT spanning Samuel Estenlund, samuel.esteniuna@iea.itn.se IEA:InaustrielleiektroteknikocnAutomation, Lunas Umiversitet",
+        "source": "ocr"
       },
       {
         "page": 18,
-        "text": "",
-        "source": "pypdf"
+        "text": "Energiomvandling 18 Rotera\"en sliniga i ett hagnetfalt Konstruktion nergiomvandling (Flik 5 och 6) 1/22/2025 =sinα Φ =@ sinのt Industriell Elektroteknik och Automation dd e=N dt e = NΦo cosot e = 4@ coswt VT e=écosot Samuel Estenlund, samuel.este tet",
+        "source": "ocr"
       },
       {
         "page": 19,
-        "text": "",
-        "source": "pypdf"
+        "text": "19 Konstruktion Energiomvandling Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Industriell Elektroteknik och Automation Y =Y sinot e = 4w cos ot Inducerad spanning ligger 90° fore flodet Inducerad spanning ar proportionell mot flode och varvtal Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 20,
-        "text": "",
-        "source": "pypdf"
+        "text": "20 Energiomvandling Konstru Kraftve Likstromsmaskinen giomvandling (Flik 5 och 6) 1/22/2025 Magneti'sk kraftverkan Stromforande ledare i magnetfalt Kraftverkan vill jamna ut faltfordelningen F = BIl Elektroteknik och Automation Industriell AE VT Samuel Estenlund, samuel.es",
+        "source": "ocr"
       },
       {
         "page": 21,
-        "text": "",
-        "source": "pypdf"
+        "text": "21 Energiomvandling Kraftverkan Likstromsmaskinen Konstruktio jiomvandling (Flik 5 och 6) 1/22/2025 Ynauceraa\"spanning Kraft pa stromforande ledare i magnetfalt Elektroteknik och Automation Industriell F = BIl e=N VT dt Detta kan bli en elmotor! Samuel Estenlund, samuel..",
+        "source": "ocr"
       },
       {
         "page": 22,
-        "text": "",
-        "source": "pypdf"
+        "text": "22 Energiomvandling Konstruktion Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Industriell Elektroteknik och Automation Magneter pa rotorn som i Magneter i statorn som i synkronmaskinen likstromsmotor Strom i lindning i statorn Strom i lindning i rotorn F=Bil F=Bil IEA: Industriell elektroteknik och Automation, Lunds Universitet Samuel Estenlund, samuel.estenlund@iea.lth.se",
+        "source": "ocr"
       },
       {
         "page": 23,
-        "text": "",
-        "source": "pypdf"
+        "text": "23 Energiomvandling Konstruktion Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 l Elektroteknik och Automation F=Bil Industriell Kraft pa ledarna upptill < Kraft pa ledarna nedtill →> VT Vridmoment pa rotorn moturs Samuel Estenlund, samuel.estenlund@iea.Ith.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 24,
-        "text": "",
-        "source": "pypdf"
+        "text": "24 Energiomvandling Likstromsmaskinen Konstruktion ing (Flik 5 och 6) 1/22/2025 krafteoch verkar Miaximera vriamoment Strom in i bilden Elektroteknik och Automation Strom ut ur bilden Industriell Magneterna ger ett flode riktat nerat Lindningarna ger ett flode riktat at vanster Maximalt vridmoment vid 90° vinkelskillnad Samuel Estenlund",
+        "source": "ocr"
       },
       {
         "page": 25,
-        "text": "",
-        "source": "pypdf"
+        "text": "25 Likstromsmaskinen ig (Flik 5 och 6) 1/22/2025 Elektroteknik och Automation Rotorflodet staller sig i statorflodets riktning, vridmoment forsvinner Industriell Om rotorflodet inte satt fast i rotorn utan kunde fortsatta vara riktat at vanster medan rotorn ror sig... →> Byt stromriktning i ett ledarpar i taget Samuel Estenlur",
+        "source": "ocr"
       },
       {
         "page": 26,
-        "text": "",
-        "source": "pypdf"
+        "text": "26 Energiomvandling Konstruktion Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Kommutator En mekanisk vaxelriktare monterad pa rotorn - kallad kommutator kopplar om strommarna i rotorn sa att riktningen pa rotorflodet bibehalls Det ar en likstromsmotor! Elektroteknik och Automation Industriell VT Samuel Estenlund, samuel versitet",
+        "source": "ocr"
       },
       {
         "page": 27,
-        "text": "",
-        "source": "pypdf"
+        "text": "27 Energiomvandling Konstruktion Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Vridmoment! Il Elektroteknik och Automation Det totala luftgapsflodet bildas av statorflode och rotorflode i samverkan Statorflode och rotorflode \"vill\" ligga i samma linje. Rotorn ror sig nar den paverkas av detta vridmoment Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 28,
-        "text": "",
-        "source": "pypdf"
+        "text": "28 Energiomvandling Likstromsmaskinen Konstruktion Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Vridmomentbildning (l) Elmaskinens uppgift i ett elektriskt drivsystem ar oftast Elektroteknik och Automation att leverera ett onskat moment till axeln. Momentstyrningen ar oftast den innersta och snabbaste loopen i aterkopplingen. For att kunna styra en elmaskins moment ar det Industriell naturligtvis viktigt att forsta hur maskinen bildar vridmoment Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 29,
-        "text": "",
-        "source": "pypdf"
+        "text": "29 Likstromsmaskinen Konstruktion Kraftverkan Energiomvandling energiomvandling (Flik 5 och 6) 1/22/2025 Momentbildning och inducerad spanning for likstromsmaskinen stationart T=Wmic Vridmoment: Inducerad spannina: ea=m' Komrmuteringspol Rotorlindning Elektroteknik och Automation ankarlindning lodpnAnH Faltlindning Industriell Kompensations lindning VT LIN VT Figur 8.2. Principbild av genomskuren DC-motor. Esitet Samuel Estenlund, samuel.estenl",
+        "source": "ocr"
       },
       {
         "page": 30,
-        "text": "",
-        "source": "pypdf"
+        "text": "30 Likstromsmaskinen Kraftverkan energiomvandling (Flik 5 och 6) 1/22/2025 Konstruktion ekvivalenta schema Rotorlindningen kan ses som resistans och induktans, a star for ankare (eng. armature) Ra Elektroteknik och Automation R, och L, ar sma, varfor blir strommen inte hog? dy I en slinga som roterar i ett falt induceras spanning =a Kommutatorn likriktar vilket ger @y Ra Industriell ea RVM VT Samuel Estenlund, samuel.estenl sitet",
+        "source": "ocr"
       },
       {
         "page": 31,
-        "text": "",
-        "source": "pypdf"
+        "text": "31 Konstruktion Energiomvandling Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Likstromsmaskinens matematiska modell La Ra l Elektroteknik och Automation Rotorkretsen kan skrivas som ua=R.·i.+L dt Industriell Forsvinner i stationaritet VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 32,
-        "text": "",
-        "source": "pypdf"
+        "text": "32 Liksträmsmaskinen Energiomvandling Konstruktion Kraftverkan mekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Likstromsmotorns vridmoment Vridmoment ar kraft ganger havarm - Havarmen konstant - F=Bil F=Bil - For PM-stator ar B konstant Elektroteknik och Automation - Langden konstant - Likstrommen i avgor kraften F Vridmomentet (ur sambandet Pmek = Peldyn ) =OT =e. l.=Oym mek Industriell - Ym ar flodet fran permanentmagneternas magnetisering - ia ar rotorstrommen Samuel Estenlund, samuel.estenlund@iea.l ds Universitet",
+        "source": "ocr"
       },
       {
         "page": 33,
-        "text": "",
-        "source": "pypdf"
+        "text": "33 Energiomvandling Likstromsmaskinen Konstruktion Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Separatmagnetiserad likstromsmaskin I stallet for permanentmagnet kan en elektromagnet anvandas Flodet ar da inte fixerat utan kan valjas med Elektroteknik och Automation faltspanningen Faltlindning NE Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 34,
-        "text": "",
-        "source": "pypdf"
+        "text": "34 Energiomvandling Likstromsmaskinen Konstruktion Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Seriemagnetiserad likstromsmotor Elektroteknik och Automation Rotorstrommen samma som faltstrommen Momentet oberoende av strommens tecken Industriell T=ymi Vaxelstrom gar bra! VT Kallas allstromsmotor (dammsugare, borrmaskin) Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 35,
-        "text": "",
-        "source": "pypdf"
+        "text": "35 Konstruktion Likstromsmaskinen Energiomvandling Kraftverkan giomvandling (Flik 5 och 6) 1/22/2025 La Stationaritet ger u=R,i.+e Elektroteknik och Automation u.=R. Industriell R,i Konstant ua, okande T VT SIG - ia okar, spanningsfaller over R, okar RVM w minskar Samuel Estenlund, samuel.e:",
+        "source": "ocr"
       },
       {
         "page": 36,
-        "text": "",
-        "source": "pypdf"
+        "text": "36 Energiomvandling Konstruktion Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Konstant varvtal La Ra Ea u.=R.. Elektroteknik och Automation Konstant , okande T - ia okar, spanningsfaller over R, okar -uamasteokas Industriell Raia T. RM Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 37,
-        "text": "",
-        "source": "pypdf"
+        "text": "37 Konstruktion Energiomvandling Likstromsmaskinen Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Likstromsgenerator Samma sak fast tvart om... Generatordrift: e, > Ua, ia negativ → P negativ La Ra Elektroteknik och Automation Ea I tomgang ar ua = ea, alltsa kan man mata upp ea Industriell AE Separat magnetisering → ea kan varieras vid VT konstant varvtal Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 38,
-        "text": "",
-        "source": "pypdf"
+        "text": "38 Energiomvandling Kraftverkan Likstromsmaskinen F4: Elektromekanisk energiomvandling (Flik 5 och 6) Konstruktion 1/22/2025 Exempel En permanentmagnetiserad likstromsmotor har foljande data: Ankarresistans R,=0,25 Q Ankarinduktans L.=20 mH Magnetflode Ym=1,2 Vs Elektroteknik och Automation Motorn matas med 180 V och driver en vinsch som anvands for att lyfta saker. a) Vilket ar motorns varvtal vid tomgang? Industriell b) Vid ett stationart driftfall belastas motorn med lastmomentet 18 Nm. Vilket ar da varvtalet och vilken VT SIGI effekt drar motorn? Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 39,
-        "text": "",
-        "source": "pypdf"
+        "text": "39 Konstruktion Energiomvandling Likstromsmaskinen Kraftverkan F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Kraftelektronik for LM Elektroteknik och Automation LM LM 12V 12V 6V ++++ For att minska varvtalet maste spanningen minskas : Resistans i serie ger varmeforluster Losning: sla till/fran spanningen snabbt Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 40,
-        "text": "",
-        "source": "pypdf"
+        "text": "40 Energiomvandling Kraftverkan Kraftelektronik\"for LM stromsmaskinen sk energiomvandling (Flik 5 och 6) Konstruktio 1/22/2025 La Ra 12V ea = m Elektroteknik och Automation 12V- 6V dia do Ua = Ra ia +La +0Ym T=m ia =T-TL Industriell Stor VT Konstant varvtal trots switchad spanning Samuel Estenlund, samuel.estenlun tersitet",
+        "source": "ocr"
       },
       {
         "page": 41,
-        "text": "",
-        "source": "pypdf"
+        "text": "41 F4: Elektromekanisk energiomvandling (Flik 5 och 6) Energiomvandling Konstruktion Kraftverkan Likstromsmaskinen 1/22/2025 Kvadranter l Elektroteknik och Automation 2-kvadrant 1-kvadrant 2-kvadrant 4-kvadrant Likstromsmotor: Kraft- Industriell Varvtal ~ spanning elektronisk Moment ~ strom omvandlare VT SIGI Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 42,
-        "text": "",
-        "source": "pypdf"
+        "text": "42 F4: Elektromekanisk energiomvandling (Flik 5 och 6) 1/22/2025 Sammanfattning Elmotor har ofta permanentmagneter och lindning - F=Bil ger pa en stromforande ledare i magnetfalt Strommar i stator och rotor skapar varsitt Moment bildas nar stravar efter att ha samma riktning Elektroteknik och Automation - Maximalt moment vid ---- vinkelskillnad - I likstromsmaskinen haller kommutatorn vinkeln konstant Permanentmagnetiserad likstromsmotor - Vridmoment T=Ym ganger - Inducerad likspanning ea=Y ganger - Spanningsekvation u,=Rai,+Ladi,/dt+ Industriell Separatmagnetiserad LM har egen likspanningskalla eller Motor i dammsugare/borrmaskin kallas - Seriemagnetiserad LM matas med vaxelspanning Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       }
     ],
     "EIEF10/Föreläsningar/F5_Likströmsmaskin Modulation.pdf": [
       {
         "page": 1,
-        "text": "",
-        "source": "pypdf"
+        "text": "F5: Likstromsmaskin och modulation (flik 6+11) EIEF10, ELMASKINER OCH DRIVSYSTEM, 2025 SAMUELESTENLUND SIGIL IEA: Industriell Elektroteknik och Autmation, Lunds Universitet Samuel Estenlund, samuel.estenlund@iea.lth.se",
+        "source": "ocr"
       },
       {
         "page": 2,
-        "text": "• • • •",
-        "source": "pypdf"
+        "text": "Likstromsmaskinen Stationar analys Dynamisk modell Modulation F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 forelasning Dagens Likstromsmaskinens funktion och konstruktion Dynamisk modell • Stationar analys l Elektroteknik och Automation : Modulation Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 3,
-        "text": "• • • • • • •",
-        "source": "pypdf"
+        "text": "Modulation Likstromsmaskinen Stationar analys Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Anvandningsomraden likstromsmaskin mW till MW • Industriella: Valsverk, kranar, verktygsmaskiner, >1kW • Smamotorer: Handverktyg, startmotorer, hushallsutrustning Il Elektroteknik och Automation : Traktion: Tag, sparvagn, tunnelbanetag, tidiga elfordon Stalldon i reglerkrestar, oftast PM .Med mer! Industriell Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 4,
-        "text": "• • • • •",
-        "source": "pypdf"
+        "text": "Stationar analys Modulation Likstromsmaskinen Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 For- och nackdelar likstromsmaskin Latta att driva (likspanning) : Latta att styra (likstromsreglering) : Komplicerad konstruktion (kommutator) l Elektroteknik och Automation Samre verkningsgrad (Utvecklingen inom kraftelektronik har gjort att vaxelstromsmaskiner ofta ar battre for applikationen) Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 5,
-        "text": "• •",
-        "source": "pypdf"
+        "text": "Stationar analys Likstromsmaskinen Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Kommutatorn : Enklaste varianten, en slinga/spole som byter polaritet • Momentpulsationer l Elektroteknik och Automation Bnh Industriell Figur 8.1. Grundlaggande princip for likstromsmotor. Strommen i slingan vands pa grund av en enkel kommutator. Vridmomentet fluktuerar som en likriktad sinuskurva. Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 6,
-        "text": "• • • • • • • • •",
-        "source": "pypdf"
+        "text": "Likstromsmaskinen Stationar analys Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Konstruktion : Ankarlindning / rotorlindning / armature winding • Faltlindning / statorlindning / field winding : Kompensationslindning Kommuteringspol Rotorlindning ankarlindning Statorns falt starkare Huvudpol Elektroteknik och Automation • Faltlindningen stor ankarstrommen Ankarreaktion Faltlindning Kommuteringspol Nar kommutatorn slar om induceras spanning Suger ut flodet pa \"ratt sida\" ankarlindningen Industriell Kompensations- lindning SIG Figur 8.2. Principbild av genomskuren DC-motor Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 7,
@@ -1472,8 +1472,8 @@
       },
       {
         "page": 9,
-        "text": "• • • • • • • • • •",
-        "source": "pypdf"
+        "text": "Stationar analys Likstromsmaskinen Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Magnetiseringsalternativ Separatmagnetiserad • Flexibel · Seriemagnetiserad • Enklare, viss flexibilitet Elektroteknik och Automation • Parallell-magnetiserad (Shunt-) . Konstant hastighet Compund-magnetiserad (serie+parallell) Ganska flexibel, ganska stabil hastighet Permanentmagnetiserad Industriell Effektiv, hogt vridmoment, samre flexibilitet Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 10,
@@ -1497,13 +1497,13 @@
       },
       {
         "page": 14,
-        "text": "• • 𝜏𝑎𝑛𝑙 = 𝐽 𝜔𝑛 𝑇𝑛",
-        "source": "pypdf"
+        "text": "14 Likstromsmaskinen Stationar analys Dynamisk modell Modulation F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Anloppstiden Tiden att na markvarvtal med markmoment (obelastad) Tanl =J Tn 1l Elektroteknik och Automation Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 15,
-        "text": "• • 𝜏𝑖 = 𝐿𝑎 𝑖𝑛 𝑢𝑛",
-        "source": "pypdf"
+        "text": "15 Likstromsmaskinen Stationar analys Dynamisk modell Modulation F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Stromstigtiden Tiden att na markstrommen vid markspanning och stillastaende Ti = Lai 1l Elektroteknik och Automation Industriell VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 16,
@@ -1512,133 +1512,133 @@
       },
       {
         "page": 17,
-        "text": "",
-        "source": "pypdf"
+        "text": "17 Likstromsmaskinen Stationar analys Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Exempel: Stromokning i likstromsmaskin En likstromsmotor har foljande data: L.= 23 mH, R,= 3.5 Q, V, = 0.6 V/rad/s, J = 0.0026 kgm2. l Elektroteknik och Automation a,mark Motorns vridmoment ska, utgaende fran t-, under en period pa ti=0.6 ms okas till markmoment. Hur stor spanning ska laggas spa rotorn, om den star stilla nar strommen borjar oka? Motivera! Industriell Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 18,
-        "text": "",
-        "source": "pypdf"
+        "text": "18 Stationar analys Dynamisk modell Modulation Likstromsmaskinen F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Losning: Motorns elektriska och mekaniska tidskonstanter ar 0.023 J.R 0.0026.3.5 ms = 6.6 ms ms = 25 ms mek 3.5 0.62 Eftersom strommen skall oka pa 0.6 ms << t, kan man anta att mek motorn inte hinner borja rotera namnvart under tiden strommen Elektroteknik och Automation approximativt noll. Dessutom ar den resistiva termen (Ra:ia) liten jamfort med stromderivatatermen (La'dia/dt). Stromkurvformen kan darfor approximeras som en rat linje med lutningen dt Industriell Detta ger spanningen: RV V =192 V '='n dt 0.6 .10-3 Samuel Este",
+        "source": "ocr"
       },
       {
         "page": 19,
-        "text": "",
-        "source": "pypdf"
+        "text": "19 Stationar analys Likstromsmaskinen Dynamisk modell Modulation F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Stationar analys Vi skall har undersoka de stationara sambanden for nagra olika typer av likstromsmaskiner. Speciellt skall vi analysera hur vinkelhastigheten beror av styrspanning och av belastningsmoment. Elektroteknik och Automation I motorn med konstant falt finns endast en styrvariabel tillganglig, namligen den palagda klamspanningen pa control) eller rotorstyrning. Om man kan manipulera den palagda faltspanningen u, kan ocksa faltets storlek (yf) styras. Industriell Denna styrning g kallas faltstyrning (field control) Observera att det man menar med \"stationar analys\" eller stationar drift\" ar att alla tidsderivator satts lika med o! Samuel Estenlun tet",
+        "source": "ocr"
       },
       {
         "page": 20,
-        "text": "",
-        "source": "pypdf"
+        "text": "20 Likstromsmaskinen Stationar analys Modulation Dynamisk modell F5. Iikstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 - Likstromsmaskin med konstant flode Rotorekvationen (i stationaritet dvs da di,/dt-O) ger: u.-R.i. Ym. Elektroteknik och Automation Newtons andra lag (i stationaritet dvs da doldt=O) och momentekvationen ger: Ta =Vmia =TL Industriell Tillsammans ger ovanstaende uttryck: TL = n·q+·p-=\"n Samuel Estenlund, samuel.estemlunu@iea.ltn.se EAmaustrieleiektroteknkocnAutoatonLusUversitet",
+        "source": "ocr"
       },
       {
         "page": 21,
-        "text": "",
-        "source": "pypdf"
+        "text": "21 Stationar analys Likstromsmaskinen Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Uttrycket nedan beskriver lastmomentet som funktion av varvtal och ankarspanning TL= =-a·+b· Grafiskt kan detta askadliggoras som rata linjer enligt figuren Elektroteknik och Automation nedan: okande rotorspanning Industriell VT Figur 8.11. Moment som funktion av vinkelhastigheten i stationaritet for en motor med konstant falt. Samuel Estenlund, s",
+        "source": "ocr"
       },
       {
         "page": 22,
-        "text": "",
-        "source": "pypdf"
+        "text": "22 Stationar analys Likstromsmaskinen Dynamisk modell Modulation F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Exempel:Hiss En konstantmagnetiserad likstromsmotor driver en hiss. Hisslinan rullas upp pa en trumma med r = 0.2 m radie. Mellan motorn och trumman finns en vaxel som ger 1 varv pa trumman for 5o varv pa motorn, dvs utvaxlingen n= 50. Elektroteknik och Automation Hisskorgens vikt ar balanserad med en motvikt. Driften ar ett tillfalle drivs hissen i markdrift med rotorstrommen 10 A. Rotorresistansen R.=2 Q och motorkonstanten Yw = 2 Vs. Industriell Berakna hur mycket hisspassagerarna vager! Berakna aven motorns markspanning, markeffekt och markvarvtal. Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 23,
-        "text": "",
-        "source": "pypdf"
+        "text": "23 Stationar analys Likstromsmaskinen Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Losning: Eftersom motorstrommen ar kand kan momentet beraknas. Genom vaxelns utvaxling och lintrummans radie kan sedan vikten av passagerarna beraknas: Elektroteknik och Automation i=2.10=20Nm trumma n.Tel 50.20 =510kg Industriell 9.81.0.2 1.8 Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 24,
-        "text": "",
-        "source": "pypdf"
+        "text": "24 Stationar analys Likstromsmaskinen Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 - Faltstyrning och faltforsvagning Genom att variera faltstrommen i, har man y ytterligare en styrvariabel tillganglig. Detta sker genom att andra pa spanningen u, t till faltlindningen. Elektroteknik och Automation kan styras inom vissa granser. Syftet med faltstyrningen ar att hoja motorns vinkelhastighet vid reducerad belastning. Priset for detta ar att hoja rotorstrommen (eller minska vridmomentet). En minskning av medfor en okad sluthastighet och en okad stromstyrka i Ym I Industriell rotorn. strom an med fullt falt. Faltstyrning anvands dock precis vid sadana fall, nar man vill astadkomma en hog vinkelhastighetk Samuel Estenlund, sam et",
+        "source": "ocr"
       },
       {
         "page": 25,
-        "text": "",
-        "source": "pypdf"
+        "text": "25 Likstromsmaskinen Stationar analys Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Observera att uttrycket for lastmomentet som funktion av varvtal och ankarspanning fortfarande galler: TL = =-a·+b·u Om man varierar ym och haller u. konstant sa far man moment- varvtals-samband enlig figuren nedan. Elektroteknik och Automation AT starkt falt svagt falt Industriell Figur 8.12. Moment som funktion av vinkelhastigheten i stationaritet VT ROLIN for en motor vid olika grader av faltforsvagning (minskande Ym). Linjara modellen ar inte giltig for stora moment (stora strommar) Samuel Estenlund, sam sitet",
+        "source": "ocr"
       },
       {
         "page": 26,
-        "text": "",
-        "source": "pypdf"
+        "text": "26 Stationar analys Likstromsmaskinen Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Om man tecknar den mekaniska effekten ur det stationara momentet och varvtalet sa kommer att forkortas bort: .T =ia (ua -Raia) Om bade strom och spanning halls konstanta betyder det att aven produkten ar konstant, vilket betyder konstant effekt l Elektroteknik och Automation Denna funktion kan ses som den hyperbel som begransar kurvskaran i figur 8.12. Hastigheten kan oka pa bekostnad av momentet. AT starkt falt Figur 8.12. Industriell svagt falt VT ROLIN Samuel Estenlund, sam ersitet",
+        "source": "ocr"
       },
       {
         "page": 27,
-        "text": "",
-        "source": "pypdf"
+        "text": "27 Likstromsmaskinen Stationar analys Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Bade den mekaniska tidskonstanten och anloppstiden Tanl mek okar vid faltforsvagning. Den mekaniska tidskonstanten okar proportionellt mot 1/ ym2. Detsamma galler anloppstiden vilket ar enkelt att visa. Vi uttrycker faltforsvagningen med en faktor Ym (≤1) [per unit] Elektroteknik och Automation m,nom dar ar den nominella motorkonstanten (utan faltforsvagning). De stationara ekvationerna visar att vinkelhastigheten , vid nollast hojs med en faktor m,nom Samtidigt sanks momentet till (Ym/ Ym,nom) )-T,. Den mekaniska Industriell anloppstiden blir darmed Jo, m,nom Samuel Estenlund, itet",
+        "source": "ocr"
       },
       {
         "page": 28,
-        "text": "",
-        "source": "pypdf"
+        "text": "28 Likstromsmaskinen Stationar analys Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 - Seriemaskin Stationar losning till seriemaskinens momentekvation: T= Lm·i? = T Strommen okar alltsa mindre an for en separatmagnetiserad motor vid en okande belastning. Rotorekvationen ger Elektroteknik och Automation tillsammans med momentekvationen ett samband mellan vinkelhastigheten och lastmomentet T = Lm' Lm·の+R Industriell dar R=R,+R.. I tomgang (obelastad motor) antyder ekvationen att hastigheten blir oandlig. Vid storre moment minskar hastigheten mot noll. Daremot ar inte denna modell giltig Jvid hogre moment, eftersom mattning upptrader. Samuel Estenlund, samuel.e niversitet",
+        "source": "ocr"
       },
       {
         "page": 29,
-        "text": "",
-        "source": "pypdf"
+        "text": "29 Stationar analys Likstromsmaskinen Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 - Seriemaskin Sambandet mellan vinkelhastigheten och lastmomentet for seriemaskinen, dvs TL = Lm Lm·の+R Elektroteknik och Automation askadliggors i figuren nedan. Industriell VT Figur 8.13. Moment som funktion av vinkelhastigheten i stationaritet for en seriemotor. Notera att linjar magnetisering inte ar giltig vid CA hogre moment pga magnetisk mattning. Samuel Estenlund, samuel.estenlund n, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 30,
-        "text": "",
-        "source": "pypdf"
+        "text": "30 Modulation Likstromsmaskinen Stationar analys Dynamisk modell ik 6) och modulation (flik 11) 2/7/2025 LUNDS UNIVERSITET F4: Modulation (Kap 2 i Power Electronics) Elektroteknik och Automation Industriell VT Samuel Estenlund, samuel.est",
+        "source": "ocr"
       },
       {
         "page": 31,
-        "text": "",
-        "source": "pypdf"
+        "text": "31 Likstromsmaskinen Stationar analys Modulation Dynamisk modell 1 (flik 6) och modulation (flik 11) 2/7/2025 Pulsbreddsmodulation Referensvarde (borvarde)=onskat varde som ger en utspanning av pulser med medelvardet=onskat varde Modulationsmetoder l Elektroteknik och Automation . Toleransbandsreglering (reglering och modulation) (eng. Tolerance Band Control) - Amplituden pa stromripplet konstant . Varierande switchfrekvens Industriell : Barvagsmodulation (eng. Carrier Wave Modulation) - Varierande amplitud pa stromripplet VT RVM - Konstant switchfrekvens Samuel Estenlund, samuel.estenlt sitet",
+        "source": "ocr"
       },
       {
         "page": 32,
-        "text": "",
-        "source": "pypdf"
+        "text": "32 Modulation Likstromsmaskinen Stationar analys Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Barvagsmodulation (4Q DC/DC) +Vdc/2 TIHK T3- HK D3 V de T2-HK T4-K VaD2 Vb D4 -Vdc/2 Elektroteknik och Automation a,ref = Vo,ref /2 + V dc/2 Va.ref Vb,ref -Vdc/2 T1=TILL +V dc/2 T2=TILL -V dc/2 T3=TILL Industriell +V de/2 Vh -V dc/2 T4=TILL V de VT Samuel Estenlund, samuel.estenlund@iea.lth.se Itomation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 33,
-        "text": "",
-        "source": "pypdf"
+        "text": "33 Modulation Likstromsmaskinen Stationar analys Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Barvagsmodulation - typer av barvagor Ym y=y31J=y3 l Elektroteknik och Automation y=y2 Yi y=yi T2 t. t. Industriell Figure 2.5: Tre olika sorters barvagor. VT Samuel Estenlund, samuel.estenlund@iea.lth.se IEA: Industriell elektroteknik och Automation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 34,
-        "text": "",
-        "source": "pypdf"
+        "text": "34 Likstromsmaskinen Stationar analys Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Likstromsomvandlare och kvadranter + Ude/2 + Udc/2 = 0 Udc/2 Udc/2 + Udc/2 + Udc/2 %=1 Elektroteknik och Automation =0 %=0 Udc12 Udc/2 + Udc/2 + Udc/2 Udc/2 Udc/2 Industriell + Udc/2 + Udc/2 VT Udcl2 Udc/2 RVM Figure 2.6:. DC-omvandlare. Uppifran: 2-kvadrant, 4-kvadrant, 1-kvadrant uppspanning och enkvadrant nedspanning Samuel Estenlund, samuel.estenlund@iea :ion, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 35,
-        "text": "",
-        "source": "pypdf"
+        "text": "35 Modulation Likstromsmaskinen Stationar analys Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Modulatorns styrning Udc Udc l Elektroteknik och Automation Figure 2.7: Tvakvadrantomvandlare. Switch-ekvivalenten ar ocksa giltig for enkvadrantomvandlaren om strommen ar kontinuerlig (ansluten drift) Comparator Industriell VT Um Figure 2.8: Generisk struktur for en modulator. Observera att Simulink? symboler anvands! Samuel Estenlund, samuel.",
+        "source": "ocr"
       },
       {
         "page": 36,
-        "text": "",
-        "source": "pypdf"
+        "text": "36 Likstromsmaskinen Stationar analys Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Barvagens och matningsspanningens amplitud 1l Elektroteknik och Automation Vo Vo Industriell Barvagens amplitud proportionell mot Vde VT oavsett inspanning o,medel = Samuel Estenlund, samuel.estenlur prsitet",
+        "source": "ocr"
       },
       {
         "page": 37,
-        "text": "",
-        "source": "pypdf"
+        "text": "37 Stationar analys Modulation Likstromsmaskinen Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Varierande matningsspanning max Il Elektroteknik och Automation 2T 3T c.max Uac Industriell y2 y3 VT 2T RVM Figure 2.9: Exempel pa styrning av positionen pa den stigande flanken. Samuel Estenlund, samue",
+        "source": "ocr"
       },
       {
         "page": 38,
-        "text": "",
-        "source": "pypdf"
+        "text": "38 Likstromsmaskinen Stationar analys Modulation Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 med kontinuerlig DC/DC och 1Q 2Q strom dc.max Elektroteknik och Automation 2T dcmax Udc y2 Industriell 2T 3T VT RVM Samuel Estenlund, samuel.e den fallande flanken. versitet",
+        "source": "ocr"
       },
       {
         "page": 39,
-        "text": "",
-        "source": "pypdf"
+        "text": "39 Stationar analys Modulation Likstromsmaskinen Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Fyrkvadrantomvandlare (halvbrygga) a,ng b,ref T,ID, TD4 Elektroteknik och Automation Figure 2.14: Fyrkvadrant DC-DC omvandlare som anvands for undersokning av modulation. 0.5 0.5 sb Industriell Camier Figure 2.13: Modulator T, T, T, T, T, T, D, for en fyrkvadrant DC. VT D, TIT omvandlare RVM. Figure 2.15: Modulationsvagformer for en ideal fyrkvadrant DC-DC omvandlare. Samuel Estenlund, samuel.estenlund n, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 40,
-        "text": "",
-        "source": "pypdf"
+        "text": "40 Stationar analys Modulation Likstromsmaskinen Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 4Q halvbrygga, blankingtid a,ng Vord l Elektroteknik och Automation Utspanningen Transistor turn-on Minskar nagot delayed Industriell D. D, VT T, T, T, RVM Figure 2.16: Modulationsvagformer for en ideal fyrkvadrant DC-DC omvandlare inklusive paverkan av blanking-tid. Samuel Estenlund, samuel.ester",
+        "source": "ocr"
       },
       {
         "page": 41,
-        "text": "",
-        "source": "pypdf"
+        "text": "41 Stationar analys Modulation Likstromsmaskinen Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Il Elektroteknik och Automation 3T Ud Udc dc Industriell VT Figure 2.17: Exempel pa modulation av en fyrkvadrant omvandlare dar spanningsborvardet ar en AC-signal Samuel Estenlund, samuel.estenlund@iea.lth.se nation, Lunds Universitet",
+        "source": "ocr"
       },
       {
         "page": 42,
-        "text": "",
-        "source": "pypdf"
+        "text": "42 Stationar analys Modulation Likstromsmaskinen Dynamisk modell F5: Likstromsmaskinen (flik 6) och modulation (flik 11) 2/7/2025 Pulsbreddsmodulering, vaxelstrom (a) Il Elektroteknik och Automation T, on (Ta off) Ta on (T, off) T on (T off) T2 on (T: off) (6) Van Industriell Va=Va.-Ve. VT Figure 15.5.Multilevel (3 level) pu/se width modulation! Samuel Estenlund, samuel.estenlund@iea.lth.se carriers and modulation waveforms and (b) resultant load pwm waveforms. omation, Lunds Universitet",
+        "source": "ocr"
       }
     ],
     "EIEF10/Föreläsningar/F6_Vektormodulering.pdf": [
@@ -2337,8 +2337,8 @@
       },
       {
         "page": 24,
-        "text": "B - 25 α β i u ωt ϕ x y",
-        "source": "pypdf"
+        "text": "B- 25 β. 1- 10)",
+        "source": "ocr"
       }
     ],
     "EIEF10/Kurskompendium/Flik 11_Modulation.pdf": [
@@ -3535,65 +3535,65 @@
     "EIEF10/Lösningsförslag/Losning EIEF10-20150604.pdf": [
       {
         "page": 1,
-        "text": "",
-        "source": "pypdf"
+        "text": "10 2M 33 Vs 338 Wk Th. 2.7 r87 7/40 42 3328-270004 /0 20 + 1400-0 h. n eIfsf ? Nch ell 678 Tmio",
+        "source": "ocr"
       },
       {
         "page": 2,
-        "text": "",
-        "source": "pypdf"
+        "text": "4601627 ya .. KT 73.13m 2. o35 1(2) 3/96N (2) -36/=1016 7 rbc/s 173",
+        "source": "ocr"
       },
       {
         "page": 3,
-        "text": "",
-        "source": "pypdf"
+        "text": "02 660 V dt. 1330 k 4795 Het 50 3hm70,2100 20053 0274:1032",
+        "source": "ocr"
       },
       {
         "page": 4,
-        "text": "",
-        "source": "pypdf"
+        "text": "384 134",
+        "source": "ocr"
       },
       {
         "page": 5,
-        "text": "",
-        "source": "pypdf"
+        "text": "Hsherd",
+        "source": "ocr"
       },
       {
         "page": 6,
-        "text": "",
-        "source": "pypdf"
+        "text": "06eu THOTSA 380 2.33 Se. 1390 1337 1379 0 20 539Nm",
+        "source": "ocr"
       },
       {
         "page": 7,
-        "text": "",
-        "source": "pypdf"
+        "text": "20 Lipdptn n in cs nlte Wakellothtt ttt 4a7 340 1703",
+        "source": "ocr"
       }
     ],
     "EIEF10/Lösningsförslag/Losning EIEF10-20160603.pdf": [
       {
         "page": 1,
-        "text": "",
-        "source": "pypdf"
+        "text": "160603 313 260 W 2400 2#.n M20h 300 025 300-7073 10 *70\"3 W- Gsrad T test TA TA JDC",
+        "source": "ocr"
       },
       {
         "page": 2,
-        "text": "",
-        "source": "pypdf"
+        "text": "160603 PT",
+        "source": "ocr"
       },
       {
         "page": 3,
-        "text": "",
-        "source": "pypdf"
+        "text": "2016-04-12 16:39 166603 5007 8,8 Utt (1450,98/8 cex+e : 9s,4 -k.1yss+e le =-98,8 :(+ 1s00.488 is00 9815 50 18 k.n .326- 4 296Y 1560 8.8 50 (t) (000 886 S0.96 Budget ny uppstallning.xlsx 10D 1,576 2.964 2.. 4 av 2",
+        "source": "ocr"
       },
       {
         "page": 4,
-        "text": "",
-        "source": "pypdf"
+        "text": "/60603 021 2n -1700 /60 120 Pe lew 120 02! 2.6 so/G0 23216 1400 0.9hj @.Q.5 1 12 6A6 696,3-650 3+ 12. 6960, 3 1100/03 12 +1$/0,03 +3 1232 657 [M 9692 120 1400 0x 8'0 Mt9! 1m7t'91 52:26 09 10mh h2:t9] Ku td !",
+        "source": "ocr"
       },
       {
         "page": 5,
-        "text": "",
-        "source": "pypdf"
+        "text": "100603 13.30 105 et/s 24、1506.2 =209 l 1( V3.05 Te/7.0,6·03.30 54 N Tek. s = 0 3.(ss:30+",
+        "source": "ocr"
       }
     ],
     "EIEF10/Lösningsförslag/Tenta 2025-06-04_LÖSNING.pdf": [
@@ -3696,8 +3696,8 @@
       },
       {
         "page": 12,
-        "text": "",
-        "source": "pypdf"
+        "text": "0=-4 101",
+        "source": "ocr"
       }
     ],
     "EIEF10/Tentor/Tenta 2025-04-24.pdf": [
@@ -3749,13 +3749,13 @@
     "EIEF10/Tentor/Tenta EIEF10-20150604.pdf": [
       {
         "page": 1,
-        "text": "",
-        "source": "pypdf"
+        "text": "Tentamen i ElEF10 Elmaskiner 0ch drivsystem 2015-06-04, kl 14:00-19:00, Sal E421, Lunds Universitet, Campus Helsingborg Tillatna hjalpmedel: Raknedosa, linjal, egen formelsamling pa max tva A4-sidor samt formelsamling fran tidigare IEA- kurser. Tentamen bestar av totalt 6 uppgifter pa sammanlagt 60 poang. For godkant resultat pa tentamen krivs 30p, for betyget fyra kravs 40p och for betyget fem kravs 50p. Glom inte att motivera och visa hur du har raknat! 1. Likstromsmaskinen, stationar drift En shuntmagnetiserad likstromsmotor nar foljande data angivna pa markskylten: Resistansen i rotorlindningen ar Ra = 0,705 2 och induktansen i rotorlindningen ar La -- 9.05 mH. Troghetsmomentet J = 0,5 kgm². a. Rita schema for hur rotor och magnetiseringslindning ar kopplade. (2p) b. Berakna inducerad emk, magnetiskt sammanlankat flode i rotorn och axelmoment vid markdrift. (3p) Redogor for vilka forluster som motorn har vid markdrift och bestam de du kan! (3p) d. Man kan styra varvtalet pa i princip tva olika satt. Vilka? Inom vilka varvtalsomraden? (2p) 2. Stromreglering Du ska designa ett stromreglersystem for likstromsmaskinen i uppgift 1. Likstromsmaskinen styrs med hjalp av en fyrkvadrantomvandlare med mellanledsspanning Uae - 400 V. Bade ankarstrom ia och rotorvarvtal o mats och samplas for att anvandas i stromregulatorn. Signalprocessorn kan betraktas som snabb, dvs utan fordrojning. Samplingsfrekvensen hos stromregulatorn ar f, = 1/T, -1 kHz. a. Rita blockschema for systemet! Markera de tva variabler som mats och samplas, stromfelet, variabler till och fran modulatorn, variabler till och fran fyrkvadrantomvandlaren och variabler till motorn. (3p) b. Bestam regulatorparametrarna for en tidsdiskret samplad PI-stromregulator med dead- beatforstarkning. Markera regulatorns P- och I-del! (4p) c. Skissa strommens forlopp de forsta tre sampelintervallen! (3p) 3. Synkronmaskinen sa att Lmx - Lmy -- Lm = 3.0 mH. Magnetiseringen ar 2.0 Vs sammanlankat flode i en fas (toppvarde per fas). Maskinen styrs med hjalp av en s.k. vektorstyrning dar spanningen till motorn uppdateras var 50:e μus, d.v.s samplingsintervallet ar T-50 μus. Den trefasiga vaxelriktarens mellanledsspanning ar Uac =660 V. Maskinen ar tvarstromsreglerad dvs styrd sa att statorstrommen i x-led blir noll (isx-0) och statorstrommen i y-led anvands for momentbildning. a. Hur stort moment kan maskinen bilda om fasstrommen aldrig far overga 10 A effektivvarde? (2p) b. Hur hog kan vaxelriktarens utspanning (dvs RMS-vardet av huvudspanningen) bli vid sinusformade spanningsborsvarden utan overmodulation? Motivera! (2p) Hur hogt kan synkronmaskinens varvtal (eller vinkelhastighet) som hogst vara om isx = isy -- 0? (2p) Sida 1 av 2",
+        "source": "ocr"
       },
       {
         "page": 2,
-        "text": "",
-        "source": "pypdf"
+        "text": "d. Antag att motoraxeln roterar med 500 rpm och vridmomentet 50 Nm. Motorn drivs med isx = 0. Berakna spanningsvektorns komponenter i rotorkoordinater (dvs xy-koordinater). (2p) Om man ska sanka flodet i x-led med 20% for att faltforsvaga, hur ska man styra strommen da? e. (2p) 4. Positionsreglering Ett elektriskt drivsystem ar positionsreglerat. Elmaskinen med troghetsmomentet J ar momentreglerad med en sa hog samplingsfrekvens att momentregleringen kan betraktas som momentan. Varvtal och position mats och regleras. Antag att bade varvtal och position regleras proportionellt med forstarkningarna Ka och Kp (3p) b. Harled overforingsfunktionen for det slutna reglersystemet for position! Bestam polerna. (3p) c. Foresla lamplig forstarkning for P-regulatorerna baserat pa lastens dynamik sa att det slutna systemet far bada polerna i s=-1/2. (4p) 5. Asynkronmaskinen En asynkronmotor for flaktdrift har tva olika statorlindningar och markdata Un = 380V, Pn = 0,16/0,025kW, nn = 1390/710 rpm, In= 0,55/0,25A, n-0,56/0,25, cosp=0,8/0,6, J=5,8 10^kgm², Tstar/Tn=1,1/1,4 , Istar/In3/1,9 a. -Hur manga poler har statorlindningarna? (2p) b. Antag att vi kan forsumma den resistiva magnetiseringsstrommen, sa att magnetiseringsstrommen ar helt induktiv. Antag vidare att Ri och X kan forsummas i forhallande till R2 /s. Bestam detta forenklade ekvivalenta schema for ett av driftfallen. (6p) Skissa momentkurvor for de tva poltalen och lasten! Ange de varden pa axlarna som du kan. (2p) 6. Vektorer En trefasig vaxelriktare som driver en 2-polig synkronmotor arbetar i ett driftillstand sa att overmodulation ej uppstar. Switch-tillstandet for de tre benen i vaxelriktaren beskrivs av [sa, Sb, sel dar switch-tillstandet for varje ben kan vara 0 eller 1. 0 betyder att spanningen ut ar -Uae/2 och 1 betyder att spanningen ut ar Ua/2. Vaxelriktarens mellanledsspanning ar Uae-311 V. a. Berakna och skissa de 8 mojliga spanningsvektorerna med effektinvariant trefas-tvafastransformation (3p) b. Rita kopplingsschema for vaxelriktaren och motorn. Ange mellan vilka punkter potentialerna Va, Vb, V. samt fasspanningarna ua, ub, uc ligger, Ange ocksa mojliga varden for potentialer, fasspanningar och huvudspanningar. (4p) c. Visa att vid berakningen av spanningsvektorerna i a-uppgiften kan man satta in alternativt fasspanningarna Ua, ub, ue, potentialerna Va, Vb, Ve eller Udc ganger switch-tillstandet sa, Sb, Se. (3p) Lycka till! Tentan kommer inte att visas vid nagon spec. tidpunkt. Om du ar nyfiken pa rattning etc, sa maila mig Glad sommar onskar Henriette Sida 2 av 2",
+        "source": "ocr"
       }
     ],
     "EIEF10/Tentor/Tenta EIEF10-20160603.pdf": [
@@ -4038,16 +4038,13 @@
       }
     ]
   },
-  "warnings": [
-    "PDF-OCR är inte aktivt: Tesseract saknas i PATH. Textbaserade PDF:er indexeras ändå.",
-    "Bild-OCR är inte aktivt: Tesseract saknas i PATH. Bilder indexeras via filnamn och mapp."
-  ],
+  "warnings": [],
   "_meta": {
     "files": {
       "EIEF10/Formelblad/Flik 1_Formelblad.pdf": {
         "signature": {
           "size": 39279,
-          "mtime_ns": 1777971042960911900
+          "mtime_ns": 1778511316000000000
         },
         "pages": 2,
         "ocrPages": 0,
@@ -4056,7 +4053,7 @@
       "EIEF10/Formelblad/formelblad.html": {
         "signature": {
           "size": 23237,
-          "mtime_ns": 1778506598645905600
+          "mtime_ns": 1778511316000000000
         },
         "pages": 1,
         "ocrPages": 0,
@@ -4065,16 +4062,16 @@
       "EIEF10/Föreläsningar/F1-2_EMD introduktion_2025.pdf": {
         "signature": {
           "size": 3129034,
-          "mtime_ns": 1777970982364483200
+          "mtime_ns": 1778511316000000000
         },
         "pages": 37,
-        "ocrPages": 0,
+        "ocrPages": 37,
         "type": "pdf"
       },
       "EIEF10/Föreläsningar/F10_Asynkronmaskinen sammanfattning.pdf": {
         "signature": {
           "size": 4302923,
-          "mtime_ns": 1777971018510843900
+          "mtime_ns": 1778511316000000000
         },
         "pages": 24,
         "ocrPages": 0,
@@ -4083,7 +4080,7 @@
       "EIEF10/Föreläsningar/F11_Synkronmaskinen.pdf": {
         "signature": {
           "size": 4095723,
-          "mtime_ns": 1777971021947816300
+          "mtime_ns": 1778511316000000000
         },
         "pages": 24,
         "ocrPages": 0,
@@ -4092,7 +4089,7 @@
       "EIEF10/Föreläsningar/F12_Motorreglering grunder.pdf": {
         "signature": {
           "size": 3637411,
-          "mtime_ns": 1777971024825955900
+          "mtime_ns": 1778511316000000000
         },
         "pages": 25,
         "ocrPages": 0,
@@ -4101,7 +4098,7 @@
       "EIEF10/Föreläsningar/F13_Strömreglering.pdf": {
         "signature": {
           "size": 4680413,
-          "mtime_ns": 1777971028018306600
+          "mtime_ns": 1778511316000000000
         },
         "pages": 29,
         "ocrPages": 0,
@@ -4110,7 +4107,7 @@
       "EIEF10/Föreläsningar/F14_Motorval.pdf": {
         "signature": {
           "size": 2324650,
-          "mtime_ns": 1777971030770520700
+          "mtime_ns": 1778511316000000000
         },
         "pages": 21,
         "ocrPages": 0,
@@ -4119,34 +4116,34 @@
       "EIEF10/Föreläsningar/F3_Elektriska drivsystems mekanik_2025.pdf": {
         "signature": {
           "size": 2785013,
-          "mtime_ns": 1777970999565872800
+          "mtime_ns": 1778511316000000000
         },
         "pages": 19,
-        "ocrPages": 0,
+        "ocrPages": 15,
         "type": "pdf"
       },
       "EIEF10/Föreläsningar/F4_Elektromekanisk energiomvandling_2025.pdf": {
         "signature": {
           "size": 4211581,
-          "mtime_ns": 1777971003672215100
+          "mtime_ns": 1778511316000000000
         },
         "pages": 42,
-        "ocrPages": 0,
+        "ocrPages": 41,
         "type": "pdf"
       },
       "EIEF10/Föreläsningar/F5_Likströmsmaskin Modulation.pdf": {
         "signature": {
           "size": 3551716,
-          "mtime_ns": 1777971006544562500
+          "mtime_ns": 1778511316000000000
         },
         "pages": 42,
-        "ocrPages": 0,
+        "ocrPages": 35,
         "type": "pdf"
       },
       "EIEF10/Föreläsningar/F6_Vektormodulering.pdf": {
         "signature": {
           "size": 4318058,
-          "mtime_ns": 1777971009325657400
+          "mtime_ns": 1778511316000000000
         },
         "pages": 28,
         "ocrPages": 0,
@@ -4155,7 +4152,7 @@
       "EIEF10/Föreläsningar/F7_Asynkronmaskinen Introduktion_2026.pdf": {
         "signature": {
           "size": 6481323,
-          "mtime_ns": 1777971012732359800
+          "mtime_ns": 1778511316000000000
         },
         "pages": 48,
         "ocrPages": 0,
@@ -4164,7 +4161,7 @@
       "EIEF10/Föreläsningar/F8-9_Asynkronmaskinen 2-3.pdf": {
         "signature": {
           "size": 4617595,
-          "mtime_ns": 1777971015313937900
+          "mtime_ns": 1778511316000000000
         },
         "pages": 36,
         "ocrPages": 0,
@@ -4173,7 +4170,7 @@
       "EIEF10/Kursinfo/Kursprogram EIEF10 - VT2026 260429.pdf": {
         "signature": {
           "size": 134856,
-          "mtime_ns": 1777971168460596600
+          "mtime_ns": 1778511316000000000
         },
         "pages": 2,
         "ocrPages": 0,
@@ -4182,16 +4179,16 @@
       "EIEF10/Kurskompendium/Flik 10_Appendix B.pdf": {
         "signature": {
           "size": 357002,
-          "mtime_ns": 1777971115610149600
+          "mtime_ns": 1778511316000000000
         },
         "pages": 24,
-        "ocrPages": 0,
+        "ocrPages": 1,
         "type": "pdf"
       },
       "EIEF10/Kurskompendium/Flik 11_Modulation.pdf": {
         "signature": {
           "size": 317637,
-          "mtime_ns": 1777971118483129500
+          "mtime_ns": 1778511316000000000
         },
         "pages": 17,
         "ocrPages": 0,
@@ -4200,7 +4197,7 @@
       "EIEF10/Kurskompendium/Flik 12_Current Controll.pdf": {
         "signature": {
           "size": 410682,
-          "mtime_ns": 1777971121677308300
+          "mtime_ns": 1778511316000000000
         },
         "pages": 20,
         "ocrPages": 0,
@@ -4209,7 +4206,7 @@
       "EIEF10/Kurskompendium/Flik 13_SpeedControl.pdf": {
         "signature": {
           "size": 85242,
-          "mtime_ns": 1777971124629968900
+          "mtime_ns": 1778511316000000000
         },
         "pages": 5,
         "ocrPages": 0,
@@ -4218,7 +4215,7 @@
       "EIEF10/Kurskompendium/Flik 3_Elm översikt.pdf": {
         "signature": {
           "size": 2080120,
-          "mtime_ns": 1777971045859404300
+          "mtime_ns": 1778511316000000000
         },
         "pages": 35,
         "ocrPages": 0,
@@ -4227,7 +4224,7 @@
       "EIEF10/Kurskompendium/Flik 4_El drivsystem.pdf": {
         "signature": {
           "size": 372410,
-          "mtime_ns": 1777971048465766700
+          "mtime_ns": 1778511316000000000
         },
         "pages": 23,
         "ocrPages": 0,
@@ -4236,7 +4233,7 @@
       "EIEF10/Kurskompendium/Flik 5_Elmek.pdf": {
         "signature": {
           "size": 589386,
-          "mtime_ns": 1777971051234729300
+          "mtime_ns": 1778511316000000000
         },
         "pages": 25,
         "ocrPages": 0,
@@ -4245,7 +4242,7 @@
       "EIEF10/Kurskompendium/Flik 6_LM.pdf": {
         "signature": {
           "size": 597609,
-          "mtime_ns": 1777971053982156200
+          "mtime_ns": 1778511316000000000
         },
         "pages": 24,
         "ocrPages": 0,
@@ -4254,7 +4251,7 @@
       "EIEF10/Kurskompendium/Flik 7_SM.pdf": {
         "signature": {
           "size": 455832,
-          "mtime_ns": 1777971106742459900
+          "mtime_ns": 1778511316000000000
         },
         "pages": 14,
         "ocrPages": 0,
@@ -4263,7 +4260,7 @@
       "EIEF10/Kurskompendium/Flik 8_AM.pdf": {
         "signature": {
           "size": 1065082,
-          "mtime_ns": 1777971109539350700
+          "mtime_ns": 1778511316000000000
         },
         "pages": 41,
         "ocrPages": 0,
@@ -4272,7 +4269,7 @@
       "EIEF10/Kurskompendium/Flik 9_Motorreglering.pdf": {
         "signature": {
           "size": 299292,
-          "mtime_ns": 1777971112446108600
+          "mtime_ns": 1778511316000000000
         },
         "pages": 11,
         "ocrPages": 0,
@@ -4281,7 +4278,7 @@
       "EIEF10/Labbar/Lab1_EIEF10_EMD_260304b.pdf": {
         "signature": {
           "size": 169954,
-          "mtime_ns": 1777971037314873600
+          "mtime_ns": 1778511316000000000
         },
         "pages": 4,
         "ocrPages": 0,
@@ -4290,7 +4287,7 @@
       "EIEF10/Labbar/Labb2_EIEF10_EMD.pdf": {
         "signature": {
           "size": 187264,
-          "mtime_ns": 1777971040205009700
+          "mtime_ns": 1778511316000000000
         },
         "pages": 6,
         "ocrPages": 0,
@@ -4299,7 +4296,7 @@
       "EIEF10/Lösningsförslag/Losning EIEF10-20140530.pdf": {
         "signature": {
           "size": 296296,
-          "mtime_ns": 1777971132005840900
+          "mtime_ns": 1778511316000000000
         },
         "pages": 8,
         "ocrPages": 0,
@@ -4308,25 +4305,25 @@
       "EIEF10/Lösningsförslag/Losning EIEF10-20150604.pdf": {
         "signature": {
           "size": 1063381,
-          "mtime_ns": 1777971137865989800
+          "mtime_ns": 1778511316000000000
         },
         "pages": 7,
-        "ocrPages": 0,
+        "ocrPages": 7,
         "type": "pdf"
       },
       "EIEF10/Lösningsförslag/Losning EIEF10-20160603.pdf": {
         "signature": {
           "size": 163132,
-          "mtime_ns": 1777971144079401300
+          "mtime_ns": 1778511316000000000
         },
         "pages": 5,
-        "ocrPages": 0,
+        "ocrPages": 5,
         "type": "pdf"
       },
       "EIEF10/Lösningsförslag/Tenta 2025-06-04_LÖSNING.pdf": {
         "signature": {
           "size": 452489,
-          "mtime_ns": 1777971157300624300
+          "mtime_ns": 1778511316000000000
         },
         "pages": 8,
         "ocrPages": 0,
@@ -4335,16 +4332,16 @@
       "EIEF10/Lösningsförslag/Tenta_20250424_Facit.pdf": {
         "signature": {
           "size": 1321839,
-          "mtime_ns": 1777971151278826800
+          "mtime_ns": 1778511316000000000
         },
         "pages": 12,
-        "ocrPages": 0,
+        "ocrPages": 1,
         "type": "pdf"
       },
       "EIEF10/Tentor/Tenta 2025-04-24.pdf": {
         "signature": {
           "size": 95876,
-          "mtime_ns": 1777971147071056400
+          "mtime_ns": 1778511316000000000
         },
         "pages": 3,
         "ocrPages": 0,
@@ -4353,7 +4350,7 @@
       "EIEF10/Tentor/Tenta 2025-06-04.pdf": {
         "signature": {
           "size": 90429,
-          "mtime_ns": 1777971154299770100
+          "mtime_ns": 1778511316000000000
         },
         "pages": 3,
         "ocrPages": 0,
@@ -4362,7 +4359,7 @@
       "EIEF10/Tentor/Tenta EIEF10-20140530.pdf": {
         "signature": {
           "size": 107470,
-          "mtime_ns": 1777971129168456300
+          "mtime_ns": 1778511316000000000
         },
         "pages": 2,
         "ocrPages": 0,
@@ -4371,16 +4368,16 @@
       "EIEF10/Tentor/Tenta EIEF10-20150604.pdf": {
         "signature": {
           "size": 144323,
-          "mtime_ns": 1777971134801439600
+          "mtime_ns": 1778511316000000000
         },
         "pages": 2,
-        "ocrPages": 0,
+        "ocrPages": 2,
         "type": "pdf"
       },
       "EIEF10/Tentor/Tenta EIEF10-20160603.pdf": {
         "signature": {
           "size": 100499,
-          "mtime_ns": 1777971140808751500
+          "mtime_ns": 1778511316000000000
         },
         "pages": 2,
         "ocrPages": 0,
@@ -4389,16 +4386,16 @@
       "EIEF10/Övningar/Exercises2016.pdf": {
         "signature": {
           "size": 588774,
-          "mtime_ns": 1777971032820888300
+          "mtime_ns": 1778511316000000000
         },
         "pages": 53,
         "ocrPages": 0,
         "type": "pdf"
       }
     },
-    "ocrAvailable": false,
-    "ocrReason": "Tesseract saknas i PATH.",
-    "imageOcrAvailable": false,
-    "imageOcrReason": "Tesseract saknas i PATH."
+    "ocrAvailable": true,
+    "ocrReason": "RapidOCR-fallback aktiv.",
+    "imageOcrAvailable": true,
+    "imageOcrReason": "RapidOCR-fallback aktiv."
   }
 }
