@@ -1,0 +1,2355 @@
+<!doctype html>
+<html lang="sv">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Dokumentsök</title>
+        <style>
+            :root {
+                color-scheme: light;
+                --lu-blue: #000080;
+                --lu-bronze: #9c6114;
+                --lu-light-blue: #b9d3dc;
+                --lu-green: #adcab8;
+                --lu-beige: #d6d2c4;
+                --lu-grey: #bfb8af;
+                --lu-pink: #e9c4c7;
+                --bg: #f7f5ef;
+                --panel: #ffffff;
+                --ink: #111129;
+                --muted: #5c5a55;
+                --line: #d8d2c5;
+                --accent: var(--lu-blue);
+                --accent-soft: #e9f1f4;
+                --focus: var(--lu-bronze);
+                --shadow: 0 12px 34px rgba(17, 17, 41, 0.11);
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html,
+            body {
+                height: 100%;
+                overflow: hidden;
+            }
+
+            body {
+                margin: 0;
+                background: var(--bg);
+                color: var(--ink);
+                font-family: Arial, Helvetica, sans-serif;
+                letter-spacing: 0;
+            }
+
+            a {
+                color: inherit;
+            }
+
+            [hidden] {
+                display: none !important;
+            }
+
+            .app {
+                display: grid;
+                grid-template-columns: minmax(330px, 440px) minmax(520px, 1fr);
+                height: 100vh;
+                min-height: 0;
+                overflow: hidden;
+            }
+
+            .sidebar {
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                min-height: 0;
+                overflow: hidden;
+                border-right: 1px solid var(--line);
+                background: #f2efe6;
+            }
+
+            .header {
+                padding: 22px 22px 16px;
+                border-bottom: 1px solid var(--line);
+                background: #fff;
+            }
+
+            .header h1 {
+                margin: 0 0 6px;
+                color: var(--lu-blue);
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+
+            .header p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 0.95rem;
+                line-height: 1.45;
+            }
+
+            .search-row {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-top: 16px;
+            }
+
+            .search-wrap {
+                position: relative;
+                flex: 1 1 auto;
+                min-width: 0;
+            }
+
+            .search-icon {
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                width: 18px;
+                height: 18px;
+                transform: translateY(-50%);
+                color: var(--muted);
+                pointer-events: none;
+            }
+
+            #search {
+                width: 100%;
+                min-height: 44px;
+                padding: 10px 12px 10px 40px;
+                border: 1px solid var(--line);
+                border-radius: 8px;
+                background: #fff;
+                color: var(--ink);
+                font-size: 1rem;
+                outline: none;
+            }
+
+            #search:focus {
+                border-color: var(--focus);
+                box-shadow: 0 0 0 3px rgba(156, 97, 20, 0.18);
+            }
+
+            .stats {
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 12px;
+                color: var(--muted);
+                font-size: 0.86rem;
+            }
+
+            .index-status {
+                overflow-wrap: anywhere;
+                text-align: right;
+            }
+
+            .index-status.error {
+                color: #9c2f14;
+                font-weight: 700;
+            }
+
+            .rebuild-button {
+                flex: 0 0 auto;
+                display: grid;
+                place-items: center;
+                width: 44px;
+                height: 44px;
+                padding: 0;
+                border: 1px solid #cfc8ba;
+                border-radius: 9px;
+                background: #fff;
+                color: #57544e;
+                cursor: pointer;
+                transition:
+                    border-color 120ms ease,
+                    background 120ms ease,
+                    color 120ms ease,
+                    box-shadow 120ms ease;
+            }
+
+            .rebuild-button:hover:not(:disabled) {
+                border-color: var(--accent);
+                background: var(--accent-soft);
+                color: var(--accent);
+            }
+
+            .rebuild-button:focus-visible {
+                border-color: var(--focus);
+                box-shadow: 0 0 0 3px rgba(156, 97, 20, 0.18);
+                outline: none;
+            }
+
+            .rebuild-button svg {
+                width: 21px;
+                height: 21px;
+                stroke-width: 2.15;
+            }
+
+            .rebuild-button:disabled {
+                cursor: wait;
+                opacity: 0.65;
+            }
+
+            .rebuild-button:disabled svg {
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .course-nav,
+            .category-nav {
+                display: flex;
+                gap: 8px;
+                padding: 12px 16px;
+                overflow-x: auto;
+                border-bottom: 1px solid var(--line);
+                background: #fff;
+                scrollbar-width: thin;
+            }
+
+            .course-nav {
+                padding-bottom: 10px;
+                background: #f8f6f0;
+            }
+
+            .course-nav button,
+            .category-nav button {
+                flex: 0 0 auto;
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                background: #fff;
+                color: var(--muted);
+                padding: 8px 11px;
+                font-size: 0.86rem;
+                cursor: pointer;
+            }
+
+            .course-nav button {
+                color: var(--ink);
+                font-weight: 700;
+            }
+
+            .course-nav button:hover,
+            .course-nav button.active,
+            .category-nav button:hover,
+            .category-nav button.active {
+                border-color: var(--accent);
+                background: var(--accent-soft);
+                color: var(--accent);
+            }
+
+            .document-list {
+                flex: 1;
+                min-height: 0;
+                overflow: auto;
+                padding: 14px 16px 28px;
+            }
+
+            .group {
+                margin-bottom: 18px;
+            }
+
+            .group.hidden {
+                display: none;
+            }
+
+            .group.favorite-group .group-heading h2 {
+                color: var(--lu-bronze);
+            }
+
+            .group-heading {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                margin: 10px 4px 8px;
+            }
+
+            .group-heading h2 {
+                margin: 0;
+                font-size: 0.92rem;
+                line-height: 1.2;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+
+            .count {
+                color: var(--muted);
+                font-size: 0.8rem;
+            }
+
+            .doc-result {
+                position: relative;
+            }
+
+            .doc-button {
+                display: grid;
+                grid-template-columns: 38px minmax(0, 1fr);
+                gap: 10px;
+                width: 100%;
+                min-height: 66px;
+                margin: 7px 0;
+                padding: 10px 46px 10px 10px;
+                border: 1px solid var(--line);
+                border-radius: 4px;
+                background: #fff;
+                color: var(--ink);
+                text-align: left;
+                cursor: pointer;
+            }
+
+            .favorite-button {
+                position: absolute;
+                top: 14px;
+                right: 10px;
+                display: grid;
+                place-items: center;
+                width: 30px;
+                height: 30px;
+                border: 1px solid transparent;
+                border-radius: 999px;
+                background: transparent;
+                color: var(--muted);
+                font: inherit;
+                cursor: pointer;
+                padding: 0px;
+            }
+
+            .favorite-button:hover,
+            .favorite-button.active {
+                border-color: #e1c48e;
+                background: #fff7e8;
+                color: var(--lu-bronze);
+            }
+
+            .favorite-button svg {
+                width: 18px;
+                height: 18px;
+                fill: none;
+                stroke: currentColor;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            .favorite-button.active svg {
+                fill: currentColor;
+            }
+
+            .doc-button:hover,
+            .doc-button.active {
+                border-color: var(--accent);
+                background: var(--accent-soft);
+                box-shadow: inset 4px 0 0 var(--lu-bronze);
+            }
+
+            .doc-icon {
+                display: grid;
+                place-items: center;
+                width: 38px;
+                height: 44px;
+                border-radius: 4px;
+                background: #f2e4d1;
+                color: var(--lu-bronze);
+                font-weight: 700;
+                font-size: 0.72rem;
+            }
+
+            .doc-title {
+                display: block;
+                overflow-wrap: anywhere;
+                font-weight: 700;
+                line-height: 1.25;
+            }
+
+            .doc-meta {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                margin-top: 6px;
+                color: var(--muted);
+                font-size: 0.82rem;
+                line-height: 1.2;
+            }
+
+            .doc-hit-list {
+                display: grid;
+                gap: 5px;
+                margin: 4px 0 10px 48px;
+            }
+
+            .doc-hit-summary {
+                color: var(--muted);
+                font-size: 0.78rem;
+                font-weight: 700;
+                line-height: 1.2;
+            }
+
+            .doc-hit {
+                display: grid;
+                grid-template-columns: auto minmax(0, 1fr);
+                gap: 8px;
+                width: 100%;
+                padding: 7px 9px;
+                border: 1px solid #e6ded0;
+                border-radius: 4px;
+                background: #fff;
+                color: #263340;
+                font: inherit;
+                text-align: left;
+                cursor: pointer;
+            }
+
+            .doc-hit:hover,
+            .doc-hit.active {
+                border-color: var(--lu-bronze);
+                background: #fbf4ea;
+            }
+
+            .doc-hit mark {
+                padding: 0 2px;
+                background: #f3ddbd;
+                color: var(--ink);
+            }
+
+            .text-viewer mark.viewer-match {
+                padding: 1px 3px;
+                border-radius: 3px;
+                background: #f3ddbd;
+                color: var(--ink);
+            }
+
+            .text-viewer mark.viewer-match.active {
+                outline: 2px solid var(--lu-bronze);
+                outline-offset: 1px;
+            }
+
+            .doc-hit-page {
+                color: var(--lu-bronze);
+                font-size: 0.78rem;
+                font-weight: 700;
+                white-space: nowrap;
+            }
+
+            .doc-hit-excerpt {
+                min-width: 0;
+                color: var(--muted);
+                font-size: 0.82rem;
+                line-height: 1.35;
+                overflow-wrap: anywhere;
+            }
+
+            .viewer {
+                display: flex;
+                flex-direction: column;
+                min-width: 0;
+                height: 100vh;
+                min-height: 0;
+                overflow: hidden;
+                background: #fff;
+            }
+
+            .viewer-bar {
+                position: relative;
+                z-index: 5;
+                flex: 0 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 18px;
+                min-height: 72px;
+                padding: 14px 20px;
+                border-bottom: 1px solid var(--line);
+                background: #fff;
+                box-shadow: inset 0 -3px 0 var(--lu-bronze);
+            }
+
+            .viewer-title {
+                min-width: 0;
+            }
+
+            .viewer-title h2 {
+                margin: 0 0 4px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                font-size: 1.1rem;
+                line-height: 1.25;
+            }
+
+            .viewer-title p {
+                margin: 0;
+                color: var(--muted);
+                font-size: 0.88rem;
+                overflow-wrap: anywhere;
+            }
+
+            .viewer-actions {
+                flex: 0 0 auto;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .open-link,
+            .split-button {
+                flex: 0 0 auto;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                min-height: 40px;
+                padding: 9px 13px;
+                border: 0;
+                border-radius: 8px;
+                background: var(--lu-bronze);
+                color: #fff;
+                font: inherit;
+                font-weight: 700;
+                font-size: 0.9rem;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .split-button {
+                border: 1px solid var(--line);
+                background: #fff;
+                color: var(--accent);
+            }
+
+            .split-button.active {
+                border-color: var(--accent);
+                background: var(--accent-soft);
+            }
+
+            .open-link svg {
+                width: 17px;
+                height: 17px;
+            }
+
+            .pdf-stage {
+                position: relative;
+                z-index: 1;
+                flex: 1 1 auto;
+                display: grid;
+                grid-template-columns: minmax(0, 1fr);
+                gap: 14px;
+                min-height: 0;
+                overflow: hidden;
+                padding: 14px;
+                background: #faf9f5;
+            }
+
+            .pdf-stage.split {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .view-panel {
+                display: flex;
+                flex-direction: column;
+                min-width: 0;
+                min-height: 0;
+                overflow: hidden;
+            }
+
+            .view-panel[data-view-id="2"] {
+                display: none;
+            }
+
+            .pdf-stage.split .view-panel[data-view-id="2"] {
+                display: flex;
+            }
+
+            .view-panel-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                width: 100%;
+                border: 1px solid var(--line);
+                border-bottom: 0;
+                border-radius: 4px 4px 0 0;
+                background: #fff;
+                color: var(--ink);
+            }
+
+            .view-panel-select {
+                flex: 1 1 auto;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                min-width: 0;
+                min-height: 52px;
+                padding: 10px 12px;
+                border: 0;
+                background: transparent;
+                color: inherit;
+                font: inherit;
+                text-align: left;
+                cursor: pointer;
+            }
+
+            .view-panel.active .view-panel-bar {
+                border-color: var(--accent);
+                background: var(--accent-soft);
+                box-shadow: inset 4px 0 0 var(--lu-bronze);
+            }
+
+            .clear-view-button {
+                flex: 0 0 auto;
+                display: grid;
+                place-items: center;
+                width: 34px;
+                height: 34px;
+                margin-right: 8px;
+                border: 1px solid transparent;
+                border-radius: 999px;
+                background: transparent;
+                color: var(--muted);
+                cursor: pointer;
+            }
+
+            .clear-view-button:hover:not(:disabled),
+            .clear-view-button:focus-visible {
+                border-color: var(--line);
+                background: #fff;
+                color: var(--lu-bronze);
+            }
+
+            .clear-view-button:disabled {
+                opacity: 0.35;
+                cursor: default;
+            }
+
+            .clear-view-button svg {
+                width: 18px;
+                height: 18px;
+                fill: none;
+                stroke: currentColor;
+                stroke-width: 2;
+                stroke-linecap: round;
+            }
+
+            .view-panel-label {
+                flex: 0 0 auto;
+                color: var(--lu-bronze);
+                font-weight: 700;
+                font-size: 0.82rem;
+            }
+
+            .view-panel-title {
+                min-width: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                color: var(--muted);
+                font-size: 0.86rem;
+            }
+
+            .view-panel-body {
+                position: relative;
+                flex: 1 1 auto;
+                display: flex;
+                min-height: 0;
+                overflow: hidden;
+            }
+
+            .pdf-frame {
+                display: block;
+                flex: 1 1 auto;
+                width: 100%;
+                height: 100%;
+                min-height: 0;
+                border: 1px solid var(--line);
+                border-radius: 0 0 4px 4px;
+                background: #fff;
+                box-shadow: var(--shadow);
+            }
+
+            .text-viewer {
+                flex: 1 1 auto;
+                width: 100%;
+                height: 100%;
+                min-height: 0;
+                overflow: auto;
+                border: 1px solid var(--line);
+                border-radius: 0 0 4px 4px;
+                background: #fff;
+                box-shadow: var(--shadow);
+                padding: 28px;
+                color: var(--ink);
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .text-viewer[hidden] {
+                display: none;
+            }
+
+            .text-viewer pre {
+                margin: 0;
+                white-space: pre-wrap;
+                overflow-wrap: anywhere;
+                font: inherit;
+            }
+
+            .text-viewer h1,
+            .text-viewer h2,
+            .text-viewer h3 {
+                margin: 1.1em 0 0.45em;
+                line-height: 1.25;
+            }
+
+            .text-viewer h1:first-child,
+            .text-viewer h2:first-child,
+            .text-viewer h3:first-child {
+                margin-top: 0;
+            }
+
+            .text-viewer p,
+            .text-viewer ul,
+            .text-viewer ol,
+            .text-viewer pre {
+                margin: 0 0 0.9em;
+            }
+
+            .text-viewer code {
+                padding: 0.1em 0.25em;
+                border-radius: 4px;
+                background: #f2efe6;
+            }
+
+            .text-viewer blockquote {
+                margin: 0 0 0.9em;
+                padding-left: 14px;
+                border-left: 3px solid var(--lu-bronze);
+                color: var(--muted);
+            }
+
+            .image-viewer {
+                flex: 1 1 auto;
+                width: 100%;
+                height: 100%;
+                min-height: 0;
+                overflow: auto;
+                border: 1px solid var(--line);
+                border-radius: 0 0 4px 4px;
+                background: #fff;
+                box-shadow: var(--shadow);
+                padding: 18px;
+            }
+
+            .image-viewer[hidden] {
+                display: none;
+            }
+
+            .image-viewer img {
+                display: block;
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+                margin: 0 auto;
+                object-fit: contain;
+            }
+
+            .panel-empty {
+                flex: 1 1 auto;
+                display: none;
+                place-items: center;
+                min-height: 360px;
+                border: 1px dashed var(--line);
+                border-radius: 0 0 4px 4px;
+                background: #fff;
+                color: var(--muted);
+                text-align: center;
+                padding: 24px;
+            }
+
+            .panel-empty.visible {
+                display: grid;
+            }
+            @media (max-width: 1180px) {
+                .app {
+                    grid-template-columns: minmax(310px, 380px) minmax(
+                            420px,
+                            1fr
+                        );
+                }
+            }
+
+            @media (max-width: 900px) {
+                html,
+                body {
+                    height: auto;
+                    overflow: auto;
+                }
+
+                .app {
+                    display: flex;
+                    flex-direction: column;
+                    height: auto;
+                    overflow: visible;
+                }
+
+                .sidebar {
+                    order: 1;
+                    height: auto;
+                    min-height: auto;
+                    overflow: visible;
+                    border-right: 0;
+                }
+
+                .document-list {
+                    max-height: 48vh;
+                }
+
+                .viewer {
+                    order: 3;
+                    height: auto;
+                    min-height: 70vh;
+                    overflow: visible;
+                }
+
+                .viewer-bar {
+                    align-items: flex-start;
+                    flex-direction: column;
+                }
+
+                .viewer-title h2 {
+                    white-space: normal;
+                }
+
+                .viewer-actions {
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+
+                .open-link,
+                .split-button {
+                    width: 100%;
+                    justify-content: center;
+                }
+
+                .pdf-stage {
+                    flex: 0 0 auto;
+                    height: 70vh;
+                    min-height: 420px;
+                }
+
+                .pdf-frame {
+                    height: 100%;
+                    min-height: 0;
+                }
+
+                .pdf-stage.split {
+                    grid-template-columns: minmax(0, 1fr);
+                    height: 120vh;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main id="portal-view" class="app">
+            <aside class="sidebar" aria-label="Dokumentlista">
+                <header class="header">
+                    <h1>Dokumentsök</h1>
+                    <div class="search-row">
+                        <label class="search-wrap" for="search">
+                            <svg
+                                class="search-icon"
+                                aria-hidden="true"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <circle cx="11" cy="11" r="7"></circle>
+                                <path d="m20 20-3.5-3.5"></path>
+                            </svg>
+                            <input
+                                id="search"
+                                type="search"
+                                placeholder="Sök ord i dokument..."
+                                autocomplete="off"
+                            />
+                        </label>
+                        <button
+                            id="rebuild-index"
+                            class="rebuild-button"
+                            type="button"
+                            aria-label="Uppdatera index"
+                            title="Uppdatera index"
+                        >
+                            <svg
+                                aria-hidden="true"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.15"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                style="
+                                    width: 25px;
+                                    height: 25px;
+                                    padding-top: 1px;
+                                "
+                            >
+                                <path d="M19.5 8.5A7.5 7.5 0 1 0 20 14"></path>
+                                <path d="M19.5 4.5v4h-4"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="stats">
+                        <span id="result-count">Laddar...</span>
+                        <span id="index-status" class="index-status"></span>
+                    </div>
+                </header>
+
+                <nav class="course-nav" aria-label="Kurser"></nav>
+                <nav class="category-nav" aria-label="Kategorier"></nav>
+
+                <section
+                    id="document-list"
+                    class="document-list"
+                    aria-live="polite"
+                ></section>
+            </aside>
+
+            <section class="viewer" aria-label="Dokumentförhandsvisning">
+                <div class="viewer-bar">
+                    <div class="viewer-title">
+                        <h2 id="viewer-title">Välj ett dokument</h2>
+                        <p id="viewer-path">Förhandsvisningen visas här.</p>
+                    </div>
+                    <div class="viewer-actions">
+                        <a
+                            id="open-link"
+                            class="open-link"
+                            href="#"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <span>Öppna i ny flik</span>
+                            <svg
+                                aria-hidden="true"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M15 3h6v6"></path>
+                                <path d="M10 14 21 3"></path>
+                                <path
+                                    d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"
+                                ></path>
+                            </svg>
+                        </a>
+                        <button
+                            id="split-toggle"
+                            class="split-button"
+                            type="button"
+                            aria-pressed="false"
+                        >
+                            Split view
+                        </button>
+                    </div>
+                </div>
+                <div id="viewer-stage" class="pdf-stage">
+                    <section class="view-panel active" data-view-id="1">
+                        <div class="view-panel-bar">
+                            <button class="view-panel-select" type="button">
+                                <span class="view-panel-label">Vy 1</span>
+                                <span class="view-panel-title"
+                                    >Välj ett dokument</span
+                                >
+                            </button>
+                            <button
+                                class="clear-view-button"
+                                type="button"
+                                aria-label="Töm vy 1"
+                                title="Töm vy"
+                            >
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M18 6 6 18"></path>
+                                    <path d="m6 6 12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="view-panel-body">
+                            <div class="panel-empty visible">
+                                Inga dokument matchar sökningen.
+                            </div>
+                            <iframe
+                                class="pdf-frame"
+                                title="Förhandsvisning vy 1"
+                                width="100%"
+                                height="100%"
+                                hidden
+                            ></iframe>
+                            <article
+                                class="text-viewer"
+                                aria-label="Textförhandsvisning vy 1"
+                                hidden
+                            ></article>
+                            <div
+                                class="image-viewer"
+                                aria-label="Bildförhandsvisning vy 1"
+                                hidden
+                            >
+                                <img alt="" />
+                            </div>
+                        </div>
+                    </section>
+                    <section class="view-panel" data-view-id="2">
+                        <div class="view-panel-bar">
+                            <button class="view-panel-select" type="button">
+                                <span class="view-panel-label">Vy 2</span>
+                                <span class="view-panel-title"
+                                    >Välj ett dokument</span
+                                >
+                            </button>
+                            <button
+                                class="clear-view-button"
+                                type="button"
+                                aria-label="Töm vy 2"
+                                title="Töm vy"
+                            >
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M18 6 6 18"></path>
+                                    <path d="m6 6 12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="view-panel-body">
+                            <div class="panel-empty visible">
+                                Välj ett dokument för vy 2.
+                            </div>
+                            <iframe
+                                class="pdf-frame"
+                                title="Förhandsvisning vy 2"
+                                width="100%"
+                                height="100%"
+                                hidden
+                            ></iframe>
+                            <article
+                                class="text-viewer"
+                                aria-label="Textförhandsvisning vy 2"
+                                hidden
+                            ></article>
+                            <div
+                                class="image-viewer"
+                                aria-label="Bildförhandsvisning vy 2"
+                                hidden
+                            >
+                                <img alt="" />
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+
+        <script>
+            let documents = [];
+            let pdfTextIndexByPath = {};
+            let subjects = [];
+            let categories = [];
+            const FAVORITES_STORAGE_KEY = "dokumentsok:favorites:v1";
+            let favorites = loadFavorites();
+
+            const list = document.querySelector("#document-list");
+            const search = document.querySelector("#search");
+            const resultCount = document.querySelector("#result-count");
+            const viewerStage = document.querySelector("#viewer-stage");
+            const viewerTitle = document.querySelector("#viewer-title");
+            const viewerPath = document.querySelector("#viewer-path");
+            const openLink = document.querySelector("#open-link");
+            const splitToggle = document.querySelector("#split-toggle");
+            const indexStatus = document.querySelector("#index-status");
+            const rebuildButton = document.querySelector("#rebuild-index");
+            const courseNav = document.querySelector(".course-nav");
+            const categoryNav = document.querySelector(".category-nav");
+            let courseButtons = [];
+            let navButtons = [];
+            let activeSubject = "Alla";
+            let activeCategory = "Alla";
+            let activeViewId = "1";
+            let isSplitView = false;
+            const views = {
+                1: {
+                    doc: null,
+                    path: "",
+                    page: null,
+                    jumpId: "",
+                    highlightQuery: "",
+                    textMode: false,
+                },
+                2: {
+                    doc: null,
+                    path: "",
+                    page: null,
+                    jumpId: "",
+                    highlightQuery: "",
+                    textMode: false,
+                },
+            };
+
+            function normalize(value) {
+                return value.toLocaleLowerCase("sv-SE");
+            }
+
+            function loadFavorites() {
+                try {
+                    const stored = localStorage.getItem(FAVORITES_STORAGE_KEY);
+                    const paths = stored ? JSON.parse(stored) : [];
+                    return new Set(Array.isArray(paths) ? paths : []);
+                } catch (error) {
+                    return new Set();
+                }
+            }
+
+            function saveFavorites() {
+                try {
+                    localStorage.setItem(
+                        FAVORITES_STORAGE_KEY,
+                        JSON.stringify([...favorites]),
+                    );
+                } catch (error) {
+                    // Ignore storage failures; favorites are a convenience layer.
+                }
+            }
+
+            function isFavorite(path) {
+                return favorites.has(path);
+            }
+
+            function toggleFavorite(path) {
+                if (favorites.has(path)) {
+                    favorites.delete(path);
+                } else {
+                    favorites.add(path);
+                }
+                saveFavorites();
+                render();
+            }
+
+            function centerActiveCategoryButton(button) {
+                if (!button || !categoryNav) {
+                    return;
+                }
+                const maxScroll = Math.max(
+                    0,
+                    categoryNav.scrollWidth - categoryNav.clientWidth,
+                );
+                const target =
+                    button.offsetLeft +
+                    button.offsetWidth / 2 -
+                    categoryNav.clientWidth / 2;
+                const clampedTarget = Math.min(maxScroll, Math.max(0, target));
+                categoryNav.scrollTo({
+                    left: clampedTarget,
+                    behavior: "smooth",
+                });
+            }
+
+            function centerActiveCourseButton(button) {
+                if (!button || !courseNav) {
+                    return;
+                }
+                const maxScroll = Math.max(
+                    0,
+                    courseNav.scrollWidth - courseNav.clientWidth,
+                );
+                const target =
+                    button.offsetLeft +
+                    button.offsetWidth / 2 -
+                    courseNav.clientWidth / 2;
+                const clampedTarget = Math.min(maxScroll, Math.max(0, target));
+                courseNav.scrollTo({
+                    left: clampedTarget,
+                    behavior: "smooth",
+                });
+            }
+
+            function escapeHtml(value) {
+                return value
+                    .replaceAll("&", "&amp;")
+                    .replaceAll("<", "&lt;")
+                    .replaceAll(">", "&gt;")
+                    .replaceAll('"', "&quot;");
+            }
+
+            function escapeRegExp(value) {
+                return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            }
+
+            function setIndexStatus(message, isError = false) {
+                indexStatus.textContent = message || "";
+                indexStatus.classList.toggle("error", isError);
+            }
+
+            function categorySortKey(category) {
+                const order = [
+                    "Föreläsningar",
+                    "Kurskompendium",
+                    "Övningar",
+                    "Formelblad",
+                    "Tentor",
+                    "Lösningsförslag",
+                    "Labbar",
+                    "Kursinfo",
+                ];
+                const index = order.indexOf(category);
+                return [index === -1 ? order.length : index, category];
+            }
+
+            function buildCategories() {
+                return Array.from(
+                    new Set(
+                        documentsForActiveSubject()
+                            .map((doc) => doc.category)
+                            .filter(Boolean),
+                    ),
+                ).sort((a, b) => {
+                    const keyA = categorySortKey(a);
+                    const keyB = categorySortKey(b);
+                    return (
+                        keyA[0] - keyB[0] ||
+                        keyA[1].localeCompare(keyB[1], "sv-SE")
+                    );
+                });
+            }
+
+            function buildSubjects() {
+                return Array.from(
+                    new Set(
+                        documents.map((doc) => doc.subject).filter(Boolean),
+                    ),
+                ).sort((a, b) => a.localeCompare(b, "sv-SE"));
+            }
+
+            function documentsForActiveSubject() {
+                if (activeSubject === "Alla") {
+                    return documents;
+                }
+                return documents.filter((doc) => doc.subject === activeSubject);
+            }
+
+            function renderCourseNav() {
+                const labels =
+                    subjects.length > 1 ? ["Alla", ...subjects] : subjects;
+                if (!labels.includes(activeSubject)) {
+                    activeSubject = labels[0] || "Alla";
+                }
+                courseNav.innerHTML = labels
+                    .map(
+                        (subject) => `
+                    <button type="button" class="${subject === activeSubject ? "active" : ""}" data-subject="${escapeHtml(subject)}">
+                        ${escapeHtml(subject)}
+                    </button>
+                `,
+                    )
+                    .join("");
+                courseButtons = Array.from(
+                    document.querySelectorAll(".course-nav button"),
+                );
+                courseButtons.forEach((button) => {
+                    button.addEventListener("click", () => {
+                        activeSubject = button.dataset.subject;
+                        activeCategory = "Alla";
+                        categories = buildCategories();
+                        renderCourseNav();
+                        renderCategoryNav();
+                        centerActiveCourseButton(
+                            document.querySelector(".course-nav button.active"),
+                        );
+                        render();
+                    });
+                });
+            }
+
+            function renderCategoryNav() {
+                if (!categories.includes(activeCategory)) {
+                    activeCategory = "Alla";
+                }
+                const labels = ["Alla", ...categories];
+                categoryNav.innerHTML = labels
+                    .map(
+                        (category) => `
+                    <button type="button" class="${category === activeCategory ? "active" : ""}" data-category="${escapeHtml(category)}">
+                        ${escapeHtml(category)}
+                    </button>
+                `,
+                    )
+                    .join("");
+                navButtons = Array.from(
+                    document.querySelectorAll(".category-nav button"),
+                );
+                navButtons.forEach((button) => {
+                    button.addEventListener("click", () => {
+                        activeCategory = button.dataset.category;
+                        navButtons.forEach((item) =>
+                            item.classList.toggle("active", item === button),
+                        );
+                        centerActiveCategoryButton(button);
+                        render();
+                    });
+                });
+            }
+
+            function documentType(doc) {
+                if (doc.type) {
+                    return doc.type;
+                }
+                const extension = doc.path.split(".").pop().toLowerCase();
+                if (
+                    [
+                        "bmp",
+                        "gif",
+                        "jpeg",
+                        "jpg",
+                        "png",
+                        "tif",
+                        "tiff",
+                        "webp",
+                    ].includes(extension)
+                ) {
+                    return "image";
+                }
+                if (extension === "htm") {
+                    return "html";
+                }
+                if (extension === "markdown") {
+                    return "md";
+                }
+                return extension || "fil";
+            }
+
+            function documentTypeLabel(doc) {
+                const type = documentType(doc);
+                return type === "image" ? "IMG" : type.toUpperCase();
+            }
+
+            function documentUrl(path, page) {
+                const safePath = path.startsWith("/") ? path : `/${path}`;
+                const base = encodeURI(safePath);
+                return page ? `${base}#page=${page}` : base;
+            }
+
+            function viewPanel(viewId) {
+                return document.querySelector(
+                    `.view-panel[data-view-id="${viewId}"]`,
+                );
+            }
+
+            function viewState(viewId = activeViewId) {
+                return views[viewId];
+            }
+
+            function viewFrame(viewId) {
+                return viewPanel(viewId).querySelector(".pdf-frame");
+            }
+
+            function viewTextViewer(viewId) {
+                return viewPanel(viewId).querySelector(".text-viewer");
+            }
+
+            function viewImageViewer(viewId) {
+                return viewPanel(viewId).querySelector(".image-viewer");
+            }
+
+            function viewEmpty(viewId) {
+                return viewPanel(viewId).querySelector(".panel-empty");
+            }
+
+            function viewPanelTitle(viewId) {
+                return viewPanel(viewId).querySelector(".view-panel-title");
+            }
+
+            function clearViewButton(viewId) {
+                return viewPanel(viewId).querySelector(".clear-view-button");
+            }
+
+            function setActiveView(viewId) {
+                activeViewId = String(viewId);
+                updateViewerUi();
+            }
+
+            function activeDocumentPath() {
+                return viewState().path;
+            }
+
+            function activeDocumentJumpId() {
+                return viewState().jumpId;
+            }
+
+            function updateViewerUi() {
+                viewerStage.classList.toggle("split", isSplitView);
+                splitToggle.classList.toggle("active", isSplitView);
+                splitToggle.setAttribute("aria-pressed", String(isSplitView));
+                splitToggle.textContent = isSplitView
+                    ? "Stäng split"
+                    : "Split view";
+
+                Object.keys(views).forEach((viewId) => {
+                    const panel = viewPanel(viewId);
+                    const state = viewState(viewId);
+                    panel.classList.toggle("active", viewId === activeViewId);
+                    viewPanelTitle(viewId).textContent = state.doc
+                        ? state.doc.title
+                        : "Välj ett dokument";
+                    clearViewButton(viewId).disabled = !state.doc;
+                });
+
+                const state = viewState();
+                if (state.doc) {
+                    viewerTitle.textContent = `Vy ${activeViewId}: ${state.doc.title}`;
+                    viewerPath.textContent = state.page
+                        ? `${state.path} - sida ${state.page}`
+                        : state.path;
+                    openLink.href = documentUrl(state.path, state.page);
+                    openLink.style.visibility = "visible";
+                } else {
+                    viewerTitle.textContent = `Vy ${activeViewId}`;
+                    viewerPath.textContent = "Välj ett dokument.";
+                    openLink.href = "#";
+                    openLink.style.visibility = "hidden";
+                }
+
+                document.querySelectorAll(".doc-button").forEach((button) => {
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.path === activeDocumentPath(),
+                    );
+                });
+                document.querySelectorAll(".doc-hit").forEach((button) => {
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.jumpId === activeDocumentJumpId(),
+                    );
+                });
+                document
+                    .querySelectorAll(".favorite-button")
+                    .forEach((button) => {
+                        const active = isFavorite(button.dataset.path);
+                        button.classList.toggle("active", active);
+                        button.setAttribute("aria-pressed", String(active));
+                        button.title = active
+                            ? "Ta bort favorit"
+                            : "Lägg till favorit";
+                    });
+            }
+
+            function showViewEmpty(viewId, message) {
+                const empty = viewEmpty(viewId);
+                const frame = viewFrame(viewId);
+                const textViewer = viewTextViewer(viewId);
+                const imageViewer = viewImageViewer(viewId);
+                empty.textContent = message;
+                empty.classList.add("visible");
+                frame.hidden = true;
+                textViewer.hidden = true;
+                imageViewer.hidden = true;
+            }
+
+            function emptyViewState() {
+                return {
+                    doc: null,
+                    path: "",
+                    page: null,
+                    jumpId: "",
+                    highlightQuery: "",
+                    textMode: false,
+                };
+            }
+
+            function clearView(viewId) {
+                views[viewId] = emptyViewState();
+                showViewEmpty(
+                    viewId,
+                    viewId === "2"
+                        ? "Välj ett dokument för vy 2."
+                        : "Välj ett dokument.",
+                );
+                updateViewerUi();
+            }
+
+            function reloadFrame(viewId, url) {
+                const frame = viewFrame(viewId);
+                const nextFrame = document.createElement("iframe");
+                nextFrame.className = frame.className;
+                nextFrame.title = frame.title;
+                nextFrame.setAttribute("width", "100%");
+                nextFrame.setAttribute("height", "100%");
+                nextFrame.setAttribute("loading", "eager");
+                nextFrame.style.width = "100%";
+                nextFrame.style.height = "100%";
+                nextFrame.hidden = false;
+                frame.replaceWith(nextFrame);
+                const loadPdf = () => {
+                    if (viewFrame(viewId) === nextFrame) {
+                        nextFrame.src = url;
+                    }
+                };
+                if (typeof requestAnimationFrame === "function") {
+                    requestAnimationFrame(loadPdf);
+                } else {
+                    loadPdf();
+                }
+            }
+
+            function renderInlineMarkdown(value) {
+                return escapeHtml(value)
+                    .replace(/`([^`]+)`/g, "<code>$1</code>")
+                    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+                    .replace(/\*([^*]+)\*/g, "<em>$1</em>");
+            }
+
+            function renderMarkdown(value) {
+                const lines = value.replace(/\r\n?/g, "\n").split("\n");
+                const html = [];
+                let listOpen = false;
+                let codeOpen = false;
+                let codeLines = [];
+
+                const closeList = () => {
+                    if (listOpen) {
+                        html.push("</ul>");
+                        listOpen = false;
+                    }
+                };
+                const closeCode = () => {
+                    if (codeOpen) {
+                        html.push(
+                            `<pre><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`,
+                        );
+                        codeOpen = false;
+                        codeLines = [];
+                    }
+                };
+
+                lines.forEach((line) => {
+                    if (line.trim().startsWith("```")) {
+                        if (codeOpen) {
+                            closeCode();
+                        } else {
+                            closeList();
+                            codeOpen = true;
+                            codeLines = [];
+                        }
+                        return;
+                    }
+                    if (codeOpen) {
+                        codeLines.push(line);
+                        return;
+                    }
+                    const heading = line.match(/^(#{1,3})\s+(.+)$/);
+                    if (heading) {
+                        closeList();
+                        const level = heading[1].length;
+                        html.push(
+                            `<h${level}>${renderInlineMarkdown(heading[2])}</h${level}>`,
+                        );
+                        return;
+                    }
+                    const item = line.match(/^\s*[-*]\s+(.+)$/);
+                    if (item) {
+                        if (!listOpen) {
+                            html.push("<ul>");
+                            listOpen = true;
+                        }
+                        html.push(`<li>${renderInlineMarkdown(item[1])}</li>`);
+                        return;
+                    }
+                    if (!line.trim()) {
+                        closeList();
+                        return;
+                    }
+                    closeList();
+                    html.push(`<p>${renderInlineMarkdown(line)}</p>`);
+                });
+
+                closeCode();
+                closeList();
+                return html.join("");
+            }
+
+            function htmlToSearchableText(value) {
+                const doc = new DOMParser().parseFromString(value, "text/html");
+                doc.querySelectorAll(
+                    "script, style, noscript, template",
+                ).forEach((node) => node.remove());
+                return doc.body.textContent.replace(/\s+/g, " ").trim();
+            }
+
+            function highlightAndScrollTextViewer(viewId, query) {
+                const needle = (query || "").trim();
+                if (!needle) {
+                    return;
+                }
+                const textViewer = viewTextViewer(viewId);
+                const walker = document.createTreeWalker(
+                    textViewer,
+                    NodeFilter.SHOW_TEXT,
+                    {
+                        acceptNode(node) {
+                            return node.nodeValue.trim()
+                                ? NodeFilter.FILTER_ACCEPT
+                                : NodeFilter.FILTER_REJECT;
+                        },
+                    },
+                );
+                let node = walker.nextNode();
+                while (node) {
+                    const hit = findTextSearchHit(node.nodeValue, needle);
+                    if (hit) {
+                        const range = document.createRange();
+                        range.setStart(node, hit.index);
+                        range.setEnd(node, hit.index + hit.match.length);
+                        const mark = document.createElement("mark");
+                        mark.className = "viewer-match active";
+                        range.surroundContents(mark);
+                        mark.scrollIntoView({
+                            block: "center",
+                            behavior: "smooth",
+                        });
+                        return;
+                    }
+                    node = walker.nextNode();
+                }
+            }
+
+            async function renderTextDocument(viewId, doc) {
+                const type = documentType(doc);
+                const frame = viewFrame(viewId);
+                const textViewer = viewTextViewer(viewId);
+                const imageViewer = viewImageViewer(viewId);
+                const empty = viewEmpty(viewId);
+                const expectedPath = doc.path;
+                frame.hidden = true;
+                imageViewer.hidden = true;
+                empty.classList.remove("visible");
+                textViewer.hidden = false;
+                textViewer.innerHTML = "<p>Laddar dokument...</p>";
+                try {
+                    const response = await fetch(documentUrl(doc.path), {
+                        cache: "no-store",
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    const text = await response.text();
+                    if (viewState(viewId).path !== expectedPath) {
+                        return;
+                    }
+                    textViewer.innerHTML =
+                        type === "md"
+                            ? renderMarkdown(text)
+                            : type === "html"
+                              ? `<pre>${escapeHtml(htmlToSearchableText(text))}</pre>`
+                              : `<pre>${escapeHtml(text)}</pre>`;
+                    highlightAndScrollTextViewer(
+                        viewId,
+                        viewState(viewId).highlightQuery,
+                    );
+                } catch (error) {
+                    textViewer.innerHTML = "<p>Kunde inte läsa dokumentet.</p>";
+                }
+            }
+
+            function renderImageDocument(viewId, doc) {
+                const frame = viewFrame(viewId);
+                const textViewer = viewTextViewer(viewId);
+                const imageViewer = viewImageViewer(viewId);
+                const empty = viewEmpty(viewId);
+                const image = imageViewer.querySelector("img");
+                frame.hidden = true;
+                textViewer.hidden = true;
+                empty.classList.remove("visible");
+                image.alt = doc.title;
+                image.src = documentUrl(doc.path);
+                imageViewer.hidden = false;
+            }
+
+            function renderDocumentInView(viewId) {
+                const state = viewState(viewId);
+                if (!state.doc) {
+                    showViewEmpty(
+                        viewId,
+                        viewId === "2"
+                            ? "Välj ett dokument för vy 2."
+                            : "Välj ett dokument.",
+                    );
+                    updateViewerUi();
+                    return;
+                }
+                const frame = viewFrame(viewId);
+                const textViewer = viewTextViewer(viewId);
+                const imageViewer = viewImageViewer(viewId);
+                const empty = viewEmpty(viewId);
+                const type = documentType(state.doc);
+                empty.classList.remove("visible");
+                if (type === "md" || type === "txt" || state.textMode) {
+                    renderTextDocument(viewId, state.doc);
+                } else if (type === "image") {
+                    renderImageDocument(viewId, state.doc);
+                } else {
+                    textViewer.hidden = true;
+                    imageViewer.hidden = true;
+                    frame.hidden = false;
+                    reloadFrame(viewId, documentUrl(state.path, state.page));
+                }
+                updateViewerUi();
+            }
+
+            function selectDocumentForActiveView(doc) {
+                views[activeViewId] = {
+                    doc,
+                    path: doc.path,
+                    page: null,
+                    jumpId: "",
+                    highlightQuery: "",
+                    textMode: false,
+                };
+                renderDocumentInView(activeViewId);
+            }
+
+            function jumpToDocumentHit(doc, page, jumpId, query = "") {
+                if (!doc) {
+                    return;
+                }
+                const type = documentType(doc);
+                views[activeViewId] = {
+                    doc,
+                    path: doc.path,
+                    page: type === "pdf" && page ? page : null,
+                    jumpId,
+                    highlightQuery: query,
+                    textMode: type === "html" && Boolean(query),
+                };
+                if (type === "pdf" && page) {
+                    const frame = viewFrame(activeViewId);
+                    const textViewer = viewTextViewer(activeViewId);
+                    const imageViewer = viewImageViewer(activeViewId);
+                    const empty = viewEmpty(activeViewId);
+                    empty.classList.remove("visible");
+                    textViewer.hidden = true;
+                    imageViewer.hidden = true;
+                    frame.hidden = false;
+                    reloadFrame(activeViewId, documentUrl(doc.path, page));
+                } else if (type === "md" || type === "txt" || type === "html") {
+                    renderTextDocument(activeViewId, doc);
+                } else if (type === "image") {
+                    renderImageDocument(activeViewId, doc);
+                } else {
+                    const frame = viewFrame(activeViewId);
+                    const textViewer = viewTextViewer(activeViewId);
+                    const imageViewer = viewImageViewer(activeViewId);
+                    const empty = viewEmpty(activeViewId);
+                    empty.classList.remove("visible");
+                    textViewer.hidden = true;
+                    imageViewer.hidden = true;
+                    frame.hidden = false;
+                    reloadFrame(activeViewId, documentUrl(doc.path));
+                }
+                updateViewerUi();
+            }
+            const textSearchAliases = {
+                omega: ["ω", "𝜔", "𝛚", "Ω"],
+                phi: ["φ", "ϕ", "𝜙", "𝜑", "Φ"],
+                psi: ["ψ", "Ψ"],
+                eta: ["η"],
+                theta: ["θ", "𝜃"],
+                delta: ["δ", "Δ"],
+                lambda: ["λ"],
+                mu: ["μ"],
+                pi: ["π"],
+            };
+
+            function findTextSearchHit(text, query) {
+                const normalizedText = normalize(text);
+                const normalizedQuery = normalize(query);
+                const directIndex = normalizedText.indexOf(normalizedQuery);
+                if (directIndex !== -1) {
+                    return {
+                        index: directIndex,
+                        match: text.slice(
+                            directIndex,
+                            directIndex + query.length,
+                        ),
+                    };
+                }
+
+                const aliases = textSearchAliases[normalizedQuery] || [];
+                let best = null;
+                aliases.forEach((alias) => {
+                    const aliasIndex = text.indexOf(alias);
+                    if (
+                        aliasIndex !== -1 &&
+                        (!best || aliasIndex < best.index)
+                    ) {
+                        best = { index: aliasIndex, match: alias };
+                    }
+                });
+                return best;
+            }
+
+            function makeSearchExcerpt(text, query, index, matchText = query) {
+                const radiusBefore = 70;
+                const radiusAfter = 130;
+                const start = Math.max(0, index - radiusBefore);
+                const end = Math.min(
+                    text.length,
+                    index + matchText.length + radiusAfter,
+                );
+                const prefix = start > 0 ? "... " : "";
+                const suffix = end < text.length ? " ..." : "";
+                const excerpt = `${prefix}${text.slice(start, end)}${suffix}`;
+                const pattern = new RegExp(escapeRegExp(matchText), "ig");
+                return escapeHtml(excerpt).replace(
+                    pattern,
+                    (match) => `<mark>${match}</mark>`,
+                );
+            }
+
+            function parseSearchQuery(rawQuery) {
+                const parsed = {
+                    terms: [],
+                    types: [],
+                    subjects: [],
+                    categories: [],
+                };
+                const tokenPattern = /"([^"]+)"|(\S+)/g;
+                let match = tokenPattern.exec(rawQuery);
+                while (match) {
+                    const token = (match[1] || match[2] || "").trim();
+                    const operator = token.match(/^([^:]+):(.+)$/);
+                    if (operator) {
+                        const key = normalize(operator[1]);
+                        const value = operator[2].trim();
+                        if (value) {
+                            if (["typ", "type"].includes(key)) {
+                                parsed.types.push(normalize(value));
+                            } else if (["kurs", "course"].includes(key)) {
+                                parsed.subjects.push(normalize(value));
+                            } else if (
+                                ["kat", "kategori", "category"].includes(key)
+                            ) {
+                                parsed.categories.push(normalize(value));
+                            } else {
+                                parsed.terms.push(token);
+                            }
+                        }
+                    } else if (token) {
+                        parsed.terms.push(token);
+                    }
+                    match = tokenPattern.exec(rawQuery);
+                }
+                return parsed;
+            }
+
+            function documentSearchText(doc) {
+                return `${doc.title} ${doc.subject || ""} ${doc.category} ${doc.path}`;
+            }
+
+            function normalizedDocumentType(doc) {
+                const type = normalize(documentType(doc));
+                return type === "jpg" ||
+                    type === "jpeg" ||
+                    type === "png" ||
+                    type === "webp"
+                    ? "image"
+                    : type;
+            }
+
+            function matchesParsedQuery(doc, parsedQuery) {
+                const type = normalizedDocumentType(doc);
+                const subject = normalize(doc.subject || "");
+                const category = normalize(doc.category || "");
+                const typeMatch =
+                    parsedQuery.types.length === 0 ||
+                    parsedQuery.types.includes(type);
+                const subjectMatch =
+                    parsedQuery.subjects.length === 0 ||
+                    parsedQuery.subjects.includes(subject);
+                const categoryMatch =
+                    parsedQuery.categories.length === 0 ||
+                    parsedQuery.categories.includes(category);
+                return typeMatch && subjectMatch && categoryMatch;
+            }
+
+            function findDocumentTextMatches(doc, terms) {
+                if (!terms.length) {
+                    return [];
+                }
+                const pages = pdfTextIndexByPath[doc.path] || [];
+                const matches = [];
+                const seenKeys = new Set();
+                pages.forEach((page) => {
+                    if (!page.text || !page.text.trim()) {
+                        return;
+                    }
+                    terms.forEach((query) => {
+                        const hit = findTextSearchHit(page.text, query);
+                        const key = `${page.page}:${normalize(query)}`;
+                        if (!hit || seenKeys.has(key)) {
+                            return;
+                        }
+                        seenKeys.add(key);
+                        matches.push({
+                            page: page.page,
+                            query,
+                            match: hit.match,
+                            excerpt: makeSearchExcerpt(
+                                page.text,
+                                query,
+                                hit.index,
+                                hit.match,
+                            ),
+                        });
+                    });
+                });
+                return matches;
+            }
+
+            function searchRecordForDocument(
+                doc,
+                parsedQuery,
+                useCategoryFilter = true,
+            ) {
+                const subjectMatch =
+                    activeSubject === "Alla" || doc.subject === activeSubject;
+                if (!subjectMatch) {
+                    return null;
+                }
+                const categoryMatch =
+                    !useCategoryFilter ||
+                    activeCategory === "Alla" ||
+                    doc.category === activeCategory;
+                if (!categoryMatch) {
+                    return null;
+                }
+                if (!matchesParsedQuery(doc, parsedQuery)) {
+                    return null;
+                }
+                if (!parsedQuery.terms.length) {
+                    return { doc, pdfMatches: [] };
+                }
+                const searchValue = normalize(documentSearchText(doc));
+                const pdfMatches = findDocumentTextMatches(
+                    doc,
+                    parsedQuery.terms,
+                );
+                const allTermsMatch = parsedQuery.terms.every((term) => {
+                    const normalizedTerm = normalize(term);
+                    return (
+                        searchValue.includes(normalizedTerm) ||
+                        pdfMatches.some(
+                            (match) =>
+                                normalize(match.query) === normalizedTerm,
+                        )
+                    );
+                });
+                if (allTermsMatch) {
+                    return { doc, pdfMatches };
+                }
+                return null;
+            }
+
+            function recordsForCurrentQuery(useCategoryFilter = true) {
+                const rawQuery = search.value.trim();
+                const parsedQuery = parseSearchQuery(rawQuery);
+                return documents
+                    .map((doc) =>
+                        searchRecordForDocument(
+                            doc,
+                            parsedQuery,
+                            useCategoryFilter,
+                        ),
+                    )
+                    .filter(Boolean);
+            }
+
+            function categoriesForRecords(records) {
+                return Array.from(
+                    new Set(
+                        records
+                            .map((record) => record.doc.category)
+                            .filter(Boolean),
+                    ),
+                ).sort((a, b) => {
+                    const keyA = categorySortKey(a);
+                    const keyB = categorySortKey(b);
+                    return (
+                        keyA[0] - keyB[0] ||
+                        keyA[1].localeCompare(keyB[1], "sv-SE")
+                    );
+                });
+            }
+
+            function filteredDocuments() {
+                return recordsForCurrentQuery(true);
+            }
+
+            function documentDateValue(doc) {
+                const value = `${doc.title} ${doc.path}`;
+                const dashed = value.match(
+                    /\b(20\d{2}|19\d{2})-(\d{2})-(\d{2})\b/,
+                );
+                if (dashed) {
+                    return Number(`${dashed[1]}${dashed[2]}${dashed[3]}`);
+                }
+                const compact = value.match(
+                    /\b(20\d{2}|19\d{2})(\d{2})(\d{2})\b/,
+                );
+                if (compact) {
+                    return Number(`${compact[1]}${compact[2]}${compact[3]}`);
+                }
+                return Number.MAX_SAFE_INTEGER;
+            }
+
+            function sortRecordsForCategory(records, category) {
+                if (category !== "Tentor" && category !== "Lösningsförslag") {
+                    return records;
+                }
+                return [...records].sort((a, b) => {
+                    const byDate =
+                        documentDateValue(a.doc) - documentDateValue(b.doc);
+                    return (
+                        byDate ||
+                        a.doc.title.localeCompare(b.doc.title, "sv-SE")
+                    );
+                });
+            }
+
+            function renderDocumentHits(doc, matches) {
+                if (!matches.length) {
+                    return "";
+                }
+                const type = documentType(doc);
+                const hitLabel =
+                    matches.length === 1
+                        ? "1 textträff"
+                        : `${matches.length} textträffar`;
+                return `
+        <div class="doc-hit-list">
+          <div class="doc-hit-summary">${hitLabel}</div>
+          ${matches
+              .map((match, index) => {
+                  const jumpId = `search-${doc.path}-${match.page}-${index}`;
+                  const hitPageLabel =
+                      type === "pdf" ? `PDF s. ${match.page}` : "Träff";
+                  return `
+              <button type="button" class="doc-hit" data-search-page="${match.page}" data-path="${escapeHtml(doc.path)}" data-jump-id="${escapeHtml(jumpId)}" data-search-query="${escapeHtml(match.query || "")}">
+                <span class="doc-hit-page">${escapeHtml(hitPageLabel)}</span>
+                <span class="doc-hit-excerpt">${match.excerpt}</span>
+              </button>
+            `;
+              })
+              .join("")}
+        </div>
+      `;
+            }
+
+            function renderRecordGroup(
+                category,
+                groupRecords,
+                isFavoriteGroup = false,
+            ) {
+                const group = document.createElement("section");
+                group.className = `group${isFavoriteGroup ? " favorite-group" : ""}`;
+                group.innerHTML = `
+          <div class="group-heading">
+            <h2>${escapeHtml(category)}</h2>
+            <span class="count">${groupRecords.length}</span>
+          </div>
+        `;
+
+                groupRecords.forEach((record) => {
+                    const doc = record.doc;
+                    const wrapper = document.createElement("div");
+                    wrapper.className = "doc-result";
+                    const button = document.createElement("button");
+                    button.type = "button";
+                    button.className = `doc-button${doc.path === activeDocumentPath() ? " active" : ""}`;
+                    button.dataset.path = doc.path;
+                    const typeLabel = documentTypeLabel(doc);
+                    button.innerHTML = `
+            <span class="doc-icon">${escapeHtml(typeLabel)}</span>
+            <span>
+              <span class="doc-title">${escapeHtml(doc.title)}</span>
+              <span class="doc-meta">
+                ${doc.subject ? `<span>${escapeHtml(doc.subject)}</span>` : ""}
+                <span>${escapeHtml(doc.category)}</span>
+                <span>${escapeHtml(typeLabel)}</span>
+              </span>
+            </span>
+                        `;
+                    button.addEventListener("click", () =>
+                        selectDocumentForActiveView(doc),
+                    );
+
+                    const favoriteButton = document.createElement("button");
+                    favoriteButton.type = "button";
+                    favoriteButton.className = `favorite-button${isFavorite(doc.path) ? " active" : ""}`;
+                    favoriteButton.dataset.path = doc.path;
+                    favoriteButton.setAttribute(
+                        "aria-label",
+                        isFavorite(doc.path)
+                            ? "Ta bort favorit"
+                            : "Lägg till favorit",
+                    );
+                    favoriteButton.setAttribute(
+                        "aria-pressed",
+                        String(isFavorite(doc.path)),
+                    );
+                    favoriteButton.title = isFavorite(doc.path)
+                        ? "Ta bort favorit"
+                        : "Lägg till favorit";
+                    favoriteButton.innerHTML = `
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m12 3.4 2.7 5.47 6.03.88-4.36 4.25 1.03 6.01L12 17.17l-5.4 2.84 1.03-6.01-4.36-4.25 6.03-.88L12 3.4z"></path>
+                        </svg>
+                    `;
+                    favoriteButton.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        toggleFavorite(doc.path);
+                    });
+
+                    wrapper.appendChild(button);
+                    wrapper.appendChild(favoriteButton);
+                    wrapper.insertAdjacentHTML(
+                        "beforeend",
+                        renderDocumentHits(doc, record.pdfMatches),
+                    );
+                    group.appendChild(wrapper);
+                });
+
+                list.appendChild(group);
+            }
+
+            function render() {
+                if (!documents.length) {
+                    resultCount.textContent = "0 dokument";
+                    list.innerHTML = "";
+                    views[1] = emptyViewState();
+                    views[2] = emptyViewState();
+                    showViewEmpty("1", "Inga dokument matchar sökningen.");
+                    showViewEmpty("2", "Välj ett dokument för vy 2.");
+                    updateViewerUi();
+                    openLink.style.visibility = "hidden";
+                    return;
+                }
+
+                const matchingRecords = recordsForCurrentQuery(false);
+                categories = categoriesForRecords(matchingRecords);
+                if (
+                    activeCategory !== "Alla" &&
+                    !categories.includes(activeCategory)
+                ) {
+                    activeCategory = "Alla";
+                }
+                renderCategoryNav();
+
+                const visibleRecords =
+                    activeCategory === "Alla"
+                        ? matchingRecords
+                        : matchingRecords.filter(
+                              (record) =>
+                                  record.doc.category === activeCategory,
+                          );
+                const visiblePaths = new Set(
+                    visibleRecords.map((record) => record.doc.path),
+                );
+                const activeSubjectCount = matchingRecords.length;
+                const favoriteRecords = visibleRecords.filter((record) =>
+                    isFavorite(record.doc.path),
+                );
+                const regularRecords = visibleRecords.filter(
+                    (record) => !isFavorite(record.doc.path),
+                );
+                let firstVisibleRecord = favoriteRecords[0] || null;
+                resultCount.textContent = `${visibleRecords.length} av ${activeSubjectCount} dokument`;
+                list.innerHTML = "";
+
+                if (favoriteRecords.length) {
+                    renderRecordGroup("Favoriter", favoriteRecords, true);
+                }
+
+                categories.forEach((category) => {
+                    const groupRecords = sortRecordsForCategory(
+                        regularRecords.filter(
+                            (record) => record.doc.category === category,
+                        ),
+                        category,
+                    );
+                    if (groupRecords.length === 0) {
+                        return;
+                    }
+                    if (!firstVisibleRecord) {
+                        firstVisibleRecord = groupRecords[0];
+                    }
+                    renderRecordGroup(category, groupRecords);
+                });
+
+                const hasResults = visibleRecords.length > 0;
+                if (!hasResults) {
+                    showViewEmpty(
+                        activeViewId,
+                        "Inga dokument matchar sökningen.",
+                    );
+                    updateViewerUi();
+                }
+                if (
+                    hasResults &&
+                    activeDocumentPath() &&
+                    !visiblePaths.has(activeDocumentPath())
+                ) {
+                    selectDocumentForActiveView(firstVisibleRecord.doc);
+                } else {
+                    updateViewerUi();
+                }
+            }
+
+            async function loadSearchIndex() {
+                setIndexStatus("Laddar index...");
+                try {
+                    const response = await fetch("search-index.json", {
+                        cache: "no-store",
+                    });
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                    const index = await response.json();
+                    documents = Array.isArray(index.documents)
+                        ? index.documents
+                        : [];
+                    pdfTextIndexByPath = index.pdfTextIndexByPath || {};
+                    subjects = Array.isArray(index.subjects)
+                        ? index.subjects
+                        : buildSubjects();
+                    activeSubject =
+                        subjects.length === 1 ? subjects[0] : "Alla";
+                    categories = buildCategories();
+                    activeCategory = "Alla";
+                    activeViewId = "1";
+                    isSplitView = false;
+                    views[1] = emptyViewState();
+                    views[2] = emptyViewState();
+                    renderCourseNav();
+                    renderCategoryNav();
+                    if (documents.length) {
+                        selectDocumentForActiveView(documents[0]);
+                    }
+                    render();
+                    const warning = Array.isArray(index.warnings)
+                        ? index.warnings[0]
+                        : "";
+                    setIndexStatus(
+                        warning ? `Index laddat. ${warning}` : "Index laddat.",
+                        Boolean(warning),
+                    );
+                } catch (error) {
+                    documents = [];
+                    pdfTextIndexByPath = {};
+                    subjects = [];
+                    categories = [];
+                    renderCourseNav();
+                    renderCategoryNav();
+                    render();
+                    setIndexStatus(
+                        "Kunde inte läsa search-index.json. Kör start.sh.",
+                        true,
+                    );
+                }
+            }
+
+            async function rebuildSearchIndex() {
+                if (!rebuildButton) {
+                    return;
+                }
+                rebuildButton.disabled = true;
+                setIndexStatus("Bygger om index...");
+                try {
+                    const response = await fetch("/api/rebuild", {
+                        method: "POST",
+                        cache: "no-store",
+                    });
+                    const result = await response.json().catch(() => ({}));
+                    if (!response.ok || !result.ok) {
+                        throw new Error(
+                            result.error || `HTTP ${response.status}`,
+                        );
+                    }
+                    await loadSearchIndex();
+                    setIndexStatus(
+                        `Index uppdaterat. ${result.documents ?? documents.length} dokument.`,
+                    );
+                } catch (error) {
+                    setIndexStatus(
+                        "Kunde inte uppdatera index. Starta sidan via start.sh.",
+                        true,
+                    );
+                } finally {
+                    rebuildButton.disabled = false;
+                }
+            }
+
+            list.addEventListener("click", (event) => {
+                const target = event.target.closest("[data-search-page]");
+                if (!target) {
+                    return;
+                }
+                event.preventDefault();
+                event.stopPropagation();
+                const doc = documents.find(
+                    (item) => item.path === target.dataset.path,
+                );
+                jumpToDocumentHit(
+                    doc,
+                    Number(target.dataset.searchPage),
+                    target.dataset.jumpId,
+                    target.dataset.searchQuery,
+                );
+            });
+
+            search.addEventListener("input", render);
+            rebuildButton?.addEventListener("click", rebuildSearchIndex);
+            splitToggle.addEventListener("click", () => {
+                isSplitView = !isSplitView;
+                activeViewId = "1";
+                updateViewerUi();
+            });
+            document
+                .querySelectorAll(".view-panel-select")
+                .forEach((button) => {
+                    button.addEventListener("click", () => {
+                        setActiveView(
+                            button.closest(".view-panel").dataset.viewId,
+                        );
+                    });
+                });
+            document
+                .querySelectorAll(".clear-view-button")
+                .forEach((button) => {
+                    button.addEventListener("click", (event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        clearView(button.closest(".view-panel").dataset.viewId);
+                    });
+                });
+
+            loadSearchIndex();
+        </script>
+    </body>
+</html>
