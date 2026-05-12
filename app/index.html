@@ -4,6 +4,25 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Dokumentsök</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css"
+            integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM"
+            crossorigin="anonymous"
+        />
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js"
+            integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js"
+            integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz"
+            crossorigin="anonymous"
+            onload="window.__mathReady = true; window.renderMathInVisibleTextViewers && window.renderMathInVisibleTextViewers();"
+        ></script>
         <style>
             :root {
                 color-scheme: light;
@@ -207,15 +226,62 @@
                 display: flex;
                 gap: 8px;
                 padding: 12px 16px;
-                overflow-x: auto;
-                border-bottom: 1px solid var(--line);
                 background: #fff;
-                scrollbar-width: thin;
             }
 
             .course-nav {
+                overflow-x: auto;
+                border-bottom: 1px solid var(--line);
                 padding-bottom: 10px;
                 background: #f8f6f0;
+                scrollbar-width: thin;
+            }
+
+            .category-nav-shell {
+                border-bottom: 1px solid var(--line);
+                background: #fff;
+            }
+
+            .category-nav {
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding-bottom: 6px;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+
+            .category-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            .category-scrollbar {
+                position: relative;
+                height: 8px;
+                margin: 0 16px 12px;
+                border-radius: 999px;
+                background: #e3ddd2;
+                cursor: pointer;
+            }
+
+            .category-scrollbar-thumb {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                min-width: 32px;
+                border-radius: 999px;
+                background: #b6aa94;
+                transition: background 120ms ease;
+            }
+
+            .category-scrollbar:hover .category-scrollbar-thumb,
+            .category-scrollbar-thumb.dragging {
+                background: #9c977f;
+            }
+
+            .category-scrollbar.is-disabled {
+                opacity: 0.45;
+                cursor: default;
             }
 
             .course-nav button,
@@ -733,6 +799,13 @@
                 color: var(--muted);
             }
 
+            .text-viewer .katex-display {
+                margin: 0.9em 0;
+                overflow-x: auto;
+                overflow-y: hidden;
+                padding: 0.1em 0;
+            }
+
             .image-viewer {
                 flex: 1 1 auto;
                 width: 100%;
@@ -915,7 +988,12 @@
                 </header>
 
                 <nav class="course-nav" aria-label="Kurser"></nav>
-                <nav class="category-nav" aria-label="Kategorier"></nav>
+                <div class="category-nav-shell">
+                    <nav class="category-nav" aria-label="Kategorier"></nav>
+                    <div class="category-scrollbar" aria-hidden="true">
+                        <div class="category-scrollbar-thumb"></div>
+                    </div>
+                </div>
 
                 <section
                     id="document-list"
@@ -1078,12 +1156,19 @@
             const rebuildButton = document.querySelector("#rebuild-index");
             const courseNav = document.querySelector(".course-nav");
             const categoryNav = document.querySelector(".category-nav");
+            const categoryScrollbar = document.querySelector(
+                ".category-scrollbar",
+            );
+            const categoryScrollbarThumb = document.querySelector(
+                ".category-scrollbar-thumb",
+            );
             let courseButtons = [];
             let navButtons = [];
             let activeSubject = "Alla";
             let activeCategory = "Alla";
             let activeViewId = "1";
             let isSplitView = false;
+            let categoryScrollbarPointerOffset = 0;
             const views = {
                 1: {
                     doc: null,
@@ -1159,6 +1244,78 @@
                     left: clampedTarget,
                     behavior: "smooth",
                 });
+            }
+
+            function updateCategoryScrollbar() {
+                if (!categoryNav || !categoryScrollbar || !categoryScrollbarThumb) {
+                    return;
+                }
+                const maxScroll = Math.max(
+                    0,
+                    categoryNav.scrollWidth - categoryNav.clientWidth,
+                );
+                const trackWidth = categoryScrollbar.clientWidth;
+                const thumbWidth =
+                    maxScroll === 0
+                        ? trackWidth
+                        : Math.max(
+                              32,
+                              (categoryNav.clientWidth / categoryNav.scrollWidth) *
+                                  trackWidth,
+                          );
+                const maxThumbOffset = Math.max(0, trackWidth - thumbWidth);
+                const thumbOffset =
+                    maxScroll === 0
+                        ? 0
+                        : (categoryNav.scrollLeft / maxScroll) * maxThumbOffset;
+
+                categoryScrollbarThumb.style.width = `${thumbWidth}px`;
+                categoryScrollbarThumb.style.transform = `translateX(${thumbOffset}px)`;
+                categoryScrollbar.classList.toggle("is-disabled", maxScroll === 0);
+            }
+
+            function updateCategoryScrollFromPointer(clientX) {
+                if (!categoryNav || !categoryScrollbar || !categoryScrollbarThumb) {
+                    return;
+                }
+                const maxScroll = Math.max(
+                    0,
+                    categoryNav.scrollWidth - categoryNav.clientWidth,
+                );
+                if (maxScroll === 0) {
+                    return;
+                }
+                const trackRect = categoryScrollbar.getBoundingClientRect();
+                const thumbWidth = categoryScrollbarThumb.offsetWidth;
+                const maxThumbOffset = Math.max(0, trackRect.width - thumbWidth);
+                const thumbOffset = Math.min(
+                    maxThumbOffset,
+                    Math.max(
+                        0,
+                        clientX - trackRect.left - categoryScrollbarPointerOffset,
+                    ),
+                );
+                categoryNav.scrollLeft =
+                    maxThumbOffset === 0
+                        ? 0
+                        : (thumbOffset / maxThumbOffset) * maxScroll;
+            }
+
+            function onCategoryScrollbarPointerMove(event) {
+                event.preventDefault();
+                updateCategoryScrollFromPointer(event.clientX);
+            }
+
+            function stopCategoryScrollbarDrag() {
+                categoryScrollbarThumb?.classList.remove("dragging");
+                document.removeEventListener(
+                    "pointermove",
+                    onCategoryScrollbarPointerMove,
+                );
+                document.removeEventListener(
+                    "pointerup",
+                    stopCategoryScrollbarDrag,
+                );
             }
 
             function centerActiveCourseButton(button) {
@@ -1304,6 +1461,7 @@
                         render();
                     });
                 });
+                requestAnimationFrame(updateCategoryScrollbar);
             }
 
             function documentType(doc) {
@@ -1514,12 +1672,39 @@
                     .replace(/\*([^*]+)\*/g, "<em>$1</em>");
             }
 
+            function renderMathInTextViewer(element) {
+                if (
+                    !element ||
+                    typeof window.renderMathInElement !== "function" ||
+                    !window.__mathReady
+                ) {
+                    return;
+                }
+                window.renderMathInElement(element, {
+                    delimiters: [
+                        { left: "$$", right: "$$", display: true },
+                        { left: "$", right: "$", display: false },
+                        { left: "\\(", right: "\\)", display: false },
+                        { left: "\\[", right: "\\]", display: true },
+                    ],
+                    throwOnError: false,
+                });
+            }
+
+            window.renderMathInVisibleTextViewers = function () {
+                document
+                    .querySelectorAll(".text-viewer:not([hidden])")
+                    .forEach((element) => renderMathInTextViewer(element));
+            };
+
             function renderMarkdown(value) {
                 const lines = value.replace(/\r\n?/g, "\n").split("\n");
                 const html = [];
                 let listOpen = false;
                 let codeOpen = false;
+                let mathOpen = false;
                 let codeLines = [];
+                let mathLines = [];
 
                 const closeList = () => {
                     if (listOpen) {
@@ -1536,6 +1721,16 @@
                         codeLines = [];
                     }
                 };
+                const closeMath = () => {
+                    if (mathOpen) {
+                        const formula = mathLines.join("\n").trim();
+                        html.push(
+                            `<div class="math-block">$$${escapeHtml(formula)}$$</div>`,
+                        );
+                        mathOpen = false;
+                        mathLines = [];
+                    }
+                };
 
                 lines.forEach((line) => {
                     if (line.trim().startsWith("```")) {
@@ -1550,6 +1745,20 @@
                     }
                     if (codeOpen) {
                         codeLines.push(line);
+                        return;
+                    }
+                    if (line.trim() === "$$") {
+                        if (mathOpen) {
+                            closeMath();
+                        } else {
+                            closeList();
+                            mathOpen = true;
+                            mathLines = [];
+                        }
+                        return;
+                    }
+                    if (mathOpen) {
+                        mathLines.push(line);
                         return;
                     }
                     const heading = line.match(/^(#{1,3})\s+(.+)$/);
@@ -1579,6 +1788,7 @@
                 });
 
                 closeCode();
+                closeMath();
                 closeList();
                 return html.join("");
             }
@@ -1657,6 +1867,7 @@
                             : type === "html"
                               ? `<pre>${escapeHtml(htmlToSearchableText(text))}</pre>`
                               : `<pre>${escapeHtml(text)}</pre>`;
+                    renderMathInTextViewer(textViewer);
                     highlightAndScrollTextViewer(
                         viewId,
                         viewState(viewId).highlightQuery,
@@ -2252,6 +2463,7 @@
                         selectDocumentForActiveView(documents[0]);
                     }
                     render();
+                    updateCategoryScrollbar();
                     const warning = Array.isArray(index.warnings)
                         ? index.warnings[0]
                         : "";
@@ -2321,6 +2533,31 @@
                     target.dataset.jumpId,
                     target.dataset.searchQuery,
                 );
+            });
+
+            categoryNav?.addEventListener("scroll", updateCategoryScrollbar);
+            window.addEventListener("resize", updateCategoryScrollbar);
+            categoryScrollbar?.addEventListener("pointerdown", (event) => {
+                const maxScroll = Math.max(
+                    0,
+                    categoryNav.scrollWidth - categoryNav.clientWidth,
+                );
+                if (maxScroll === 0) {
+                    return;
+                }
+                event.preventDefault();
+                const thumbRect = categoryScrollbarThumb.getBoundingClientRect();
+                categoryScrollbarPointerOffset =
+                    event.target === categoryScrollbarThumb
+                        ? event.clientX - thumbRect.left
+                        : thumbRect.width / 2;
+                categoryScrollbarThumb.classList.add("dragging");
+                updateCategoryScrollFromPointer(event.clientX);
+                document.addEventListener(
+                    "pointermove",
+                    onCategoryScrollbarPointerMove,
+                );
+                document.addEventListener("pointerup", stopCategoryScrollbarDrag);
             });
 
             search.addEventListener("input", render);

@@ -85,56 +85,80 @@
 <body>
   <p class="screen-note">Print: A4 liggande, 100% skala, marginaler enligt sidan. MathJax laddas via CDN.</p>
   <section class="page page-1">
-    <!--<header class="page-title"><h1>Formelblad EMD</h1><span>Sida 1 / 2</span></header>--!>
+    <!--<header class="page-title"><h1>Formelblad EMD</h1><span>Sida 1 / 2</span></header>-->
     <div class="sheet-grid">
 <div class="col">
 <section class="block lm"> <h3>Likstromsmaskin</h3> <div class="formula"><div class="math-block">$$
-e_a = U_a-i_aR_a
+\text{Rotorekvationen:} \quad
+
+u_a = R_a \cdot i_a + \frac{d\psi_a}{dt} + e_a
+$$
+$$
+\text{Vid märkdrift:} \quad
+\frac{d\psi_a}{dt} = 0
+$$
+$$
+u_a = i_aR_a + e_a
 \quad [\mathrm V]
 $$</div></div>
+<div class="formula wide"><div class="math-block">$$
+\text{EMK, inducerad spänning:} \quad
+e_a = \psi_m \cdot \omega
+$$</div></div>
+<hr>
+<div class="formula wide"><div class="math-block">$$
+\text{Fältkretsens dynamik:} \quad
+\frac{d\psi_f}{dt} = u_f - R_f \cdot i_f
+$$
+$$
+\psi_m=L_m\cdot i_f
+$$</div></div>
+<hr>
 <div class="formula wide"><div class="math-block">$$
 \omega
 =\frac{e_a}{\Psi_m}
 \quad [\mathrm{rad/s}]
 \quad
 \left(
-\frac{\omega\cdot{60}}{2\pi}
+n=\frac{\omega\cdot{60}}{2\pi}
 \quad [\mathrm{rpm}]
 \right)
 $$</div></div>
 <div class="formula"><div class="math-block">$$
-T_{\mathrm{el}}
-=T_{\mathrm{brutto}}
-=\text{vridmoment}
+\text{Vridmoment:}
+\quad
+T_{\mathrm{el, brutto}}
 =\Psi_m i_a
 \quad [\mathrm{Nm}]
 $$</div></div>
 <div class="formula wide"><div class="math-block">$$
-T_{\mathrm{axel}}
-=T_{\mathrm{mek}}
-=
-\frac{P_{\mathrm{axel}}}{{2\pi n}/{60}}
-=
-\frac{P_{\mathrm{axel}}}{\omega}
-\quad [\mathrm{Nm}]
+T_{\mathrm{mek,axel}}
+=\frac{P_{\mathrm{axel,ut}}}{{n\cdot 2\pi}/{60}}
+=\frac{P_{\mathrm{axel,ut}}}{\omega}\quad [\mathrm{Nm}]
 $$</div></div>
 <div class="formula"><div class="math-block">$$
+\text{Resistiva effektförluster i rotorn:}
+$$
+$$
 P_a=R_a i_a^2
 \Rightarrow
 i_a=\sqrt{\frac{P_a}{R_a}}
 $$</div></div>
-<div class="formula"><div class="math-block">$$
+<!-- <div class="formula"><div class="math-block">$$
 \text{Vridmoment generellt: }
 T=\Psi_m i_a
 \Rightarrow
 i_a=\frac{T}{\Psi_m}
-$$</div></div>
+$$</div></div> -->
 <div class="formula"><div class="math-block">$$
+\text{LM med konstant }\psi\text{ (flöde):}
+$$
+$$
 L_a\frac{di_a}{dt}
-=U_a-e_a-R_ai_a
+=u_a-e_a-R_ai_a
 \approx
-L_a\frac{\Delta i}{\Delta t}
-=U-e_a
+L_a\frac{di_a}{dt}
+=u_a-e_a
 $$</div></div>
 <div class="formula"><div class="math-block">$$
 \text{Spänningstidsytan för puls:}\quad
@@ -148,9 +172,19 @@ $$</div></div>
 <div class="formula"><div class="math-block">$$
 P_{\mathrm{friktion}}
 =\omega_{\mathrm{el}}\,T_{\mathrm{friktion}}
-$$</div></div> </section>
-<section class="block lm"> <h3>LM dynamisk karakteristik</h3> <div class="formula"><div class="math-block">$$
-\tau_a={L_a}/{R_a}
+$$
+$$
+P_{in} = u_n i_n
+$$</div></div> 
+<h3>LM dynamisk karakteristik</h3> 
+<div class="formula"><div class="math-block">$$
+\text{Motorns elektriska tidskonstant:} \quad
+$$
+$$
+\tau_a={L_a}/{R_a}\quad[s]
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\tau_{\mathrm{mek}}=\frac{J \cdot R_a}{\Psi_m^2}\quad[s]
 $$</div></div>
 <div class="formula"><div class="math-block">$$
 T_{\mathrm{last}}=0\,\mathrm{Nm}
@@ -161,16 +195,18 @@ $$</div></div>
 i_a=\frac{T_{\mathrm{last}}}{\Psi_m}=0\,\mathrm A
 $$</div></div>
 <div class="formula"><div class="math-block">$$
-\tau_{\mathrm{mek}}
-=
-\frac{J \cdot R_a}{\Psi_m^2}
-$$</div></div>
-<div class="formula"><div class="math-block">$$
 T_L
 =-\frac{\Psi_m^2}{R_a}\omega
 +\frac{\Psi_m}{R_a}u_a
 =-a\omega+b u_a
-$$</div></div> </section>
+$$</div></div> 
+<div class="formula"><div class="math-block">$$
+\text{I seriemotorn:}\quad i_f=i_a=i
+$$
+$$
+T=L_m\cdot i^2
+$$</div></div>
+</section>
 </div>
 <div class="col">
 <section class="block vektor"> <h3>Vektorer</h3> <div class="formula"><div class="math-block">$$
@@ -201,62 +237,27 @@ $$</div></div>
 \frac{d\bar\Psi_s}{dt}
 =\bar u_s-R_s\bar i_s
 \approx \bar u_s
-\quad \text{(om }R_s\text{ f&#246;rsummas)}
-$$</div></div>
-<h3>Effektinvarians</h3> <div class="formula wide ultra"><div class="math-block">$$
-\bar S
-=S_\alpha+jS_\beta
-=
-\sqrt{\frac{2}{3}}
-\left[
-S_a+S_b e^{j\frac{2\pi}{3}}
-+S_c e^{j\frac{4\pi}{3}}
-\right]
-=
-\sqrt{\frac{3}{2}}S_a
-+j\frac{1}{\sqrt{2}}(S_b+S_c)
-$$</div></div>
-<div class="formula"><div class="math-block">$$
-\begin{cases}
-S_\alpha=\sqrt{\frac{3}{2}}\,S_a\
-S_\beta=\frac{1}{\sqrt{2}}(S_b+S_c)
-\end{cases}
-$$</div></div>
-<div class="formula"><div class="math-block">$$
-\begin{cases}
-S_a=\sqrt{\frac{2}{3}}\,S_\alpha\
-S_b=-\frac{1}{\sqrt{6}}S_\alpha+\frac{1}{\sqrt{2}}S_\beta\
-S_c=-\frac{1}{\sqrt{6}}S_\alpha-\frac{1}{\sqrt{2}}S_\beta
-\end{cases}
+\quad \text{(om }R_s\text{ försummas)}
 $$</div></div>
 <hr>
 <div class="formula"><div class="math-block">$$
-P_{in}=3U_{\mathrm{in}}I_{\mathrm{in}}\cos(\varphi)
-$$</div></div>
-<div class="formula"><div class="math-block">$$
-\varphi=\arg(U_{in})-\arg(I_{in})
-$$</div></div>
-<div class="formula"><div class="math-block">$$
-1=\cos^2(\varphi)+\sin^2(\varphi)
-$$</div></div>
-<div class="formula"><div class="math-block">$$
-P_{\mathrm{in}}=\sqrt{3}\,U_h I_n \cos(\varphi)
-$$</div></div>
-<div class="formula"><div class="math-block">$$
-P_{\mathrm{ut}}=T_{\mathrm{ut}}\cdot\omega_{\mathrm{ut}}
+U_n = \lvert \bar u_s \rvert = U_h = \sqrt{3}\,U_{fas} = \sqrt{\frac{3}{2}}\,\hat U_{fas}
+$$
+$$
+\text{Y-koppling:}(I_h = I_f)\quad \Delta\text{-koppling:}(I_h = \sqrt{3}\cdot I_f)
 $$</div></div>
 <hr>
 <div class="formula"><div class="math-block">$$
 \bar u_s(t)
 =
-\sqrt{\frac{3}{2}}\hat u_f e^{j\omega t}
+\sqrt{\frac{3}{2}}\hat U_f e^{j\omega t}
 =U_h e^{j\omega t}
 $$</div></div>
 <div class="formula"><div class="math-block">$$
 \bar i_s(t)
 =
-\sqrt{\frac{3}{2}}\hat i_f e^{j(\omega t-\varphi)}
-=\sqrt{3}\,I\,e^{j(\omega t-\varphi)}
+\sqrt{\frac{3}{2}}\hat I_f e^{j(\omega t-\varphi)}
+=\sqrt{3}\,I_f\,e^{j(\omega t-\varphi)}
 $$</div></div>
 <div class="formula"><div class="math-block">$$
 \bar e
@@ -271,11 +272,47 @@ $$</div></div>
 \frac{U_h}{\omega}e^{j(\omega t-\pi/2)}
 $$</div></div>
 <div class="formula"><div class="math-block">$$
-\Psi_s(t)
+\text{Med hänsyn till }R_s \Rightarrow
+$$
+$$
+\bar\Psi_s(t)
 =
 \frac{U_h}{\omega}e^{j(\omega t-\pi/2)}
-+j\frac{R_s}{\omega}\sqrt{3}\,i\,e^{j(\omega t-\pi/2)}
-$$</div></div> </section>
++j\frac{R_s I_h}{\omega} e^{j(\omega t-\pi/2)}
+$$</div></div>
+<h3>Effektinvarians</h3> <div class="formula wide ultra"><div class="math-block">$$
+\bar S = S_\alpha+jS_\beta =
+\sqrt{\frac{2}{3}} \left[S_a+S_b e^{j\frac{2\pi}{3}}+S_c e^{j\frac{4\pi}{3}}\right] \quad
+$$
+</div></div>
+<div class="formula"><div class="math-block">$$
+\begin{cases}
+S_\alpha=\sqrt{\frac{3}{2}} S_a \\
+S_\beta=\frac{1}{\sqrt{2}}(S_b+S_c)
+\end{cases}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\begin{cases}
+S_a=\sqrt{\frac{2}{3}} S_\alpha \\
+S_b=-\frac{1}{\sqrt{6}}S_\alpha+\frac{1}{\sqrt{2}} S_\beta \\
+S_c=-\frac{1}{\sqrt{6}}S_\alpha-\frac{1}{\sqrt{2}} S_\beta
+\end{cases}
+$$</div></div>
+<hr>
+<div class="formula"><div class="math-block">$$
+P_{in}=3U_{\mathrm{f}}I_{\mathrm{f}}\cos(\varphi)=\sqrt{3}\,U_h I_h \cos(\varphi)
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+P_{\mathrm{ut}}=\omega\cdot T_{\mathrm{ut}}
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+\varphi=\arg(U_{in})-\arg(I_{in})
+$$</div></div>
+<div class="formula"><div class="math-block">$$
+1=\cos^2(\varphi)+\sin^2(\varphi)
+$$</div></div>
+<hr>
+</section>
 </div>
 <div class="col">
 <section class="block grund"><h3>Asynkronmaksin</h3><div class="formula"><div class="math-block">$$
@@ -430,7 +467,7 @@ $$</div></div>
     </div>
   </section>
   <section class="page page-2">
-    <!--<header class="page-title"><h1>Formelblad EMD</h1><span>Sida 2 / 2</span></header>--!>
+    <!--<header class="page-title"><h1>Formelblad EMD</h1><span>Sida 2 / 2</span></header>-->
     <div class="sheet-grid">
 <div class="col">
 <section class="block grund"> <h3>$T \propto \omega^2 \quad \text{(2 driftfall)}$</h3> <div class="formula"><div class="math-block">$$

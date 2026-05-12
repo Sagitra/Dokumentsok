@@ -273,6 +273,20 @@
       "category": "Kursinfo",
       "path": "EIEF10/Kursinfo/Kursprogram EIEF10 - VT2026 260429.pdf",
       "type": "pdf"
+    },
+    {
+      "title": "begrepp",
+      "subject": "EIEF10",
+      "category": "anteckningar",
+      "path": "EIEF10/anteckningar/begrepp.md",
+      "type": "md"
+    },
+    {
+      "title": "HOWTOMARKDOWN",
+      "subject": "EIEF10",
+      "category": "anteckningar",
+      "path": "EIEF10/anteckningar/HOWTOMARKDOWN.md",
+      "type": "md"
     }
   ],
   "categories": [
@@ -283,12 +297,27 @@
     "Tentor",
     "Lösningsförslag",
     "Labbar",
-    "Kursinfo"
+    "Kursinfo",
+    "anteckningar"
   ],
   "subjects": [
     "EIEF10"
   ],
   "pdfTextIndexByPath": {
+    "EIEF10/anteckningar/begrepp.md": [
+      {
+        "page": 1,
+        "text": "# Begrepp ## EMK `EMK` står för `elektromotorisk kraft`. I kursmaterialet används begreppet för den spänning som induceras i en lindning när det magnetiska flödet ändras relativt lindningen. ### Grundidé I `Flik 5_Elmek.pdf` beskrivs ankarlindningen som den lindning där EMK induceras. Det kan ske antingen för att huvudflödet roterar relativt lindningen, eller för att lindningen roterar relativt huvudflödet. I `Flik 6_LM.pdf` förklaras att den inducerade spänningen i en likströmsmaskin ofta kallas mot-EMK, eftersom den enligt Lenz lag motverkar den ström som orsakar den. När motorn står stilla är hastigheten noll, och då har ingen mot-EMK byggts upp ännu. Därför kan startströmmen bli hög. ### Grundekvationer För likströmsmaskinen gäller sambandet: $$ e_a = \\omega \\cdot \\psi_m $$ Det betyder att EMK:n ökar när - vinkelhastigheten $\\omega$ ökar - det sammanlänkade flödet $\\psi_m$ ökar I likströmsmaskinens rotorkrets kan spänningsekvationen skrivas som: $$ u_a = R_a \\cdot i_a + \\frac{d\\psi_a}{dt} + e_a $$ eller omarrangerat: $$ \\frac{d\\psi_a}{dt} = u_a - e_a - R_a \\cdot i_a $$ Om man antar linjär ankarkrets så att $\\psi_a = L_a i_a$, får man också: $$ L_a \\frac{di_a}{dt} = u_a - e_a - R_a \\cdot i_a $$ ### Tolkning EMK är alltså inte en extra matningsspänning, utan en internt inducerad spänning i maskinen. Praktiskt betyder det: - låg hastighet ger låg EMK - hög hastighet ger hög EMK - högre EMK minskar den ström som en given matningsspänning driver genom rotorn Det är därför motorn vid start kan ta stor ström, medan strömmen sjunker när motorn kommer upp i varv. ### Specialfall: stationär märkdrift I märkdrift menar man normalt stationär märkdrift. Då antar man att driftfallet är konstant i tiden, så att ström, varvtal och flöden inte förändras. Därför blir $$ \\frac{d\\psi_a}{dt} = 0 $$ Insatt i den allmänna rotorekvationen ger detta: $$ 0 = u_a - e_a - R_a \\cdot i_a $$ vilket kan skrivas som: $$ e_a = u_a - R_a \\cdot i_a $$ Vid märkdrift sätter man sedan in märkstorheterna - $u_a = u_n$ - $i_a = i_n$ och får: $$ e_a = u_n - R_a \\cdot i_n $$ Detta är alltså inte en ny ekvation, utan den vanliga spänningsekvationen i det speciella fallet att maskinen går i stationär märkdrift. ### Specialfall: spänningstidsyta för en puls När likströmsmaskinen matas med pulserad spänning, till exempel från en chopper eller en fyrkvadrantomvandlare, utgår man från: $$ L_a \\frac{di_a}{dt} = u_a - e_a - R_a \\cdot i_a $$ Under ett kort switchintervall gör man ofta två approximationer: - den inducerade spänningen $e_a$ hinner nästan inte ändras - resistansfallet $R_a i_a$ är litet jämfört med den pålagda puls-spänningen Då kan ekvationen approximeras till: $$ L_a \\frac{di}{dt} \\approx U - e_a $$ här är $U$ den spänningsnivå som omvandlaren lägger på under just det intervallet. Om spänningen hålls ungefär konstant under tiden $\\Delta t$, kan derivatan approximeras med en ändringskvot: $$ \\frac{di}{dt} \\approx \\frac{\\Delta i}{\\Delta t} $$ Insatt i ekvationen ger detta: $$ L_a \\frac{\\Delta i}{\\Delta t} \\approx U - e_a $$ och efter omarrangering: $$ \\Delta t\\,(U - e_a) = L_a\\,\\Delta i $$ Detta kallas spänningstidsytan för en puls. Tolkningen är att: - större spänningsskillnad $U - e_a$ ger snabbare strömändring - längre pulstid $\\Delta t$ ger större strömändring - större induktans $L_a$ gör att strömmen ändras långsammare Sambandet används därför för att uppskatta strömrippel i pulsmatade likströmsmaskiner. ### Viktigt i kursen I kursens tentor, övningar och lösningsförslag används EMK ofta för att - beräkna varvtal från spänning och flöde - förstå varför startströmmen blir hög - koppla ihop elektrisk modell och mekanisk hastighet - uppskatta strömrippel vid pulsmatning ### Lokala källor Följande ställen användes som underlag: - `EIEF10/Kurskompendium/Flik 5_Elmek.pdf`: sidan `7-5` - `EIEF10/Kurskompendium/Flik 6_LM.pdf`: sidorna `8-3`, `8-4`, `8-5`, `8-6`, `8-7` - `EIEF10/Formelblad/formelblad.html`: avsnittet om likströmsmaskin och spänningstidsyta - `EIEF10/Lösningsförslag/Losning EIEF10-20140530.pdf`: sidan `1` - `EIEF10/Lösningsförslag/Losning EIEF10-20160603.pdf`: `LM 5`, där sambandet används för en spänningspuls ### En mening att minnas `EMK är den inducerade spänningen i lindningen, och i en motor uppträder den ofta som en motspänning som växer med varvtalet.` ## Varför kan man skriva $\\frac{d\\psi_s}{dt} \\approx u_s$? ### Utgångspunkt I kursmaterialet för asynkronmaskinen skrivs statorekvationen som: $$ \\frac{d\\psi_s}{dt} = u_s - R_s \\cdot i_s $$ Här är - $u_s$ statorspänningsvektorn - $R_s i_s$ spänningsfallet över statorlindningarnas resistans - $\\psi_s$ det sammanlänkade statorflödet ### Varför får man approximera? Approximationen bygger på att termen $R_s i_s$ ofta är liten jämfört med $u_s$. Då blir skillnaden mellan $$ u_s - R_s i_s $$ och $$ u_s $$ liten, och man kan därför skriva: $$ \\frac{d\\psi_s}{dt} \\approx u_s $$ Det betyder inte att resistansen är exakt noll, utan att resistansspänningsfallet är så litet att det kan försummas i just den analysen. ### Fysikalisk tolkning Om man försummar $R_s i_s$ så bestäms flödesvektorns förändring nästan helt av den pålagda spänningsvektorn. Därför brukar man säga att: - flödesvektorns spets rör sig i spänningsvektorns riktning - hastigheten hos flödesvektorns spets är proportionell mot spänningsvektorns längd Det är precis detta som används när man förklarar hur spänningsvektorer driver statorflödet i en asynkronmaskin. ### När är approximationen rimlig? Approximationen är ofta bra när - matningsspänningen är relativt stor - statorresistansen är liten - man inte arbetar vid alltför låga varvtal eller frekvenser I de fallen dominerar spänningen $u_s$, medan resistansfallet $R_s i_s$ bara blir en liten korrektion. ### När är approximationen inte lika bra? Vid låga varvtal eller låga frekvenser blir spänningen mindre, och då blir resistansfallet $R_s i_s$ inte längre försumbart. Då kan man inte utan vidare skriva $$ \\frac{d\\psi_s}{dt} \\approx u_s $$ utan man måste ta med resistanstermen för att få rätt flöde och rätt moment. ### Kort sammanfattning Man får approximera till bara $u_s$ därför att statorresistansens spänningsfall ofta är mycket mindre än den pålagda statorspänningen. Då är det spänningen som i första approximation styr hur statorflödet förändras. ### Lokala källor - `EIEF10/Kurskompendium/Flik 8_AM.pdf`: ekvationerna `(10.9)` och `(10.10)` - `EIEF10/Kurskompendium/Flik 8_AM.pdf`: texten direkt efter `(10.10)`, där tolkningen av flödesvektorn ges - `EIEF10/Kurskompendium/Flik 8_AM.pdf`: avsnittet om spänningsvektorer och flödespolygon, där approximationen används - `EIEF10/Övningar/Exercises2016.pdf`: uppgifterna där man uttryckligen antar `R_s = 0`",
+        "source": "md"
+      }
+    ],
+    "EIEF10/anteckningar/HOWTOMARKDOWN.md": [
+      {
+        "page": 1,
+        "text": "# HOWTOMARKDOWN Den här filen beskriver hur man skriver Markdown i `EIEF10/anteckningar`, baserat på: - `https://ashki23.github.io/markdown-latex.html#markdown` Den är också anpassad till hur den nuvarande renderaren i den här appen faktiskt fungerar. ## Viktig skillnad Guiden ovan visar allmän Markdown- och LaTeX-syntax. I den här appen fungerar just nu främst: - rubriker med `#`, `##`, `###` - kursiv text med `*text*` - fet text med `**text**` - punktlistor med `-` eller `*` - inline-kod med en backtick på varje sida, till exempel `kod` - kodblock med trippel-backticks - inline-matte med `$...$` - blockmatte med `$$ ... $$` Allt annat bör betraktas som osäkert tills man har testat det i visaren. ## Grundregler Skriv vanlig text som vanliga stycken. Lämna en tom rad mellan stycken och mellan större block. Exempel: ```md Detta är första stycket. Detta är andra stycket. ``` ## Rubriker Använd `#` för huvudrubrik, `##` för underrubrik och `###` för nivån under. Exempel: ```md # Begrepp ## EMK ### Kort förklaring ``` Rekommendation: - använd högst `###` i anteckningarna - håll rubriker korta ## Betoning Kursiv text: ```md *kursiv text* ``` Fet text: ```md **fet text** ``` Inline-kod: ```md `psi_m` ``` Rekommendation: - använd inline-kod för filnamn, variabelnamn och kort syntax - använd inte inline-kod för vanliga meningar ## Listor Punktlista: ```md - första punkt - andra punkt - tredje punkt ``` Det går också att använda `*`: ```md * första punkt * andra punkt ``` Rekommendation: - använd `-` konsekvent i anteckningarna - undvik djupa nästlade listor ## Kodblock Använd tre backticks före och efter blocket. Du skriver alltså: - en rad som börjar med tre backticks - sedan innehållet - sedan en ny rad med tre backticks Exempel på innehåll i ett kodblock: ```text e_a = omega * psi_m u_a = R_a * i_a + dpsi_a/dt + omega * psi_m ``` Om du vill visa Markdown-kod som exempel, märk gärna blocket med `md`. Exempel på innehåll i ett Markdown-kodblock: ```text ## Rubrik Vanlig text ``` ## Matematik i text Inline-matte skrivs med en dollar på varje sida: ```md EMK:n ges av $e_a = \\omega \\psi_m$. ``` Exempel i löptext: ```md vinkelhastigheten $\\omega$ ökar ``` ## Matematik på egen rad Blockmatte skrivs med dubbla dollar före och efter formeln: ```md $$ e_a = \\omega \\cdot \\psi_m $$ ``` Ett större exempel: ```md $$ u_a = R_a \\cdot i_a + \\frac{d\\psi_a}{dt} + \\omega \\cdot \\psi_m $$ ``` Regler: - lägg `$$` på egna rader - ha ingen vanlig text på samma rad som `$$` - lämna gärna en tom rad före och efter blockmatte ## Vanliga LaTeX-kommandon ### Grekiska bokstäver ```md \\omega \\psi \\phi \\alpha \\beta \\gamma \\delta \\Delta \\lambda \\mu ``` Exempel: ```md $\\omega$, $\\psi_m$, $\\Delta t$ ``` ### Index och exponenter Nedsänkt index: ```md $u_a$ ``` Upphöjt tal: ```md $x^2$ ``` Båda samtidigt: ```md $x_i^2$ ``` ### Bråk ```md \\frac{a}{b} ``` Exempel: ```md $\\frac{d\\psi_a}{dt}$ ``` ### Multiplikation Vanligast i anteckningar: ```md \\cdot ``` Exempel: ```md $T = \\psi_m \\cdot i_a$ ``` ### Rot ```md \\sqrt{x} ``` Exempel: ```md $\\sqrt{R^2 + X^2}$ ``` ### Relationer och symboler ```md = \\approx \\neq < > \\leq \\geq \\in \\notin \\to \\Rightarrow \\pm ``` Exempel: ```md $0 \\leq x \\leq 1$ ``` ## Rekommenderad stil i anteckningarna Skriv begrepp så här: ```md ## EMK Kort definition i vanlig text. ### Kort förklaring Förklaring i 1 till 3 stycken. $$ e_a = \\omega \\cdot \\psi_m $$ - punkt 1 - punkt 2 ``` ## Så bör formler skrivas Bra: ```md $$ u_a = R_a \\cdot i_a + \\frac{d\\psi_a}{dt} + \\omega \\cdot \\psi_m $$ ``` Mindre bra: ```md $$ u_a = R_a i_a + ... $$ ``` Skäl: - block blir tydligare - färre renderingsproblem - lättare att läsa och redigera ## Så bör variabler skrivas i löptext Bra: ```md strömmen $i_a$ ökar när hastigheten $\\omega$ ökar ``` Undvik: ```md strömmen ia ökar när hastigheten omega ökar ``` ## Så bör filer och källor skrivas Filnamn skrivs med inline-kod: ```md `Flik 6_LM.pdf` ``` Sökvägar skrivs också med inline-kod: ```md `EIEF10/anteckningar/begrepp.md` ``` ## Syntax från referensen som inte är säker i den här visaren Den länkade guiden tar också upp: - länkar som ``[text](url)`` - bilder som ``![alt](url)`` - citat med ``>`` - horisontella linjer med ``---`` - tabeller - YAML-header - HTML inuti markdown De är giltiga som allmän Markdown-syntax enligt referensen, men de är inte säkert fullt stödda i den nuvarande renderaren här. Om du vill använda dem, testa först i visaren. ## Kort fusklapp Rubrik: ```md ## Rubrik ``` Punktlista: ```md - punkt ``` Inline-kod: ```md `kod` ``` Inline-matte: ```md $\\psi_m$ ``` Blockmatte: ```md $$ e_a = \\omega \\cdot \\psi_m $$ ``` Kodblock: Skriv först en rad med tre backticks, sedan innehållet, och avsluta med tre backticks på en egen rad. ## Källa Sammanfattad och anpassad från: - `https://ashki23.github.io/markdown-latex.html#markdown`",
+        "source": "md"
+      }
+    ],
     "EIEF10/Formelblad/Flik 1_Formelblad.pdf": [
       {
         "page": 1,
@@ -304,7 +333,7 @@
     "EIEF10/Formelblad/formelblad.html": [
       {
         "page": 1,
-        "text": "Formelblad EMD - 2 sidor Print: A4 liggande, 100% skala, marginaler enligt sidan. MathJax laddas via CDN. Likstromsmaskin $$ e_a = U_a-i_aR_a \\quad [\\mathrm V] $$ $$ \\omega =\\frac{e_a}{\\Psi_m} \\quad [\\mathrm{rad/s}] \\quad \\left( \\frac{\\omega\\cdot{60}}{2\\pi} \\quad [\\mathrm{rpm}] \\right) $$ $$ T_{\\mathrm{el}} =T_{\\mathrm{brutto}} =\\text{vridmoment} =\\Psi_m i_a \\quad [\\mathrm{Nm}] $$ $$ T_{\\mathrm{axel}} =T_{\\mathrm{mek}} = \\frac{P_{\\mathrm{axel}}}{{2\\pi n}/{60}} = \\frac{P_{\\mathrm{axel}}}{\\omega} \\quad [\\mathrm{Nm}] $$ $$ P_a=R_a i_a^2 \\Rightarrow i_a=\\sqrt{\\frac{P_a}{R_a}} $$ $$ \\text{Vridmoment generellt: } T=\\Psi_m i_a \\Rightarrow i_a=\\frac{T}{\\Psi_m} $$ $$ L_a\\frac{di_a}{dt} =U_a-e_a-R_ai_a \\approx L_a\\frac{\\Delta i}{\\Delta t} =U-e_a $$ $$ \\text{Spänningstidsytan för puls:}\\quad \\Delta t\\,(U-e_a)=L_a\\Delta i $$ $$ T_{\\mathrm{friktion}} =T_{\\mathrm{brutto}}-T_{\\mathrm{netto}} $$ $$ P_{\\mathrm{friktion}} =\\omega_{\\mathrm{el}}\\,T_{\\mathrm{friktion}} $$ LM dynamisk karakteristik $$ \\tau_a={L_a}/{R_a} $$ $$ T_{\\mathrm{last}}=0\\,\\mathrm{Nm} \\quad \\text{(eller stat. tillstånd)} $$ $$ i_a=\\frac{T_{\\mathrm{last}}}{\\Psi_m}=0\\,\\mathrm A $$ $$ \\tau_{\\mathrm{mek}} = \\frac{J \\cdot R_a}{\\Psi_m^2} $$ $$ T_L =-\\frac{\\Psi_m^2}{R_a}\\omega +\\frac{\\Psi_m}{R_a}u_a =-a\\omega+b u_a $$ Vektorer $$ \\bar i_s = \\sqrt{\\frac{2}{3}} \\left( i_u+i_v e^{j\\frac{2\\pi}{3}}+i_w e^{j\\frac{4\\pi}{3}} \\right) $$ $$ \\bar u_s = \\sqrt{\\frac{2}{3}} \\left( u_u+u_v e^{j\\frac{2\\pi}{3}}+u_w e^{j\\frac{4\\pi}{3}} \\right) $$ $$ \\bar\\Psi_s = \\sqrt{\\frac{2}{3}} \\left( \\Psi_u+\\Psi_v e^{j\\frac{2\\pi}{3}}+\\Psi_w e^{j\\frac{4\\pi}{3}} \\right) $$ $$ \\frac{d\\bar\\Psi_s}{dt} =\\bar u_s-R_s\\bar i_s \\approx \\bar u_s \\quad \\text{(om }R_s\\text{ försummas)} $$ Effektinvarians $$ \\bar S =S_\\alpha+jS_\\beta = \\sqrt{\\frac{2}{3}} \\left[ S_a+S_b e^{j\\frac{2\\pi}{3}} +S_c e^{j\\frac{4\\pi}{3}} \\right] = \\sqrt{\\frac{3}{2}}S_a +j\\frac{1}{\\sqrt{2}}(S_b+S_c) $$ $$ \\begin{cases} S_\\alpha=\\sqrt{\\frac{3}{2}}\\,S_a\\ S_\\beta=\\frac{1}{\\sqrt{2}}(S_b+S_c) \\end{cases} $$ $$ \\begin{cases} S_a=\\sqrt{\\frac{2}{3}}\\,S_\\alpha\\ S_b=-\\frac{1}{\\sqrt{6}}S_\\alpha+\\frac{1}{\\sqrt{2}}S_\\beta\\ S_c=-\\frac{1}{\\sqrt{6}}S_\\alpha-\\frac{1}{\\sqrt{2}}S_\\beta \\end{cases} $$ $$ P_{in}=3U_{\\mathrm{in}}I_{\\mathrm{in}}\\cos(\\varphi) $$ $$ \\varphi=\\arg(U_{in})-\\arg(I_{in}) $$ $$ 1=\\cos^2(\\varphi)+\\sin^2(\\varphi) $$ $$ P_{\\mathrm{in}}=\\sqrt{3}\\,U_h I_n \\cos(\\varphi) $$ $$ P_{\\mathrm{ut}}=T_{\\mathrm{ut}}\\cdot\\omega_{\\mathrm{ut}} $$ $$ \\bar u_s(t) = \\sqrt{\\frac{3}{2}}\\hat u_f e^{j\\omega t} =U_h e^{j\\omega t} $$ $$ \\bar i_s(t) = \\sqrt{\\frac{3}{2}}\\hat i_f e^{j(\\omega t-\\varphi)} =\\sqrt{3}\\,I\\,e^{j(\\omega t-\\varphi)} $$ $$ \\bar e = j\\omega\\bar\\Psi_m = \\omega\\bar\\Psi_m e^{j(\\theta_s+\\pi/2)} $$ $$ \\bar\\Psi_s(t) = \\frac{U_h}{\\omega}e^{j(\\omega t-\\pi/2)} $$ $$ \\Psi_s(t) = \\frac{U_h}{\\omega}e^{j(\\omega t-\\pi/2)} +j\\frac{R_s}{\\omega}\\sqrt{3}\\,i\\,e^{j(\\omega t-\\pi/2)} $$ Asynkronmaksin $$ P=\\bar U\\bar I =u_a i_a+u_b i_b+u_c i_c $$ $$ T =\\frac{P}{\\omega} = \\frac{\\sqrt{3}\\,U_n I\\cos\\varphi}{\\omega} = \\bar\\Psi_s\\times\\bar i_s $$ $$ \\text{Synkrona varvtal:}\\quad n_s=\\frac{120f}{p} \\quad (p=\\text{poler}) $$ $$ \\text{Eftersläppning:}\\quad s=\\frac{n_s-n}{n_s} $$ $$ \\text{Rotorfrekvens:}\\quad f_2=s f_1 $$ AM Dynamiska ekv: $$ \\frac{d\\bar\\Psi_s}{dt} =\\bar u- R_s\\bar i_s $$ $$ \\frac{d\\bar\\Psi_r}{dt} =j\\omega\\varphi_r-R_r\\bar i_r $$ $$ \\bar\\Psi_s =L_s\\bar i_s+L_m\\bar i_m $$ $$ T =\\bar\\Psi_s\\times\\bar i_s =\\bar\\Psi_s\\sqrt{3}\\,I\\cos\\varphi $$ AM Ekvivalentkrets $$ \\bar i_s = \\frac{\\bar u_s} { R_s+j\\omega_1L_{s\\lambda} + \\frac{ \\left({R_r}/{s}+j\\omega_1L_{r\\lambda}\\right) j\\omega_1L_m }{ {R_r}/{s}+j\\omega_1L_{r\\lambda}+j\\omega_1L_m } } $$ $$ \\bar i_r = \\frac{\\bar u_s}{R_s+R_r/s+j\\omega{L_k}} $$ $$ \\bar i_m\\approx |I_0|e^{-j90^0}\\quad(I_0\\text{ korts.}) $$ $$ \\bar i_m=\\bar i_s-\\bar i_r $$ $$ I_0=\\frac{230}{\\sqrt{3}\\,2\\pi f L_m} $$ $$ \\text{Om endast } L_k \\text{ givet:} \\qquad L_s=L_r=\\frac{L_k}{2} $$ forts. Ekvivalentkrets? $$ \\bar i_r \\approx \\frac{\\bar u_s} {R_s+{R_r}/{s}+j\\omega L_k} \\qquad \\left(\\bar u_s = \\frac{U_n}{\\sqrt{3}}\\right) $$ $$ \\bar i_s = \\bar i_r+\\bar i_m \\quad \\text{linjeström?} $$ $$ P_{12}=3\\frac{R_r}{s_n}\\,\\bar i_r^2 \\quad [\\mathrm W] $$ AM förluster $$ P_{12} = \\frac{P_2(\\text{axel})}{1-s} \\approx \\frac{P_{\\mathrm{ut}}}{1-s} \\quad\\left(\\text{Om magnetisering och friktion försummas}\\right) $$ $$ P_{12} = 3\\frac{R_r}{s}i_n^2 \\Rightarrow R_r= \\frac{P_{12}}{3i_n^2}\\,s $$ $$ P_{12,\\mathrm{start}} = R_r \\frac{U_n^2} {(R_s+R_r)^2+X_k^2} $$ $$ Z_{\\mathrm{start}}^2 = (R_s+R_r)^2+X_k^2 = R_r\\frac{U_n^2}{P_{12,\\mathrm{start}}} $$ $$ R_s+R_r = Z_{\\mathrm{start}}\\cos\\varphi $$ $$ X_k = Z_{\\mathrm{start}}\\sin\\varphi $$ $$ L_k=\\frac{X_k}{2\\pi f} $$ $ \\text{(Bestäm parametrar utan korts.)} $ $$ (\\text{linjarisera}) \\quad T=\\frac{\\Delta T}{\\Delta\\omega}+m $$ $T \\propto \\omega^2 \\quad \\text{(2 driftfall)}$ $$ T = k \\omega^2 \\Rightarrow k = \\frac{T}{\\omega^2} $$ $$ T \\approx k s; \\qquad T_{ii}=\\frac{T_i}{4} \\Rightarrow s_{ii}=\\frac{s_i}{4} $$ $$ T = k n^2 $$ Kortslutningsprov $$ R_k = \\frac{P_k}{3 I_k^2} $$ $$ Z_k = \\sqrt{R_k^2+\\omega_1 L_k^2} = \\frac{U_k}{\\sqrt{3} I_k} $$ $$ L_k = \\frac{\\sqrt{Z_k^2-R_k^2}}{\\omega_1} \\qquad (\\omega_1 = 2\\pi f) $$ $$ R_s = \\frac{R_{\\text{mätt}}}{2} = R_k - R_r $$ Tomgång och $\\Gamma$-modellen $$ P_{\\mathrm{Fe}} = P_0 - 3R_s I_0^2 = 3\\frac{{U_0^2}/{\\sqrt{3}}}{R_m} = \\frac{U_0^2}{R_m} $$ $$ R_m = \\frac{U_0^2}{P_{\\mathrm{Fe}}} $$ $$ \\omega_1 L_m \\approx Z_0 = \\frac{U_0/\\sqrt{3}}{I_0} = \\frac{U_0}{3I_0} $$ $$ L_m = \\frac{Z_0}{\\omega_1} \\qquad (\\omega_1=2\\pi f) \\Rightarrow L_s = L_m+L_{s\\lambda} $$ $$ R_m =\\frac{\\left({U_0}/{\\sqrt{3}}\\right)^2}{P_0/3} =\\frac{U_0^2}{P_0} $$ $$ Q_0 =\\sqrt{S_0^2-P_0^2} =\\sqrt{(3U_0 I_0)^2-P_0^2} \\quad [\\mathrm{VAr}] $$ $$ X_m=\\omega_0 L_m =\\frac{\\left({U_0}/{\\sqrt{3}}\\right)^2}{Q_0/3} =\\frac{U_0^2}{Q_0} $$ $$ R_r = R_k-R_s $$ Klippmoment $$ T_{\\mathrm{klipp}} = \\frac{U_h^2} {\\omega_s\\,2\\left(R_s+\\sqrt{R_s^2+X_k^2}\\right)} $$ $$ \\text{Vid } T_k =\\frac{R_r}{s_k} =\\sqrt{R_s^2+X_k^2} $$ $$ X_k=\\sqrt{Z_k^2-R_k^2} $$ $$ i_k= \\frac{U_{\\mathrm{fas}}}{\\sqrt{\\left(R_s+{R_r}/{s_k}\\right)^2+X_k^2}} $$ 2 sätt att eliminera stationera hastighetsinferens $$ \\text{1. PI-reg} \\qquad \\text{2. framkoppla lastmoment} $$ Varvtalsreglering $$ \\varepsilon_{\\mathrm{fet}} \\left(=\\frac{T_L}{k}\\right) = \\omega^\\ast-\\omega $$ $$ T_i \\to \\infty \\Rightarrow s \\to 0 $$ $$ T_L=\\frac{P}{\\omega} $$ $$ \\omega(s) =\\left((\\omega^\\ast(s)-\\omega(s))k-T_L\\right)\\frac{1}{Js} \\Rightarrow $$ $$ \\Rightarrow \\omega(s)=\\omega^\\ast(s)-\\frac{T_L}{k} \\Rightarrow \\omega^\\ast-\\omega=\\frac{T_L}{k} $$ $$ J\\frac{d\\omega}{dt}=T_d-T_L \\Rightarrow \\Delta t =J\\frac{\\Delta\\omega}{T_d-T_L} $$ $$ =J\\frac{\\,(\\text{ändring}/ \\text{nuvarande})\\omega {2\\pi}/{60}}{T_d-T_L} \\quad [s] $$ $$ G(s) =\\frac{i(s)}{i^\\ast(s)} =\\frac{T(s)}{T^\\ast(s)} =\\frac{1}{sT_s+1} $$ $$ \\text{Polerna:} \\quad s=\\frac{1}{2T_s} \\quad \\text{om} \\quad K_{\\omega}=\\frac{J}{4T_s} $$ $$ \\frac{T_i s+1}{T_i s} $$ $$ \\frac{1}{T_{TC} s+1} $$ $$ \\frac{1}{s} $$ Strömreglering $$ \\text{Regulatorparametrar (utsignal I-reg)}\\Rightarrow $$ $$ u^\\ast(k) = \\frac{L_a}{T_s}\\left(i^\\ast(k)-i(k)\\right) +\\frac{R_s}{2}\\left(i^\\ast(k)+i(k)\\right) $$ $$ +\\psi_m \\omega(k) $$ $$ u^\\ast(k) \\approx k\\left(i^\\ast(k)-i(k)\\right)+\\psi_m\\omega(k) $$ $$ \\{\\psi_m\\omega(k) \\Rightarrow k \\quad \\text{konstant}\\} $$ $$ u = Ri + L\\frac{di}{dt}+e $$ $$ \\bar u(k,k+1)=u^\\ast(k) $$ $$ i(k+1)=i^\\ast(k) $$ $$ \\bar e(k,k+1)=e(k) $$ $$ i(k)=\\sum_{n=0}^{n=k-1}\\left(i^\\ast(n)-i(n)\\right) $$ $$ u^\\ast(k) = \\left(\\frac{L}{T_s}+\\frac{R}{2}\\right)\\cdot \\left(i^\\ast(k)-i(k)\\right) $$$$ +R\\cdot\\,i(k)+e(k) $$ $$ \\{\\psi_m\\omega(k) \\Rightarrow k \\quad \\text{konstant}\\} $$ $$ \\{\\psi_m\\omega(k) \\Rightarrow k \\quad \\text{konstant}\\} $$ $$ \\Delta t = \\frac{L_a}{U_{dc}-\\Psi_m\\omega}\\,\\Delta i $$ $$ \\Delta i = \\frac{U_{dc}-\\Psi_m\\omega}{L_a}\\,D\\,T_{\\mathrm{sw}} = \\frac{U_{dc}-e_a}{L_a} \\frac{e_a}{U_{dc}} T_{\\mathrm{sw}} \\quad \\Rightarrow \\text{matte...} $$ $$ \\text{derivera om man får en spänning } \\approx \\text{ex.} \\frac{1}{2}U_{dc} $$ $$ n_{\\mathrm{mek}}=\\frac{2\\cdot n_{\\mathrm{el}}}{p} ,\\quad \\omega_{\\mathrm{el}} =\\frac{\\omega_{\\mathrm{mek}}\\cdot {p}}{2} $$ $$ T_{\\mathrm{el}}=\\frac{2}{p}T_{\\mathrm{mek}} $$ $$ I_{sy}=\\frac{T_{\\mathrm{el}}}{\\Psi_m} $$ Elektromekanik $$ T=\\Psi_m i_{sy} $$ $$ |\\Psi|=\\sqrt{3}\\,\\text{värde} $$ $$ T_{\\mathrm{el}}=|\\bar\\Psi|\\,|I| $$ $$ P_{\\mathrm{in}}\\ \\text{i SMLM}: \\qquad P_{\\mathrm{in}}=U i_a+i_f^2R_f $$ $$ \\text{Förutser i en SM: } P_{\\mathrm{mag}}=U_{fn}i_{fn} $$ Synkronmaskin $$ I_{\\mathrm{fas,eff}} \\Rightarrow |I|=\\sqrt{3}\\,I_{\\mathrm{fas}} $$ $$ |\\Psi_m| = \\sqrt{3}\\,\\frac{\\Psi_{m,\\mathrm{fas}}}{\\sqrt{2}} ,\\quad I_s=\\sqrt{3}\\,I_{\\max} ,\\quad T_{\\max}=\\Psi_{mx}\\,i_{sy} $$ $$ U_{h,\\mathrm{eff}} \\Rightarrow \\frac{U_{dc}}{\\sqrt{2}} \\quad \\text{(symmetrerande)} $$ $$ n_{\\max}\\ \\text{om}\\ i_{sx}=i_{sy}=0 $$ $$ \\bar u_s^{xy} = R_s\\bar i_s^{xy} +L_s\\frac{d\\bar i_s^{xy}}{dt} +j\\omega_{\\mathrm{el}}L_s\\bar{i}_s^{xy} +j\\omega_{el}\\bar\\psi_m^{xy} \\quad $$ $$ i_{sx}=i_{sy}=0 \\Rightarrow \\bar U_s^{xy}=j\\omega\\bar\\Psi_m^{xy} \\Rightarrow |\\bar U_s^{xy}|=|\\omega\\bar\\Psi_m^{xy}| \\Rightarrow $$ $$ \\Rightarrow \\omega_{\\mathrm{el}} = \\frac{|\\bar U_s^{xy}|}{|\\bar\\Psi_m^{xy}|} \\Rightarrow \\omega_{\\mathrm{mek}} = \\frac{\\omega_{\\mathrm{el}}}{p/2} $$ $$ \\bar{U}_{sx} =R_s i_{sx}-\\omega L_m i_{sy}-\\omega\\Psi_{my} $$ $$ \\bar{U}_{sy} =R_s i_{sy}+\\omega L_m i_{sx}+\\omega\\Psi_{mx} $$ $$ i^{\\alpha\\beta} =\\sqrt{3}\\,I\\,e^{j\\omega t} $$ $$ i_s=i_{sx}+j i_{sy} $$ $$ V_{dc} =\\frac{V_{DC}-(-V_{DC})}{2} $$ $$ U_{ut}=\\frac{V_{DC}}{\\sqrt{2}} $$",
+        "text": "Formelblad EMD - 2 sidor Print: A4 liggande, 100% skala, marginaler enligt sidan. MathJax laddas via CDN. Likstromsmaskin $$ \\text{Rotorekvationen:} \\quad u_a = R_a \\cdot i_a + \\frac{d\\psi_a}{dt} + e_a $$ $$ \\text{Vid märkdrift:} \\quad \\frac{d\\psi_a}{dt} = 0 $$ $$ u_a = i_aR_a + e_a \\quad [\\mathrm V] $$ $$ \\text{EMK, inducerad spänning:} \\quad e_a = \\psi_m \\cdot \\omega $$ $$ \\text{Fältkretsens dynamik:} \\quad \\frac{d\\psi_f}{dt} = u_f - R_f \\cdot i_f $$ $$ \\psi_m=L_m\\cdot i_f $$ $$ \\omega =\\frac{e_a}{\\Psi_m} \\quad [\\mathrm{rad/s}] \\quad \\left( n=\\frac{\\omega\\cdot{60}}{2\\pi} \\quad [\\mathrm{rpm}] \\right) $$ $$ \\text{Vridmoment:} \\quad T_{\\mathrm{el, brutto}} =\\Psi_m i_a \\quad [\\mathrm{Nm}] $$ $$ T_{\\mathrm{mek,axel}} =\\frac{P_{\\mathrm{axel,ut}}}{{n\\cdot 2\\pi}/{60}} =\\frac{P_{\\mathrm{axel,ut}}}{\\omega}\\quad [\\mathrm{Nm}] $$ $$ \\text{Resistiva effektförluster i rotorn:} $$ $$ P_a=R_a i_a^2 \\Rightarrow i_a=\\sqrt{\\frac{P_a}{R_a}} $$ $$ \\text{LM med konstant }\\psi\\text{ (flöde):} $$ $$ L_a\\frac{di_a}{dt} =u_a-e_a-R_ai_a \\approx L_a\\frac{di_a}{dt} =u_a-e_a $$ $$ \\text{Spänningstidsytan för puls:}\\quad \\Delta t\\,(U-e_a)=L_a\\Delta i $$ $$ T_{\\mathrm{friktion}} =T_{\\mathrm{brutto}}-T_{\\mathrm{netto}} $$ $$ P_{\\mathrm{friktion}} =\\omega_{\\mathrm{el}}\\,T_{\\mathrm{friktion}} $$ LM dynamisk karakteristik $$ \\text{Motorns elektriska tidskonstant:} \\quad $$ $$ \\tau_a={L_a}/{R_a}\\quad[s] $$ $$ \\tau_{\\mathrm{mek}}=\\frac{J \\cdot R_a}{\\Psi_m^2}\\quad[s] $$ $$ T_{\\mathrm{last}}=0\\,\\mathrm{Nm} \\quad \\text{(eller stat. tillstånd)} $$ $$ i_a=\\frac{T_{\\mathrm{last}}}{\\Psi_m}=0\\,\\mathrm A $$ $$ T_L =-\\frac{\\Psi_m^2}{R_a}\\omega +\\frac{\\Psi_m}{R_a}u_a =-a\\omega+b u_a $$ $$ \\text{I seriemotorn:}\\quad i_f=i_a=i $$ $$ T=L_m\\cdot i^2 $$ Vektorer $$ \\bar i_s = \\sqrt{\\frac{2}{3}} \\left( i_u+i_v e^{j\\frac{2\\pi}{3}}+i_w e^{j\\frac{4\\pi}{3}} \\right) $$ $$ \\bar u_s = \\sqrt{\\frac{2}{3}} \\left( u_u+u_v e^{j\\frac{2\\pi}{3}}+u_w e^{j\\frac{4\\pi}{3}} \\right) $$ $$ \\bar\\Psi_s = \\sqrt{\\frac{2}{3}} \\left( \\Psi_u+\\Psi_v e^{j\\frac{2\\pi}{3}}+\\Psi_w e^{j\\frac{4\\pi}{3}} \\right) $$ $$ \\frac{d\\bar\\Psi_s}{dt} =\\bar u_s-R_s\\bar i_s \\approx \\bar u_s \\quad \\text{(om }R_s\\text{ försummas)} $$ $$ \\bar u_s(t) = \\sqrt{\\frac{3}{2}}\\hat u_f e^{j\\omega t} =U_h e^{j\\omega t} $$ $$ \\bar i_s(t) = \\sqrt{\\frac{3}{2}}\\hat i_f e^{j(\\omega t-\\varphi)} =\\sqrt{3}\\,I\\,e^{j(\\omega t-\\varphi)} $$ $$ \\bar e = j\\omega\\bar\\Psi_m = \\omega\\bar\\Psi_m e^{j(\\theta_s+\\pi/2)} $$ $$ \\bar\\Psi_s(t) = \\frac{U_h}{\\omega}e^{j(\\omega t-\\pi/2)} $$ $$ \\text{Med hänsyn till }R_s \\Rightarrow $$ $$ \\bar\\Psi_s(t) = \\frac{U_h}{\\omega}e^{j(\\omega t-\\pi/2)} +j\\frac{R_s}{\\omega}\\sqrt{3}\\,i\\,e^{j(\\omega t-\\pi/2)} $$ Effektinvarians $$ \\bar S =S_\\alpha+jS_\\beta = \\sqrt{\\frac{2}{3}} \\left[ S_a+S_b e^{j\\frac{2\\pi}{3}} +S_c e^{j\\frac{4\\pi}{3}} \\right] = \\sqrt{\\frac{3}{2}}S_a +j\\frac{1}{\\sqrt{2}}(S_b+S_c) $$ $$ \\begin{cases} S_\\alpha=\\sqrt{\\frac{3}{2}}\\,S_a\\ S_\\beta=\\frac{1}{\\sqrt{2}}(S_b+S_c) \\end{cases} $$ $$ \\begin{cases} S_a=\\sqrt{\\frac{2}{3}}\\,S_\\alpha\\ S_b=-\\frac{1}{\\sqrt{6}}S_\\alpha+\\frac{1}{\\sqrt{2}}S_\\beta\\ S_c=-\\frac{1}{\\sqrt{6}}S_\\alpha-\\frac{1}{\\sqrt{2}}S_\\beta \\end{cases} $$ $$ P_{in}=3U_{\\mathrm{in}}I_{\\mathrm{in}}\\cos(\\varphi) $$ $$ P_{\\mathrm{in}}=\\sqrt{3}\\,U_h I_h \\cos(\\varphi) $$ $$ P_{\\mathrm{in}}=u_n i_n $$ $$ P_{\\mathrm{ut}}=\\omega\\cdot T_{\\mathrm{ut}} $$ $$ \\varphi=\\arg(U_{in})-\\arg(I_{in}) $$ $$ 1=\\cos^2(\\varphi)+\\sin^2(\\varphi) $$ Asynkronmaksin $$ P=\\bar U\\bar I =u_a i_a+u_b i_b+u_c i_c $$ $$ T =\\frac{P}{\\omega} = \\frac{\\sqrt{3}\\,U_n I\\cos\\varphi}{\\omega} = \\bar\\Psi_s\\times\\bar i_s $$ $$ \\text{Synkrona varvtal:}\\quad n_s=\\frac{120f}{p} \\quad (p=\\text{poler}) $$ $$ \\text{Eftersläppning:}\\quad s=\\frac{n_s-n}{n_s} $$ $$ \\text{Rotorfrekvens:}\\quad f_2=s f_1 $$ AM Dynamiska ekv: $$ \\frac{d\\bar\\Psi_s}{dt} =\\bar u- R_s\\bar i_s $$ $$ \\frac{d\\bar\\Psi_r}{dt} =j\\omega\\varphi_r-R_r\\bar i_r $$ $$ \\bar\\Psi_s =L_s\\bar i_s+L_m\\bar i_m $$ $$ T =\\bar\\Psi_s\\times\\bar i_s =\\bar\\Psi_s\\sqrt{3}\\,I\\cos\\varphi $$ AM Ekvivalentkrets $$ \\bar i_s = \\frac{\\bar u_s} { R_s+j\\omega_1L_{s\\lambda} + \\frac{ \\left({R_r}/{s}+j\\omega_1L_{r\\lambda}\\right) j\\omega_1L_m }{ {R_r}/{s}+j\\omega_1L_{r\\lambda}+j\\omega_1L_m } } $$ $$ \\bar i_r = \\frac{\\bar u_s}{R_s+R_r/s+j\\omega{L_k}} $$ $$ \\bar i_m\\approx |I_0|e^{-j90^0}\\quad(I_0\\text{ korts.}) $$ $$ \\bar i_m=\\bar i_s-\\bar i_r $$ $$ I_0=\\frac{230}{\\sqrt{3}\\,2\\pi f L_m} $$ $$ \\text{Om endast } L_k \\text{ givet:} \\qquad L_s=L_r=\\frac{L_k}{2} $$ forts. Ekvivalentkrets? $$ \\bar i_r \\approx \\frac{\\bar u_s} {R_s+{R_r}/{s}+j\\omega L_k} \\qquad \\left(\\bar u_s = \\frac{U_n}{\\sqrt{3}}\\right) $$ $$ \\bar i_s = \\bar i_r+\\bar i_m \\quad \\text{linjeström?} $$ $$ P_{12}=3\\frac{R_r}{s_n}\\,\\bar i_r^2 \\quad [\\mathrm W] $$ AM förluster $$ P_{12} = \\frac{P_2(\\text{axel})}{1-s} \\approx \\frac{P_{\\mathrm{ut}}}{1-s} \\quad\\left(\\text{Om magnetisering och friktion försummas}\\right) $$ $$ P_{12} = 3\\frac{R_r}{s}i_n^2 \\Rightarrow R_r= \\frac{P_{12}}{3i_n^2}\\,s $$ $$ P_{12,\\mathrm{start}} = R_r \\frac{U_n^2} {(R_s+R_r)^2+X_k^2} $$ $$ Z_{\\mathrm{start}}^2 = (R_s+R_r)^2+X_k^2 = R_r\\frac{U_n^2}{P_{12,\\mathrm{start}}} $$ $$ R_s+R_r = Z_{\\mathrm{start}}\\cos\\varphi $$ $$ X_k = Z_{\\mathrm{start}}\\sin\\varphi $$ $$ L_k=\\frac{X_k}{2\\pi f} $$ $ \\text{(Bestäm parametrar utan korts.)} $ $$ (\\text{linjarisera}) \\quad T=\\frac{\\Delta T}{\\Delta\\omega}+m $$ $T \\propto \\omega^2 \\quad \\text{(2 driftfall)}$ $$ T = k \\omega^2 \\Rightarrow k = \\frac{T}{\\omega^2} $$ $$ T \\approx k s; \\qquad T_{ii}=\\frac{T_i}{4} \\Rightarrow s_{ii}=\\frac{s_i}{4} $$ $$ T = k n^2 $$ Kortslutningsprov $$ R_k = \\frac{P_k}{3 I_k^2} $$ $$ Z_k = \\sqrt{R_k^2+\\omega_1 L_k^2} = \\frac{U_k}{\\sqrt{3} I_k} $$ $$ L_k = \\frac{\\sqrt{Z_k^2-R_k^2}}{\\omega_1} \\qquad (\\omega_1 = 2\\pi f) $$ $$ R_s = \\frac{R_{\\text{mätt}}}{2} = R_k - R_r $$ Tomgång och $\\Gamma$-modellen $$ P_{\\mathrm{Fe}} = P_0 - 3R_s I_0^2 = 3\\frac{{U_0^2}/{\\sqrt{3}}}{R_m} = \\frac{U_0^2}{R_m} $$ $$ R_m = \\frac{U_0^2}{P_{\\mathrm{Fe}}} $$ $$ \\omega_1 L_m \\approx Z_0 = \\frac{U_0/\\sqrt{3}}{I_0} = \\frac{U_0}{3I_0} $$ $$ L_m = \\frac{Z_0}{\\omega_1} \\qquad (\\omega_1=2\\pi f) \\Rightarrow L_s = L_m+L_{s\\lambda} $$ $$ R_m =\\frac{\\left({U_0}/{\\sqrt{3}}\\right)^2}{P_0/3} =\\frac{U_0^2}{P_0} $$ $$ Q_0 =\\sqrt{S_0^2-P_0^2} =\\sqrt{(3U_0 I_0)^2-P_0^2} \\quad [\\mathrm{VAr}] $$ $$ X_m=\\omega_0 L_m =\\frac{\\left({U_0}/{\\sqrt{3}}\\right)^2}{Q_0/3} =\\frac{U_0^2}{Q_0} $$ $$ R_r = R_k-R_s $$ Klippmoment $$ T_{\\mathrm{klipp}} = \\frac{U_h^2} {\\omega_s\\,2\\left(R_s+\\sqrt{R_s^2+X_k^2}\\right)} $$ $$ \\text{Vid } T_k =\\frac{R_r}{s_k} =\\sqrt{R_s^2+X_k^2} $$ $$ X_k=\\sqrt{Z_k^2-R_k^2} $$ $$ i_k= \\frac{U_{\\mathrm{fas}}}{\\sqrt{\\left(R_s+{R_r}/{s_k}\\right)^2+X_k^2}} $$ 2 sätt att eliminera stationera hastighetsinferens $$ \\text{1. PI-reg} \\qquad \\text{2. framkoppla lastmoment} $$ Varvtalsreglering $$ \\varepsilon_{\\mathrm{fet}} \\left(=\\frac{T_L}{k}\\right) = \\omega^\\ast-\\omega $$ $$ T_i \\to \\infty \\Rightarrow s \\to 0 $$ $$ T_L=\\frac{P}{\\omega} $$ $$ \\omega(s) =\\left((\\omega^\\ast(s)-\\omega(s))k-T_L\\right)\\frac{1}{Js} \\Rightarrow $$ $$ \\Rightarrow \\omega(s)=\\omega^\\ast(s)-\\frac{T_L}{k} \\Rightarrow \\omega^\\ast-\\omega=\\frac{T_L}{k} $$ $$ J\\frac{d\\omega}{dt}=T_d-T_L \\Rightarrow \\Delta t =J\\frac{\\Delta\\omega}{T_d-T_L} $$ $$ =J\\frac{\\,(\\text{ändring}/ \\text{nuvarande})\\omega {2\\pi}/{60}}{T_d-T_L} \\quad [s] $$ $$ G(s) =\\frac{i(s)}{i^\\ast(s)} =\\frac{T(s)}{T^\\ast(s)} =\\frac{1}{sT_s+1} $$ $$ \\text{Polerna:} \\quad s=\\frac{1}{2T_s} \\quad \\text{om} \\quad K_{\\omega}=\\frac{J}{4T_s} $$ $$ \\frac{T_i s+1}{T_i s} $$ $$ \\frac{1}{T_{TC} s+1} $$ $$ \\frac{1}{s} $$ Strömreglering $$ \\text{Regulatorparametrar (utsignal I-reg)}\\Rightarrow $$ $$ u^\\ast(k) = \\frac{L_a}{T_s}\\left(i^\\ast(k)-i(k)\\right) +\\frac{R_s}{2}\\left(i^\\ast(k)+i(k)\\right) $$ $$ +\\psi_m \\omega(k) $$ $$ u^\\ast(k) \\approx k\\left(i^\\ast(k)-i(k)\\right)+\\psi_m\\omega(k) $$ $$ \\{\\psi_m\\omega(k) \\Rightarrow k \\quad \\text{konstant}\\} $$ $$ u = Ri + L\\frac{di}{dt}+e $$ $$ \\bar u(k,k+1)=u^\\ast(k) $$ $$ i(k+1)=i^\\ast(k) $$ $$ \\bar e(k,k+1)=e(k) $$ $$ i(k)=\\sum_{n=0}^{n=k-1}\\left(i^\\ast(n)-i(n)\\right) $$ $$ u^\\ast(k) = \\left(\\frac{L}{T_s}+\\frac{R}{2}\\right)\\cdot \\left(i^\\ast(k)-i(k)\\right) $$$$ +R\\cdot\\,i(k)+e(k) $$ $$ \\{\\psi_m\\omega(k) \\Rightarrow k \\quad \\text{konstant}\\} $$ $$ \\{\\psi_m\\omega(k) \\Rightarrow k \\quad \\text{konstant}\\} $$ $$ \\Delta t = \\frac{L_a}{U_{dc}-\\Psi_m\\omega}\\,\\Delta i $$ $$ \\Delta i = \\frac{U_{dc}-\\Psi_m\\omega}{L_a}\\,D\\,T_{\\mathrm{sw}} = \\frac{U_{dc}-e_a}{L_a} \\frac{e_a}{U_{dc}} T_{\\mathrm{sw}} \\quad \\Rightarrow \\text{matte...} $$ $$ \\text{derivera om man får en spänning } \\approx \\text{ex.} \\frac{1}{2}U_{dc} $$ $$ n_{\\mathrm{mek}}=\\frac{2\\cdot n_{\\mathrm{el}}}{p} ,\\quad \\omega_{\\mathrm{el}} =\\frac{\\omega_{\\mathrm{mek}}\\cdot {p}}{2} $$ $$ T_{\\mathrm{el}}=\\frac{2}{p}T_{\\mathrm{mek}} $$ $$ I_{sy}=\\frac{T_{\\mathrm{el}}}{\\Psi_m} $$ Elektromekanik $$ T=\\Psi_m i_{sy} $$ $$ |\\Psi|=\\sqrt{3}\\,\\text{värde} $$ $$ T_{\\mathrm{el}}=|\\bar\\Psi|\\,|I| $$ $$ P_{\\mathrm{in}}\\ \\text{i SMLM}: \\qquad P_{\\mathrm{in}}=U i_a+i_f^2R_f $$ $$ \\text{Förutser i en SM: } P_{\\mathrm{mag}}=U_{fn}i_{fn} $$ Synkronmaskin $$ I_{\\mathrm{fas,eff}} \\Rightarrow |I|=\\sqrt{3}\\,I_{\\mathrm{fas}} $$ $$ |\\Psi_m| = \\sqrt{3}\\,\\frac{\\Psi_{m,\\mathrm{fas}}}{\\sqrt{2}} ,\\quad I_s=\\sqrt{3}\\,I_{\\max} ,\\quad T_{\\max}=\\Psi_{mx}\\,i_{sy} $$ $$ U_{h,\\mathrm{eff}} \\Rightarrow \\frac{U_{dc}}{\\sqrt{2}} \\quad \\text{(symmetrerande)} $$ $$ n_{\\max}\\ \\text{om}\\ i_{sx}=i_{sy}=0 $$ $$ \\bar u_s^{xy} = R_s\\bar i_s^{xy} +L_s\\frac{d\\bar i_s^{xy}}{dt} +j\\omega_{\\mathrm{el}}L_s\\bar{i}_s^{xy} +j\\omega_{el}\\bar\\psi_m^{xy} \\quad $$ $$ i_{sx}=i_{sy}=0 \\Rightarrow \\bar U_s^{xy}=j\\omega\\bar\\Psi_m^{xy} \\Rightarrow |\\bar U_s^{xy}|=|\\omega\\bar\\Psi_m^{xy}| \\Rightarrow $$ $$ \\Rightarrow \\omega_{\\mathrm{el}} = \\frac{|\\bar U_s^{xy}|}{|\\bar\\Psi_m^{xy}|} \\Rightarrow \\omega_{\\mathrm{mek}} = \\frac{\\omega_{\\mathrm{el}}}{p/2} $$ $$ \\bar{U}_{sx} =R_s i_{sx}-\\omega L_m i_{sy}-\\omega\\Psi_{my} $$ $$ \\bar{U}_{sy} =R_s i_{sy}+\\omega L_m i_{sx}+\\omega\\Psi_{mx} $$ $$ i^{\\alpha\\beta} =\\sqrt{3}\\,I\\,e^{j\\omega t} $$ $$ i_s=i_{sx}+j i_{sy} $$ $$ V_{dc} =\\frac{V_{DC}-(-V_{DC})}{2} $$ $$ U_{ut}=\\frac{V_{DC}}{\\sqrt{2}} $$",
         "source": "html"
       }
     ],
@@ -4041,10 +4070,28 @@
   "warnings": [],
   "_meta": {
     "files": {
+      "EIEF10/anteckningar/begrepp.md": {
+        "signature": {
+          "size": 7069,
+          "mtime_ns": 1778607311137169500
+        },
+        "pages": 1,
+        "ocrPages": 0,
+        "type": "md"
+      },
+      "EIEF10/anteckningar/HOWTOMARKDOWN.md": {
+        "signature": {
+          "size": 5073,
+          "mtime_ns": 1778599227073990000
+        },
+        "pages": 1,
+        "ocrPages": 0,
+        "type": "md"
+      },
       "EIEF10/Formelblad/Flik 1_Formelblad.pdf": {
         "signature": {
           "size": 39279,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 2,
         "ocrPages": 0,
@@ -4052,8 +4099,8 @@
       },
       "EIEF10/Formelblad/formelblad.html": {
         "signature": {
-          "size": 23237,
-          "mtime_ns": 1778511316000000000
+          "size": 24060,
+          "mtime_ns": 1778607380106799400
         },
         "pages": 1,
         "ocrPages": 0,
@@ -4062,7 +4109,7 @@
       "EIEF10/Föreläsningar/F1-2_EMD introduktion_2025.pdf": {
         "signature": {
           "size": 3129034,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 37,
         "ocrPages": 37,
@@ -4071,7 +4118,7 @@
       "EIEF10/Föreläsningar/F10_Asynkronmaskinen sammanfattning.pdf": {
         "signature": {
           "size": 4302923,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 24,
         "ocrPages": 0,
@@ -4080,7 +4127,7 @@
       "EIEF10/Föreläsningar/F11_Synkronmaskinen.pdf": {
         "signature": {
           "size": 4095723,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 24,
         "ocrPages": 0,
@@ -4089,7 +4136,7 @@
       "EIEF10/Föreläsningar/F12_Motorreglering grunder.pdf": {
         "signature": {
           "size": 3637411,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 25,
         "ocrPages": 0,
@@ -4098,7 +4145,7 @@
       "EIEF10/Föreläsningar/F13_Strömreglering.pdf": {
         "signature": {
           "size": 4680413,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 29,
         "ocrPages": 0,
@@ -4107,7 +4154,7 @@
       "EIEF10/Föreläsningar/F14_Motorval.pdf": {
         "signature": {
           "size": 2324650,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 21,
         "ocrPages": 0,
@@ -4116,7 +4163,7 @@
       "EIEF10/Föreläsningar/F3_Elektriska drivsystems mekanik_2025.pdf": {
         "signature": {
           "size": 2785013,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 19,
         "ocrPages": 15,
@@ -4125,7 +4172,7 @@
       "EIEF10/Föreläsningar/F4_Elektromekanisk energiomvandling_2025.pdf": {
         "signature": {
           "size": 4211581,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 42,
         "ocrPages": 41,
@@ -4134,7 +4181,7 @@
       "EIEF10/Föreläsningar/F5_Likströmsmaskin Modulation.pdf": {
         "signature": {
           "size": 3551716,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 42,
         "ocrPages": 35,
@@ -4143,7 +4190,7 @@
       "EIEF10/Föreläsningar/F6_Vektormodulering.pdf": {
         "signature": {
           "size": 4318058,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 28,
         "ocrPages": 0,
@@ -4152,7 +4199,7 @@
       "EIEF10/Föreläsningar/F7_Asynkronmaskinen Introduktion_2026.pdf": {
         "signature": {
           "size": 6481323,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 48,
         "ocrPages": 0,
@@ -4161,7 +4208,7 @@
       "EIEF10/Föreläsningar/F8-9_Asynkronmaskinen 2-3.pdf": {
         "signature": {
           "size": 4617595,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 36,
         "ocrPages": 0,
@@ -4170,7 +4217,7 @@
       "EIEF10/Kursinfo/Kursprogram EIEF10 - VT2026 260429.pdf": {
         "signature": {
           "size": 134856,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 2,
         "ocrPages": 0,
@@ -4179,7 +4226,7 @@
       "EIEF10/Kurskompendium/Flik 10_Appendix B.pdf": {
         "signature": {
           "size": 357002,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 24,
         "ocrPages": 1,
@@ -4188,7 +4235,7 @@
       "EIEF10/Kurskompendium/Flik 11_Modulation.pdf": {
         "signature": {
           "size": 317637,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 17,
         "ocrPages": 0,
@@ -4197,7 +4244,7 @@
       "EIEF10/Kurskompendium/Flik 12_Current Controll.pdf": {
         "signature": {
           "size": 410682,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 20,
         "ocrPages": 0,
@@ -4206,7 +4253,7 @@
       "EIEF10/Kurskompendium/Flik 13_SpeedControl.pdf": {
         "signature": {
           "size": 85242,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 5,
         "ocrPages": 0,
@@ -4215,7 +4262,7 @@
       "EIEF10/Kurskompendium/Flik 3_Elm översikt.pdf": {
         "signature": {
           "size": 2080120,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 35,
         "ocrPages": 0,
@@ -4224,7 +4271,7 @@
       "EIEF10/Kurskompendium/Flik 4_El drivsystem.pdf": {
         "signature": {
           "size": 372410,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 23,
         "ocrPages": 0,
@@ -4233,7 +4280,7 @@
       "EIEF10/Kurskompendium/Flik 5_Elmek.pdf": {
         "signature": {
           "size": 589386,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 25,
         "ocrPages": 0,
@@ -4242,7 +4289,7 @@
       "EIEF10/Kurskompendium/Flik 6_LM.pdf": {
         "signature": {
           "size": 597609,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 24,
         "ocrPages": 0,
@@ -4251,7 +4298,7 @@
       "EIEF10/Kurskompendium/Flik 7_SM.pdf": {
         "signature": {
           "size": 455832,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 14,
         "ocrPages": 0,
@@ -4260,7 +4307,7 @@
       "EIEF10/Kurskompendium/Flik 8_AM.pdf": {
         "signature": {
           "size": 1065082,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 41,
         "ocrPages": 0,
@@ -4269,7 +4316,7 @@
       "EIEF10/Kurskompendium/Flik 9_Motorreglering.pdf": {
         "signature": {
           "size": 299292,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 11,
         "ocrPages": 0,
@@ -4278,7 +4325,7 @@
       "EIEF10/Labbar/Lab1_EIEF10_EMD_260304b.pdf": {
         "signature": {
           "size": 169954,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 4,
         "ocrPages": 0,
@@ -4287,7 +4334,7 @@
       "EIEF10/Labbar/Labb2_EIEF10_EMD.pdf": {
         "signature": {
           "size": 187264,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 6,
         "ocrPages": 0,
@@ -4296,7 +4343,7 @@
       "EIEF10/Lösningsförslag/Losning EIEF10-20140530.pdf": {
         "signature": {
           "size": 296296,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 8,
         "ocrPages": 0,
@@ -4305,7 +4352,7 @@
       "EIEF10/Lösningsförslag/Losning EIEF10-20150604.pdf": {
         "signature": {
           "size": 1063381,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 7,
         "ocrPages": 7,
@@ -4314,7 +4361,7 @@
       "EIEF10/Lösningsförslag/Losning EIEF10-20160603.pdf": {
         "signature": {
           "size": 163132,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 5,
         "ocrPages": 5,
@@ -4323,7 +4370,7 @@
       "EIEF10/Lösningsförslag/Tenta 2025-06-04_LÖSNING.pdf": {
         "signature": {
           "size": 452489,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 8,
         "ocrPages": 0,
@@ -4332,7 +4379,7 @@
       "EIEF10/Lösningsförslag/Tenta_20250424_Facit.pdf": {
         "signature": {
           "size": 1321839,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 12,
         "ocrPages": 1,
@@ -4341,7 +4388,7 @@
       "EIEF10/Tentor/Tenta 2025-04-24.pdf": {
         "signature": {
           "size": 95876,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 3,
         "ocrPages": 0,
@@ -4350,7 +4397,7 @@
       "EIEF10/Tentor/Tenta 2025-06-04.pdf": {
         "signature": {
           "size": 90429,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 3,
         "ocrPages": 0,
@@ -4359,7 +4406,7 @@
       "EIEF10/Tentor/Tenta EIEF10-20140530.pdf": {
         "signature": {
           "size": 107470,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 2,
         "ocrPages": 0,
@@ -4368,7 +4415,7 @@
       "EIEF10/Tentor/Tenta EIEF10-20150604.pdf": {
         "signature": {
           "size": 144323,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 2,
         "ocrPages": 2,
@@ -4377,7 +4424,7 @@
       "EIEF10/Tentor/Tenta EIEF10-20160603.pdf": {
         "signature": {
           "size": 100499,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 2,
         "ocrPages": 0,
@@ -4386,7 +4433,7 @@
       "EIEF10/Övningar/Exercises2016.pdf": {
         "signature": {
           "size": 588774,
-          "mtime_ns": 1778511316000000000
+          "mtime_ns": 1778522239000000000
         },
         "pages": 53,
         "ocrPages": 0,
