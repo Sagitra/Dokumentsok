@@ -799,6 +799,32 @@
                 color: var(--muted);
             }
 
+            .text-viewer table {
+                width: 100%;
+                margin: 0 0 1em;
+                border-collapse: collapse;
+            }
+
+            .text-viewer td {
+                border: 1px solid var(--line);
+                padding: 0.45em 0.6em;
+                vertical-align: top;
+            }
+
+            .text-viewer .docx-image {
+                display: block;
+                max-width: 100%;
+                height: auto;
+                margin: 0.35em 0;
+            }
+
+            .text-viewer .docx-math {
+                display: inline-block;
+                max-width: 100%;
+                overflow-wrap: anywhere;
+                font-family: "Cambria Math", "Times New Roman", serif;
+            }
+
             .text-viewer .katex-display {
                 margin: 0.9em 0;
                 overflow-x: auto;
@@ -1881,6 +1907,35 @@
                 }
             }
 
+            function renderIndexedTextDocument(viewId, doc) {
+                const frame = viewFrame(viewId);
+                const textViewer = viewTextViewer(viewId);
+                const imageViewer = viewImageViewer(viewId);
+                const empty = viewEmpty(viewId);
+                const pages = pdfTextIndexByPath[doc.path] || [];
+                const documentHtml = pages
+                    .map((page) => {
+                        if (page.html) {
+                            return page.html;
+                        }
+                        return page.text
+                            ? `<pre>${escapeHtml(page.text)}</pre>`
+                            : "";
+                    })
+                    .filter(Boolean)
+                    .join("");
+                frame.hidden = true;
+                imageViewer.hidden = true;
+                empty.classList.remove("visible");
+                textViewer.hidden = false;
+                textViewer.innerHTML =
+                    documentHtml || "<p>Ingen text kunde visas fÃ¶r dokumentet.</p>";
+                highlightAndScrollTextViewer(
+                    viewId,
+                    viewState(viewId).highlightQuery,
+                );
+            }
+
             function renderImageDocument(viewId, doc) {
                 const frame = viewFrame(viewId);
                 const textViewer = viewTextViewer(viewId);
@@ -1913,7 +1968,9 @@
                 const empty = viewEmpty(viewId);
                 const type = documentType(state.doc);
                 empty.classList.remove("visible");
-                if (type === "md" || type === "txt" || state.textMode) {
+                if (type === "docx") {
+                    renderIndexedTextDocument(viewId, state.doc);
+                } else if (type === "md" || type === "txt" || state.textMode) {
                     renderTextDocument(viewId, state.doc);
                 } else if (type === "image") {
                     renderImageDocument(viewId, state.doc);
@@ -1961,6 +2018,8 @@
                     imageViewer.hidden = true;
                     frame.hidden = false;
                     reloadFrame(activeViewId, documentUrl(doc.path, page));
+                } else if (type === "docx") {
+                    renderIndexedTextDocument(activeViewId, doc);
                 } else if (type === "md" || type === "txt" || type === "html") {
                     renderTextDocument(activeViewId, doc);
                 } else if (type === "image") {
