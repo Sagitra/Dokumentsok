@@ -1354,36 +1354,40 @@
                 indexStatus.classList.toggle("error", isError);
             }
 
-            function categorySortKey(category) {
-                const order = [
-                    "Föreläsningar",
-                    "Kurskompendium",
-                    "Övningar",
-                    "Formelblad",
-                    "Tentor",
-                    "Lösningsförslag",
-                    "Labbar",
-                    "Kursinfo",
-                ];
-                const index = order.indexOf(category);
-                return [index === -1 ? order.length : index, category];
+            function naturalCompare(a, b) {
+                return String(a || "").localeCompare(String(b || ""), "sv-SE", {
+                    numeric: true,
+                    sensitivity: "base",
+                });
+            }
+
+            function categorySortValue(doc) {
+                return doc.categorySort || doc.category || "";
+            }
+
+            function sortedCategoriesFromDocs(sourceDocuments) {
+                const sortByCategory = new Map();
+                sourceDocuments.forEach((doc) => {
+                    if (!doc.category) {
+                        return;
+                    }
+                    const sortValue = categorySortValue(doc);
+                    const current = sortByCategory.get(doc.category);
+                    if (!current || naturalCompare(sortValue, current) < 0) {
+                        sortByCategory.set(doc.category, sortValue);
+                    }
+                });
+                return Array.from(sortByCategory.keys()).sort((a, b) => {
+                    const bySort = naturalCompare(
+                        sortByCategory.get(a),
+                        sortByCategory.get(b),
+                    );
+                    return bySort || naturalCompare(a, b);
+                });
             }
 
             function buildCategories() {
-                return Array.from(
-                    new Set(
-                        documentsForActiveSubject()
-                            .map((doc) => doc.category)
-                            .filter(Boolean),
-                    ),
-                ).sort((a, b) => {
-                    const keyA = categorySortKey(a);
-                    const keyB = categorySortKey(b);
-                    return (
-                        keyA[0] - keyB[0] ||
-                        keyA[1].localeCompare(keyB[1], "sv-SE")
-                    );
-                });
+                return sortedCategoriesFromDocs(documentsForActiveSubject());
             }
 
             function buildSubjects() {
@@ -1391,7 +1395,7 @@
                     new Set(
                         documents.map((doc) => doc.subject).filter(Boolean),
                     ),
-                ).sort((a, b) => a.localeCompare(b, "sv-SE"));
+                ).sort(naturalCompare);
             }
 
             function documentsForActiveSubject() {
@@ -2191,55 +2195,17 @@
             }
 
             function categoriesForRecords(records) {
-                return Array.from(
-                    new Set(
-                        records
-                            .map((record) => record.doc.category)
-                            .filter(Boolean),
-                    ),
-                ).sort((a, b) => {
-                    const keyA = categorySortKey(a);
-                    const keyB = categorySortKey(b);
-                    return (
-                        keyA[0] - keyB[0] ||
-                        keyA[1].localeCompare(keyB[1], "sv-SE")
-                    );
-                });
+                return sortedCategoriesFromDocs(
+                    records.map((record) => record.doc),
+                );
             }
 
             function filteredDocuments() {
                 return recordsForCurrentQuery(true);
             }
 
-            function documentDateValue(doc) {
-                const value = `${doc.title} ${doc.path}`;
-                const dashed = value.match(
-                    /\b(20\d{2}|19\d{2})-(\d{2})-(\d{2})\b/,
-                );
-                if (dashed) {
-                    return Number(`${dashed[1]}${dashed[2]}${dashed[3]}`);
-                }
-                const compact = value.match(
-                    /\b(20\d{2}|19\d{2})(\d{2})(\d{2})\b/,
-                );
-                if (compact) {
-                    return Number(`${compact[1]}${compact[2]}${compact[3]}`);
-                }
-                return Number.MAX_SAFE_INTEGER;
-            }
-
-            function sortRecordsForCategory(records, category) {
-                if (category !== "Tentor" && category !== "Lösningsförslag") {
-                    return records;
-                }
-                return [...records].sort((a, b) => {
-                    const byDate =
-                        documentDateValue(a.doc) - documentDateValue(b.doc);
-                    return (
-                        byDate ||
-                        a.doc.title.localeCompare(b.doc.title, "sv-SE")
-                    );
-                });
+            function sortRecordsForCategory(records) {
+                return records;
             }
 
             function renderDocumentHits(doc, matches) {
@@ -2402,7 +2368,6 @@
                         regularRecords.filter(
                             (record) => record.doc.category === category,
                         ),
-                        category,
                     );
                     if (groupRecords.length === 0) {
                         return;
