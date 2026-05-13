@@ -52,27 +52,6 @@ SUPPORTED_EXTENSIONS = {
     ".md",
     ".markdown",
 } | IMAGE_EXTENSIONS
-EMD_FOLDERS = {
-    "01_Forelasningar",
-    "02_Flikar_Formelblad",
-    "03_Labbar",
-    "04_Tentor_och_Losningar",
-    "05_Kursinfo",
-    "06_Ovningar",
-}
-EIEF10_WRAPPER = "EIEF10"
-CATEGORY_FOLDERS = {
-    "Föreläsningar": "Föreläsningar",
-    "Kurskompendium": "Kurskompendium",
-    "Övningar": "Övningar",
-    "Formelblad": "Formelblad",
-    "Tentor": "Tentor",
-    "Lösningsförslag": "Lösningsförslag",
-    "Labbar": "Labbar",
-    "Kursinfo": "Kursinfo",
-}
-LEGACY_EMD_WRAPPERS = {"emd"}
-LEGACY_EMD_TOP_FOLDERS = EMD_FOLDERS | {"handskriven formel"}
 CATEGORY_ORDER = [
     "Föreläsningar",
     "Kurskompendium",
@@ -162,52 +141,19 @@ def clean_folder_name(value: str) -> str:
     return value or "Dokument"
 
 
-def is_solution_pdf(path: Path) -> bool:
-    text = path.stem.casefold()
-    return any(token in text for token in ("lösning", "losning", "facit"))
-
-
-def emd_category(folder: str, filename: str, path: Path) -> str:
-    if folder == "01_Forelasningar":
-        return "Föreläsningar"
-    if folder == "02_Flikar_Formelblad":
-        return "Formelblad" if "formelblad" in filename else "Kurskompendium"
-    if folder == "03_Labbar":
-        return "Labbar"
-    if folder == "04_Tentor_och_Losningar":
-        return "Lösningsförslag" if is_solution_pdf(path) else "Tentor"
-    if folder == "05_Kursinfo":
-        return "Kursinfo"
-    if folder == "06_Ovningar":
-        return "Övningar"
-    return clean_folder_name(folder)
-
-
 def document_metadata(path: Path, root: Path) -> dict[str, str]:
     relative_parts = path.relative_to(root).parts
-    top = relative_parts[0] if relative_parts else ""
-    filename = path.name.casefold()
-    emd_folder = ""
-    if top in EMD_FOLDERS:
-        emd_folder = top
-    elif top == EIEF10_WRAPPER and len(relative_parts) > 1:
-        candidate = relative_parts[1]
-        if candidate in EMD_FOLDERS:
-            emd_folder = candidate
+    folder_parts = relative_parts[:-1]
 
-    if top == EIEF10_WRAPPER and len(relative_parts) > 1 and relative_parts[1] in CATEGORY_FOLDERS:
-        subject = "EIEF10"
-        category = CATEGORY_FOLDERS[relative_parts[1]]
-    elif emd_folder:
-        subject = "EIEF10"
-        category = emd_category(emd_folder, filename, path)
+    if len(folder_parts) >= 2:
+        subject = clean_folder_name(folder_parts[0])
+        category = clean_folder_name(folder_parts[1])
+    elif folder_parts:
+        subject = clean_folder_name(folder_parts[0])
+        category = subject
     else:
-        subject = clean_folder_name(top) if top else "Dokument"
-        category = (
-            clean_folder_name(relative_parts[1])
-            if len(relative_parts) > 2
-            else subject
-        )
+        subject = "Dokument"
+        category = "Dokument"
 
     return {
         "title": clean_title(path),
@@ -222,22 +168,6 @@ def should_ignore(path: Path, root: Path) -> bool:
     try:
         relative_parts = path.relative_to(root).parts
     except ValueError:
-        return True
-    if (
-        (root / EIEF10_WRAPPER).is_dir()
-        and relative_parts
-        and (
-            relative_parts[0] in LEGACY_EMD_TOP_FOLDERS
-            or relative_parts[0].casefold() in LEGACY_EMD_WRAPPERS
-        )
-    ):
-        return True
-    if (
-        len(relative_parts) > 1
-        and relative_parts[0] == EIEF10_WRAPPER
-        and relative_parts[1] in EMD_FOLDERS
-        and any((root / EIEF10_WRAPPER / folder).is_dir() for folder in CATEGORY_FOLDERS)
-    ):
         return True
     for part in relative_parts[:-1]:
         if part.startswith(".") or part in IGNORE_DIRS:
