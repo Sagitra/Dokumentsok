@@ -96,10 +96,12 @@ Exempel:
 
 ```text
 Reglerteknik/
-  Föreläsningar/
-  Tentor/
-  Formelblad/
+  00_Föreläsningar/
+  01_Tentor/
+  02_Formelblad/
 ```
+
+Kategorier upptäcks automatiskt från mapparna. Om du vill styra ordningen i appen kan du lägga numeriska prefix på kategorimapparna, till exempel `00_Föreläsningar`. Prefixet används för sortering men visas inte i kategorinamnet.
 
 ## Funktioner
 
@@ -144,9 +146,9 @@ Exempel:
 
 ```text
 EIEF10/
-  Föreläsningar/
+  00_Föreläsningar/
     ny_forelasning.pdf
-  Formelblad/
+  03_Formelblad/
     sammanfattning.md
 ```
 
@@ -155,14 +157,15 @@ EIEF10/
 `EIEF10` är organiserad med dessa kategorimappar:
 
 ```text
-Formelblad
-Föreläsningar
-Kursinfo
-Kurskompendium
-Labbar
-Lösningsförslag
-Tentor
-Övningar
+00_Föreläsningar
+01_Kurskompendium
+02_Övningar
+03_Formelblad
+04_Tentor
+05_Lösningsförslag
+06_Labbar
+07_Kursinfo
+08_anteckningar
 ```
 
 ## Tekniska filer
