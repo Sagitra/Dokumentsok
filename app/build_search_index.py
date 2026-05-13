@@ -9,15 +9,19 @@ writes search-index.json.
 from __future__ import annotations
 
 import argparse
+import base64
+import html
 import json
 import os
 import re
 import shutil
 import sys
+import zipfile
 from html.parser import HTMLParser
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from xml.etree import ElementTree as ET
 
 from pypdf import PdfReader
 
@@ -34,6 +38,7 @@ IGNORE_DIRS = {
 INDEX_FILE = "search-index.json"
 IGNORE_FILES = {"README.md", "Screenshot.png"}
 TEXT_THRESHOLD = 24
+DOCX_EXTRACTOR_VERSION = 4
 IMAGE_EXTENSIONS = {
     ".bmp",
     ".gif",
@@ -45,6 +50,7 @@ IMAGE_EXTENSIONS = {
     ".webp",
 }
 SUPPORTED_EXTENSIONS = {
+    ".docx",
     ".pdf",
     ".html",
     ".htm",
@@ -109,6 +115,8 @@ def clean_title(path: Path) -> str:
 
 def document_kind(path: Path) -> str:
     suffix = path.suffix.casefold()
+    if suffix == ".docx":
+        return "docx"
     if suffix == ".pdf":
         return "pdf"
     if suffix in IMAGE_EXTENSIONS:
@@ -225,6 +233,222 @@ def extract_text_document(path: Path) -> list[dict[str, Any]]:
         text = compact_text(read_text_file(path))
         source = document_kind(path)
     return [{"page": 1, "text": text, "source": source}]
+
+
+DOCX_NS = {
+    "a": "http://schemas.openxmlformats.org/drawingml/2006/main",
+    "m": "http://schemas.openxmlformats.org/officeDocument/2006/math",
+    "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
+    "rel": "http://schemas.openxmlformats.org/package/2006/relationships",
+    "w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
+}
+DOCX_BLOCK_TAGS = {
+    f"{{{DOCX_NS['w']}}}p",
+    f"{{{DOCX_NS['w']}}}tbl",
+}
+DOCX_IMAGE_TYPES = {
+    ".bmp": "image/bmp",
+    ".gif": "image/gif",
+    ".jpeg": "image/jpeg",
+    ".jpg": "image/jpeg",
+    ".png": "image/png",
+    ".svg": "image/svg+xml",
+    ".tif": "image/tiff",
+    ".tiff": "image/tiff",
+    ".webp": "image/webp",
+}
+
+
+def xml_attr(element: ET.Element, name: str) -> str:
+    return element.attrib.get(f"{{{DOCX_NS['w']}}}{name}", "")
+
+
+def docx_heading_level(paragraph: ET.Element) -> int | None:
+    style = paragraph.find("w:pPr/w:pStyle", DOCX_NS)
+    value = normalize_style_name(xml_attr(style, "val") if style is not None else "")
+    if not value:
+        return None
+    for prefix in ("heading", "rubrik"):
+        if value.startswith(prefix):
+            suffix = value[len(prefix) :]
+            if suffix[:1].isdigit():
+                return max(1, min(3, int(suffix[0])))
+    return None
+
+
+def normalize_style_name(value: str) -> str:
+    return re.sub(r"[^a-z0-9]", "", value.casefold())
+
+
+def docx_relationships(archive: zipfile.ZipFile) -> dict[str, str]:
+    try:
+        relationships_xml = archive.read("word/_rels/document.xml.rels")
+    except KeyError:
+        return {}
+    root = ET.fromstring(relationships_xml)
+    relationships: dict[str, str] = {}
+    for relationship in root.findall("rel:Relationship", DOCX_NS):
+        relationship_id = relationship.attrib.get("Id", "")
+        target = relationship.attrib.get("Target", "")
+        if relationship_id and target:
+            relationships[relationship_id] = target
+    return relationships
+
+
+def docx_media_data(
+    archive: zipfile.ZipFile,
+    relationships: dict[str, str],
+) -> dict[str, tuple[str, str]]:
+    media: dict[str, tuple[str, str]] = {}
+    for relationship_id, target in relationships.items():
+        if target.startswith("../") or "://" in target:
+            continue
+        target_path = Path(target)
+        if target_path.parts[:1] != ("media",):
+            continue
+        archive_path = f"word/{target_path.as_posix()}"
+        mime_type = DOCX_IMAGE_TYPES.get(target_path.suffix.casefold())
+        if not mime_type:
+            continue
+        try:
+            encoded = base64.b64encode(archive.read(archive_path)).decode("ascii")
+        except KeyError:
+            continue
+        media[relationship_id] = (mime_type, encoded)
+    return media
+
+
+def docx_run_text(
+    run: ET.Element,
+    media_by_relationship: dict[str, tuple[str, str]],
+) -> tuple[str, str, bool, bool]:
+    parts: list[str] = []
+    image_html: list[str] = []
+    for child in run:
+        if child.tag == f"{{{DOCX_NS['w']}}}t":
+            parts.append(child.text or "")
+        elif child.tag == f"{{{DOCX_NS['w']}}}tab":
+            parts.append("\t")
+        elif child.tag in {
+            f"{{{DOCX_NS['w']}}}br",
+            f"{{{DOCX_NS['w']}}}cr",
+        }:
+            parts.append("\n")
+    for blip in run.findall(".//a:blip", DOCX_NS):
+        relationship_id = blip.attrib.get(f"{{{DOCX_NS['r']}}}embed", "")
+        media = media_by_relationship.get(relationship_id)
+        if media:
+            mime_type, encoded = media
+            image_html.append(
+                f'<img class="docx-image" alt="" src="data:{mime_type};base64,{encoded}">'
+            )
+    properties = run.find("w:rPr", DOCX_NS)
+    bold = properties is not None and properties.find("w:b", DOCX_NS) is not None
+    italic = properties is not None and properties.find("w:i", DOCX_NS) is not None
+    return "".join(parts), "".join(image_html), bold, italic
+
+
+def docx_paragraph_parts(
+    paragraph: ET.Element,
+    media_by_relationship: dict[str, tuple[str, str]],
+) -> tuple[str, str]:
+    text_parts: list[str] = []
+    html_parts: list[str] = []
+    used_math_nodes: set[int] = set()
+    for run in paragraph.findall(".//w:r", DOCX_NS):
+        text, images, bold, italic = docx_run_text(run, media_by_relationship)
+        if not text and not images:
+            continue
+        for math_text in run.findall(".//m:t", DOCX_NS):
+            used_math_nodes.add(id(math_text))
+        if text:
+            text_parts.append(text)
+            escaped = html.escape(text).replace("\n", "<br>")
+            if bold:
+                escaped = f"<strong>{escaped}</strong>"
+            if italic:
+                escaped = f"<em>{escaped}</em>"
+            html_parts.append(escaped)
+        if images:
+            html_parts.append(images)
+    math_tokens = [
+        math_text.text or ""
+        for math_text in paragraph.findall(".//m:t", DOCX_NS)
+        if id(math_text) not in used_math_nodes and math_text.text
+    ]
+    if math_tokens:
+        math_value = compact_text(" ".join(math_tokens))
+        text_parts.append(math_value)
+        html_blocks = html.escape(math_value).replace("\n", "<br>")
+        html_parts.append(f'<span class="docx-math">{html_blocks}</span>')
+    return "".join(text_parts).strip(), "".join(html_parts).strip()
+
+
+def extract_docx_document(path: Path) -> list[dict[str, Any]]:
+    with zipfile.ZipFile(path) as archive:
+        media_by_relationship = docx_media_data(archive, docx_relationships(archive))
+        document_xml = archive.read("word/document.xml")
+    root = ET.fromstring(document_xml)
+    body = root.find("w:body", DOCX_NS)
+    if body is None:
+        return [{"page": 1, "text": "", "html": "", "source": "docx"}]
+
+    text_blocks: list[str] = []
+    html_blocks: list[str] = []
+
+    for block in body:
+        if block.tag not in DOCX_BLOCK_TAGS:
+            continue
+        if block.tag == f"{{{DOCX_NS['w']}}}p":
+            text, paragraph_html = docx_paragraph_parts(block, media_by_relationship)
+            if not text and not paragraph_html:
+                continue
+            if text:
+                text_blocks.append(text)
+            heading_level = docx_heading_level(block)
+            if heading_level:
+                html_blocks.append(f"<h{heading_level}>{paragraph_html}</h{heading_level}>")
+            else:
+                html_blocks.append(f"<p>{paragraph_html}</p>")
+            continue
+
+        rows: list[str] = []
+        text_rows: list[str] = []
+        for row in block.findall("w:tr", DOCX_NS):
+            cells: list[str] = []
+            text_cells: list[str] = []
+            for cell in row.findall("w:tc", DOCX_NS):
+                cell_texts: list[str] = []
+                cell_html: list[str] = []
+                for paragraph in cell.findall(".//w:p", DOCX_NS):
+                    text, paragraph_html = docx_paragraph_parts(
+                        paragraph,
+                        media_by_relationship,
+                    )
+                    if text:
+                        cell_texts.append(text)
+                    if paragraph_html:
+                        cell_html.append(paragraph_html)
+                cells.append(f"<td>{'<br>'.join(cell_html)}</td>")
+                if cell_texts:
+                    text_cells.append(" ".join(cell_texts))
+            if cells:
+                rows.append(f"<tr>{''.join(cells)}</tr>")
+            if text_cells:
+                text_rows.append(" | ".join(text_cells))
+        if rows:
+            html_blocks.append(f"<table>{''.join(rows)}</table>")
+        if text_rows:
+            text_blocks.append("\n".join(text_rows))
+
+    return [
+        {
+            "page": 1,
+            "text": compact_text("\n".join(text_blocks)),
+            "html": "".join(html_blocks),
+            "source": "docx",
+        }
+    ]
 
 
 def load_existing_index(path: Path) -> dict[str, Any]:
@@ -455,6 +679,11 @@ def build_index(root: Path, output: Path, force: bool, ocr: OcrState, dpi: int) 
             not force
             and existing_files.get(relative, {}).get("signature") == signature
             and relative in existing_pages
+            and (
+                kind != "docx"
+                or existing_files.get(relative, {}).get("extractorVersion")
+                == DOCX_EXTRACTOR_VERSION
+            )
         )
         if cached:
             pdf_text_index[relative] = existing_pages[relative]
@@ -468,6 +697,9 @@ def build_index(root: Path, output: Path, force: bool, ocr: OcrState, dpi: int) 
                 pages, ocr_pages = extract_pdf_pages(file_path, ocr, dpi)
             elif kind == "image":
                 pages, ocr_pages = extract_image_document(file_path, ocr)
+            elif kind == "docx":
+                pages = extract_docx_document(file_path)
+                ocr_pages = 0
             else:
                 pages = extract_text_document(file_path)
                 ocr_pages = 0
@@ -477,6 +709,7 @@ def build_index(root: Path, output: Path, force: bool, ocr: OcrState, dpi: int) 
                 "pages": len(pages),
                 "ocrPages": ocr_pages,
                 "type": kind,
+                "extractorVersion": DOCX_EXTRACTOR_VERSION if kind == "docx" else 1,
             }
         except Exception as exc:
             warnings.append(f"Kunde inte indexera {relative}: {exc}")
@@ -486,6 +719,7 @@ def build_index(root: Path, output: Path, force: bool, ocr: OcrState, dpi: int) 
                 "pages": 0,
                 "ocrPages": 0,
                 "type": kind,
+                "extractorVersion": DOCX_EXTRACTOR_VERSION if kind == "docx" else 1,
                 "error": str(exc),
             }
 
