@@ -52,18 +52,6 @@ SUPPORTED_EXTENSIONS = {
     ".md",
     ".markdown",
 } | IMAGE_EXTENSIONS
-CATEGORY_ORDER = [
-    "Föreläsningar",
-    "Kurskompendium",
-    "Övningar",
-    "Formelblad",
-    "Tentor",
-    "Lösningsförslag",
-    "Labbar",
-    "Kursinfo",
-]
-
-
 @dataclass
 class OcrState:
     available: bool
@@ -141,6 +129,10 @@ def clean_folder_name(value: str) -> str:
     return value or "Dokument"
 
 
+def sort_folder_name(value: str) -> str:
+    return re.sub(r"\s+", " ", value.replace("_", " ")).strip() or "Dokument"
+
+
 def document_metadata(path: Path, root: Path) -> dict[str, str]:
     relative_parts = path.relative_to(root).parts
     folder_parts = relative_parts[:-1]
@@ -148,17 +140,21 @@ def document_metadata(path: Path, root: Path) -> dict[str, str]:
     if len(folder_parts) >= 2:
         subject = clean_folder_name(folder_parts[0])
         category = clean_folder_name(folder_parts[1])
+        category_sort = sort_folder_name(folder_parts[1])
     elif folder_parts:
         subject = clean_folder_name(folder_parts[0])
         category = subject
+        category_sort = sort_folder_name(folder_parts[0])
     else:
         subject = "Dokument"
         category = "Dokument"
+        category_sort = "Dokument"
 
     return {
         "title": clean_title(path),
         "subject": subject,
         "category": category,
+        "categorySort": category_sort,
         "path": relpath(path, root),
         "type": document_kind(path),
     }
@@ -422,11 +418,9 @@ def extract_image_document(path: Path, ocr: OcrState) -> tuple[list[dict[str, An
     return [{"page": 1, "text": text, "source": source}], ocr_pages
 
 
-def category_sort_key(category: str) -> tuple[int, str]:
-    try:
-        return (CATEGORY_ORDER.index(category), category.casefold())
-    except ValueError:
-        return (len(CATEGORY_ORDER), category.casefold())
+def natural_sort_key(value: str) -> list[int | str]:
+    parts = re.split(r"(\d+)", value.casefold())
+    return [int(part) if part.isdigit() else part for part in parts]
 
 
 def build_index(root: Path, output: Path, force: bool, ocr: OcrState, dpi: int) -> dict[str, Any]:
@@ -498,15 +492,29 @@ def build_index(root: Path, output: Path, force: bool, ocr: OcrState, dpi: int) 
     documents.sort(
         key=lambda doc: (
             doc["subject"].casefold(),
-            category_sort_key(doc["category"]),
+            natural_sort_key(doc["categorySort"]),
+            natural_sort_key(doc["category"]),
             doc["title"].casefold(),
         )
     )
+    category_sort_names = {
+        doc["category"]: doc["categorySort"]
+        for doc in sorted(
+            documents,
+            key=lambda doc: (
+                natural_sort_key(doc["categorySort"]),
+                natural_sort_key(doc["category"]),
+            ),
+        )
+    }
     categories = sorted(
-        {doc["category"] for doc in documents},
-        key=category_sort_key,
+        category_sort_names,
+        key=lambda category: (
+            natural_sort_key(category_sort_names[category]),
+            natural_sort_key(category),
+        ),
     )
-    subjects = sorted({doc["subject"] for doc in documents}, key=str.casefold)
+    subjects = sorted({doc["subject"] for doc in documents}, key=natural_sort_key)
 
     return {
         "version": 1,
